@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:t="http://myfaces.apache.org/tomahawk">
+
+<body>
+
+<ui:composition template="/layout/estrutura/template.xhtml">
+
+	<ui:param name="button" value="salaForm:cadastrar" />
+
+	<ui:define name="corpo">
+	
+		<h:form id="salaForm" styleClass="formulario">
+			
+			<fieldset>
+				<legend><h:outputFormat value="#{View['cronos.cadastro.titulo']}"><f:param value="#{View['cronos.usuario']}"/></h:outputFormat></legend>
+					
+				<ol>
+					
+					<li>
+						<h:outputLabel for="funcionario" value="#{View['cronos.form.funcionario']}" />
+						<h:selectOneMenu id="funcionario" value="#{cadastrarUsuarioFormBean.idFuncionario}" styleClass="estiloSelectGrande">
+							<f:selectItem itemLabel="--Selecione--" itemValue="" />
+							<f:selectItems value="#{listarFuncionarioFormBean.dados}" />
+						</h:selectOneMenu>
+					</li>
+					
+					<li>
+						<h:outputLabel for="login" value="#{View['cronos.form.login']}" />
+						<h:inputText id="login" value="#{cadastrarUsuarioFormBean.login}" styleClass="inputStyle" />
+					</li>
+					
+					<li>
+						<h:outputLabel for="senha" value="#{View['cronos.form.senha']}" />
+						<h:inputSecret id="senha" value="#{cadastrarUsuarioFormBean.senha}" styleClass="inputStyle" maxlength="12" />
+					</li>
+					
+					<li>
+						<h:outputLabel for="senhaConfirmacao" value="#{View['cronos.form.senhaConfirmacao']}" />
+						<h:inputSecret id="senhaConfirmacao" value="#{cadastrarUsuarioFormBean.senhaConfirmacao}" styleClass="inputStyle" maxlength="12" />
+					</li>
+					
+					<li>	
+						<h:outputLabel for="perfil" value="#{View['cronos.form.perfil']}" />
+						<h:selectOneMenu id="perfil" value="#{cadastrarUsuarioFormBean.idPerfil}" styleClass="estiloSelectGrande">
+							<f:selectItem itemLabel="--Selecione--" itemValue="" />
+							<f:selectItems value="#{listarPerfilFormBean.dados}" />
+						</h:selectOneMenu>
+					</li>
+					
+				</ol>	
+				
+				<h:commandButton id="cadastrar" action="#{cadastrarUsuarioFormBean.cadastrarUsuario}" value="#{View['cronos.cadastrar']}" styleClass="submitButton" />
+				<h:outputText value="#{View['cronos.espaco']}" />
+				<h:commandButton id="cancelar" action="#{cadastrarUsuarioFormBean.cancelar}" value="#{View['cronos.cancelar']}" styleClass="submitButton" />
+				
+			</fieldset>
+			
+		</h:form>
+		
+	</ui:define>
+	
+</ui:composition>
+
+</body>
+
+</html>

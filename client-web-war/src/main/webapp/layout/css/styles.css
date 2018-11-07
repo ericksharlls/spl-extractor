@@ -1,0 +1,246 @@
+@charset "utf-8";
+/* CSS Document */
+@font-face {
+	font-family: "Century Gothic";
+	/* src: url("http://www.ct.ufrn.br/estrutura/imagens/fontes/GOTHIC.TTF"); */
+	font-weight: normal;
+} 
+/* --------------------------- DIVS --------------------------- */
+
+* {margin:0; }
+
+body{
+font-family:"Century Gothic";
+background: #2f5372;
+}
+
+#tudo
+{
+margin:0 auto;
+width:850px;
+height: auto;
+background: #2f5372;
+}
+
+#principal
+{
+margin:50px auto;
+width:850px;
+height:auto;
+background:#FFF;
+}
+
+	
+#acesso_restrito
+{
+margin:0 auto;
+width:850px;
+height:75px;
+background:url(../imagens/bg3.jpg);
+}
+	
+#menu_superior
+{
+text-align: right;
+margin:0 auto;
+width:832px;
+height:27px;
+padding:7px 18px 0px 0px;
+background:url(../imagens/bg2.jpg);
+}
+
+#menu_inferior
+{
+margin:0 auto;
+width:850px;
+height:265px;
+background: none repeat scroll 0 0 #F9F9FB;
+}
+	
+#conteudos
+{
+margin:0 auto;
+width:810px;
+padding: 20px;
+height: auto;
+background: none repeat scroll 0 0 #F9F9FB;
+text-align: center;
+}
+
+#tabela_apuracao
+{
+width:810px;
+font-size:12px;
+}
+
+.alignright
+{
+	text-align: right;
+}
+
+.alignleft
+{
+	text-align: left;
+}
+		
+#rodape
+{
+margin:0 auto;
+width:850px;
+height:33px;
+background:url(../imagens/bg4.jpg);
+}
+				
+/* --------------------------- CLASSES --------------------------- */
+
+/* CSS Document */
+
+/* ----------- SubMenu com duas colunas ------------- */
+.submenu_2 {
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:11px;
+	color:#ffffff;
+	text-align:center;
+	background:url(../imagens/menu/submenu_2.jpg) no-repeat;
+}
+.submenu_2 a {
+	color:#ffffff;
+	text-decoration:none;
+}
+.submenu_2 a:active {
+	color:#ffffff;
+	text-decoration:none;
+}
+.submenu_2 a:hover {
+	color:#FC0;
+	text-decoration:underline;
+}
+.submenu_2 a:visited {
+	text-decoration:none;
+}
+
+.submenu_2_PB {
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:11px;
+	color:#ffffff;
+	text-align:center;
+	background:url(../imagens/menu/submenu_2_PB.jpg) no-repeat;
+}
+.submenu_2_PB a {
+	color:#ffffff;
+	text-decoration:none;
+}
+.submenu_2_PB a:active {
+	color:#ffffff;
+	text-decoration:none;
+}
+.submenu_2_PB a:hover {
+	color:#FC0;
+	text-decoration:underline;
+}
+.submenu_2_PB a:visited {
+	text-decoration:none;
+}
+
+/* ------------------------------------- */
+
+.submenu_3 {
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:11px;
+	color:#ffffff;
+	text-align:center;
+	background:url(../imagens/menu/submenu_3.jpg) no-repeat;
+}
+.submenu_3 a {
+	color:#ffffff;
+	text-decoration:none;
+}
+.submenu_3 a:active {
+	color:#ffffff;
+	text-decoration:none;
+}
+.submenu_3 a:hover {
+	color:#FC0;
+	text-decoration:underline;
+}
+.submenu_3 a:visited {
+	text-decoration:none;
+}
+
+.submenu_3_PB {
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:11px;
+	color:#ffffff;
+	text-align:center;
+	background:url(../imagens/menu/submenu_3_PB.jpg) no-repeat;
+}
+.submenu_3_PB a {
+	color:#ffffff;
+	text-decoration:none;
+}
+.submenu_3_PB a:active {
+	color:#ffffff;
+	text-decoration:none;
+}
+.submenu_3_PB a:hover {
+	color:#FC0;
+	text-decoration:underline;
+}
+.submenu_3_PB a:visited {
+	text-decoration:none;
+}
+
+/* ------------------------------------- */
+.submenu_4 {
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:11px;
+	color:#ffffff;
+	text-align:center;
+	background:url(../imagens/menu/submenu_4.jpg) no-repeat;
+}
+.submenu_4 a {
+	color:#ffffff;
+	text-decoration:none;
+}
+.submenu_4 a:active {
+	color:#ffffff;
+	text-decoration:none;
+}
+.submenu_4 a:hover {
+	color:#FC0;
+	text-decoration:underline;
+}
+.submenu_4 a:visited {
+	text-decoration:none;
+}
+
+.submenu_4_PB {
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:11px;
+	color:#ffffff;
+	text-align:center;
+	background:url(../imagens/menu/submenu_4_PB.jpg) no-repeat;
+}
+.submenu_4_PB a {
+	color:#ffffff;
+	text-decoration:none;
+}
+.submenu_4_PB a:active {
+	color:#ffffff;
+	text-decoration:none;
+}
+.submenu_4_PB a:hover {
+	color:#FC0;
+	text-decoration:underline;
+}
+.submenu_4_PB a:visited {
+	text-decoration:none;
+}
+
+#radioSimDistribuicao {
+    width: 10px;
+}
+
+#radioNaoDistribuicao {
+    width: 10px;
+}

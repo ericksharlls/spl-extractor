@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:a4j="http://richfaces.org/a4j"
+    xmlns:rich="http://richfaces.org/rich"
+    xmlns:c="http://java.sun.com/jstl/core"
+    xmlns:t="http://myfaces.apache.org/tomahawk">
+
+<body>
+
+<ui:composition template="/layout/estrutura/template.xhtml">
+
+    <ui:define name="corpo">    
+
+        <h:form id="marcacaoForm" styleClass="formulario">
+        
+            <fieldset><legend>Consultar sala</legend>
+            
+                <ol>
+                  <li>
+                  <h:outputLabel for="periodoTurma" value="#{View['cronos.form.periodo']}" />
+                  <h:selectOneMenu id="periodoTurma" value="#{consultarSalasParaReservaPorDepartamentoFormBean.idPeriodo}" styleClass="estilo_select">
+                        <f:selectItem itemLabel="--Selecione--" itemValue="" />
+                        <f:selectItems value="#{listarPeriodoFormBean.dados}" />
+                  </h:selectOneMenu>
+               </li>
+                   <li>
+                  <h:outputLabel for="predioTurma" value="#{View['cronos.form.predio']}" />
+                  <h:selectOneMenu id="predioTurma" value="#{consultarSalasParaReservaPorDepartamentoFormBean.idPredio}" styleClass="estilo_select">
+                        <f:selectItem itemLabel="--Selecione--" itemValue="" />
+                        <f:selectItems value="#{listarPredioFormBean.dados}" />
+                  </h:selectOneMenu>
+               </li>
+                    <li>
+                        <h:outputLabel for="horarioUm" value="#{View['cronos.form.turnoHorario']}" />
+                        <h:inputText value="#{consultarSalasParaReservaPorDepartamentoFormBean.horarioUm}" id="horarioUm" />
+                        <h:outputText value=" Ex.:(M123)(T456)" id="mascaraHorarioUm" style="color: red;" />
+                    </li>
+                    <li>
+                        <h:outputLabel for="horarioDois" value="#{View['cronos.form.turnoHorario']}" />
+                        <h:inputText value="#{consultarSalasParaReservaPorDepartamentoFormBean.horarioDois}" id="horarioDois" />
+                        <h:outputText value=" Turno adicional" id="mascaraHorarioDois" style="color: red;" />
+                    </li>
+                    <li>
+                        <h:outputLabel for="horarioTres" value="#{View['cronos.form.turnoHorario']}" />
+                        <h:inputText value="#{consultarSalasParaReservaPorDepartamentoFormBean.horarioTres}" id="horarioTres" />
+                        <h:outputText value=" Turno adicional" id="mascaraHorarioTres" style="color: red;" />
+                    </li>
+                    
+                </ol>
+                
+                <h:commandButton id="consultar" value="#{View['cronos.consultar']}" action="#{consultarSalasParaReservaPorDepartamentoFormBean.consultar}" styleClass="submitButton" />
+                
+            </fieldset>
+        
+            <rich:spacer height="20" />
+            
+            <rich:extendedDataTable value="#{consultarSalasParaReservaPorDepartamentoFormBean.dadosDataModel}" var="sala" id="salasDisponiveis" 
+                     width="540px" height="300px" sortMode="single" selection="#{consultarSalasParaReservaPorDepartamentoFormBean.selection}">
+                
+                <rich:column sortable="true" sortBy="#{sala.nome}" filterBy="#{sala.nome}" label="Nome" id="nomeSala" filterEvent="onkeyup" style="text-align:center;">
+                    <f:facet name="header">
+                        <h:outputText value="Nome" id="colunaNome" />
+                    </f:facet>
+                    <h:outputText value="#{sala.nome}" id="nome" />
+                </rich:column>
+                
+                <rich:column sortable="false" label="Capacidade" id="capacidadeSala" style="text-align:center;">
+                    <f:facet name="header">
+                        <h:outputText value="Capacidade" id="colunaCapacidade"/>
+                    </f:facet>
+                    <h:outputText value="#{sala.capacidade}" id="capacidade"/>
+                </rich:column>
+                
+                <rich:column sortable="true" id="perfilSala" sortBy="#{sala.perfilSala}" filterBy="#{sala.perfilSala}" filterEvent="onkeyup" label="Perfil" style="text-align:center;">
+                    <f:facet name="header">
+                        <h:outputText value="Perfil" id="colunaPerfil"/>
+                    </f:facet>
+                    <h:outputText value="#{sala.perfilSala}" id="perfil"/>
+                </rich:column>
+                
+                 <rich:column sortable="false" label="Tipo do quadro" id="tipoQuadroSala" style="text-align:center;">
+                    <f:facet name="header">
+                        <h:outputText value="Tipo do quadro" id="colunaTipoQuadro" />
+                    </f:facet>
+                    <h:outputText value="#{sala.tipoQuadro}" id="tipoQuadro" />
+                </rich:column>
+               
+                <rich:column sortable="false" label="Agendar" id="colunaAgendarSala" style="text-align:center;">
+                    <f:facet name="header">
+                        <h:outputText value="Agendar" id="colunaAgendar" />
+                    </f:facet>
+                        <a4j:commandLink id="linkAgendar" onclick="Richfaces.showModalPanel('panelAgendamento');" style="text-decoration: none;"> 
+                              <h:outputText value="Agendar" id="agendar" />
+                              <f:setPropertyActionListener target="#{consultarSalasParaReservaPorDepartamentoFormBean.idSala}" value="#{sala.id}" />
+                           </a4j:commandLink>
+                </rich:column>
+                
+            </rich:extendedDataTable>
+            
+            
+        </h:form>
+    </ui:define>
+    
+</ui:composition>
+
+</body>
+
+</html>

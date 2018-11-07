@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:t="http://myfaces.apache.org/tomahawk">
+
+<body>
+
+<ui:composition template="/WEB-INF/templates/template.xhtml">
+
+	<ui:define name="menu">
+		<ui:include src="../../WEB-INF/templates/menu.xhtml" />
+	</ui:define>
+	
+	<ui:define name="corpo">
+		<h:form id="statusForm">
+			<t:div styleClass="aviso" rendered="#{!consultarTurmaFormBean.visible}">
+				<img alt="Aviso" src="#{facesContext.externalContext.requestContextPath}/img/warning.gif" />&#160;
+				<h:outputFormat value="#{View['cronos.aviso.semdados']}"><f:param value="#{View['cronos.turma']}"/></h:outputFormat>
+			</t:div>
+			
+			<rich:datascroller id="turmaTableScroller" align="center" for="turmaTable" maxPages="55" renderIfSinglePage="false" stepControls="hide" />
+			<rich:spacer height="20" />
+			<rich:dataTable id="turmaTable" value="#{consultarTurmaFormBean.dados}" 
+				var="i" rows="#{consultarTurmaFormBean.linhas}" border="0" align="center" cellspacing="0" width="75%"  
+				rowClasses="list-row-even,list-row-odd" binding="#{consultarTurmaFormBean.table}" rendered="#{consultarTurmaFormBean.visible}">
+				<f:facet name="header">
+					<rich:columnGroup>
+						<rich:column>
+							<h:outputText value="#{View['cronos.table.codigoDisciplina']}" />
+						</rich:column>
+						<rich:column>
+							<h:outputText value="#{View['cronos.table.disciplina']}" />
+						</rich:column>
+						<rich:column>
+							<h:outputText value="#{View['cronos.table.docente']}" />
+						</rich:column>
+						<rich:column>
+							<h:outputText value="#{View['cronos.table.perfilTurma']}" />
+						</rich:column>
+						<rich:column colspan="2">
+							<h:outputText value="#{View['cronos.espaco']}" />
+						</rich:column>
+					</rich:columnGroup>
+				</f:facet>
+				<rich:columnGroup>
+					<rich:column style="text-align:center;">
+						<h:outputText value="#{i.codigoDisciplina}" />
+					</rich:column>
+					<rich:column style="text-align:center;">
+						<h:outputText value="#{i.nomeDisciplina}" />
+					</rich:column>
+					<rich:column style="text-align:center;">
+						<h:outputText value="#{i.docente}" />
+					</rich:column>
+					<rich:column style="text-align:center;">
+						<h:outputText value="#{i.tipoSala}" />
+					</rich:column>
+					<rich:column style="text-align:center;">
+						<a href="#{facesContext.externalContext.requestContextPath}/admin/turma/editar/#{i.id}" style="text-decoration: none;">
+							<img src="#{facesContext.externalContext.requestContextPath}/img/editar.gif" border="0" />
+						</a>
+					</rich:column>
+				</rich:columnGroup>
+			</rich:dataTable>
+			
+			
+		</h:form>
+	</ui:define>
+	
+</ui:composition>
+
+</body>
+
+</html>

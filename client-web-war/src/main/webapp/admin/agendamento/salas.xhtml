@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:t="http://myfaces.apache.org/tomahawk">
+
+<body>
+
+<ui:composition template="/WEB-INF/templates/template.xhtml">
+
+	<ui:define name="menu">
+		<ui:include src="../../WEB-INF/templates/menu.xhtml" />
+	</ui:define>
+	
+	<ui:define name="corpo">
+	
+	
+	<rich:modalPanel id="panelAgendamento" width="500" height="270">
+			<f:facet name="header">
+            	<h:outputText value="Adicionar " />
+        	</f:facet>
+        	<h:form id="formAgendamento">
+        		<h:panelGrid columns="2">
+        			<h:outputLabel value="Interessado" for="interessado" />
+        			<h:inputText value="#{obterHorarioSalaFormBean.interessado}" id="interessado" maxlength="15" />
+        			
+        			<h:outputLabel value="Telefone" for="telefone" />
+        			<h:inputText value="#{obterHorarioSalaFormBean.telefone}" id="telefone">
+        				<rich:jQuery selector="#telefone" query="mask('9999-9999')" timing="onload" />
+        			</h:inputText>
+        			
+        			<h:outputLabel value="Motivo" for="motivo" />
+        			<h:selectOneMenu value="#{obterHorarioSalaFormBean.motivo}" id="motivo"> 
+        				<f:selectItem itemLabel="#{View['cronos.select.reuniao']}" itemValue="#{View['cronos.select.reuniao']}" />
+        				<f:selectItem itemLabel="#{View['cronos.select.defesa']}" itemValue="#{View['cronos.select.defesa']}" />
+        				<f:selectItem itemLabel="#{View['cronos.select.aplicacaoprova']}" itemValue="#{View['cronos.select.aplicacaoprova']}" />
+        				<f:selectItem itemLabel="#{View['cronos.select.reposicaoaula']}" itemValue="#{View['cronos.select.reposicaoaula']}" />
+        			</h:selectOneMenu>
+        			
+        			<h:outputLabel value="Data" for="data" />
+        			<rich:calendar value="#{obterHorarioSalaFormBean.data}" cellWidth="24px" cellHeight="22px" 
+        				style="width:200px" locale="#{obterHorarioSalaFormBean.locale}" datePattern="dd/MM/yyyy" id="data" />
+        			
+        			<h:commandButton value="Agendar" action="#{obterHorarioSalaFormBean.agendar}" id="btnAgendar" styleClass="submitButton" />
+        			<h:commandButton value="Cancelar" onclick="Richfaces.hideModalPanel('panelAgendamento');" id="btnCancelar" styleClass="submitButton" />	
+        		</h:panelGrid>
+	        	
+        	</h:form>
+		</rich:modalPanel>
+			
+		<rich:modalPanel id="panelExcluirAgendamento" width="500" height="270">
+			<f:facet name="header">
+            	<h:outputText value="Excluir " />
+        	</f:facet>
+			<h:form id="formRemoverAgendamento">
+				<h:panelGrid columns="2">
+					<h:outputLabel value="Interessado" for="interessado" />
+					<h:outputText value="#{removerAgendamentoFormBean.interessado}" id="interessado" />
+					
+					<h:outputLabel value="Motivo" for="motivo" />
+					<h:outputText value="#{removerAgendamentoFormBean.motivo}" id="motivo" />
+					
+					<h:outputLabel value="Telefone" for="telefone" />
+					<h:outputText value="#{removerAgendamentoFormBean.telefone}" id="telefone" />
+					
+					<h:outputLabel value="Data" for="data" />
+					<h:outputText value="#{removerAgendamentoFormBean.data}" id="data" />
+						
+					<h:commandButton value="Sim" action="#{removerAgendamentoFormBean.removerAgendamento}" />
+					<h:commandButton value="Nao" onclick="Richfaces.hideModalPanel('panelAgendamento');" id="btnCancelar" styleClass="submitButton" />	
+				</h:panelGrid>
+						
+			</h:form>
+		
+		</rich:modalPanel>
+	
+	
+		<h:form id="marcacaoForm">
+			
+			<h:panelGrid columns="2">
+				<h:outputLabel value="Sala" for="sala" />
+				<h:selectOneMenu id="sala" value="#{obterHorarioSalaFormBean.idSala}" styleClass="estilo_select">
+						<f:selectItem itemLabel="--Selecione--" itemValue="" />
+						<f:selectItems value="#{listarSalaFormBean.dados}" />
+						<a4j:support event="onchange" reRender="horariosSalaTable" actionListener="#{obterHorarioSalaFormBean.atualizar}" />
+				</h:selectOneMenu>
+			
+				<h:outputLabel value="Turno" for="selectOneRadioTurno" />
+				<h:selectOneRadio value="#{obterHorarioSalaFormBean.turno}" layout="lineDirection" id="selectOneRadioTurno">
+						<f:selectItem itemLabel="Manha" itemValue="M" />
+						<f:selectItem itemLabel="Tarde" itemValue="T" />
+						<f:selectItem itemLabel="Noite" itemValue="N" />
+						<a4j:support event="onchange" reRender="horariosSalaTable" />
+				</h:selectOneRadio>
+				
+			</h:panelGrid>
+			
+			<br />
+			
+			
+			<rich:dataTable id="horariosSalaTable" value="#{obterHorarioSalaFormBean.dados}" var="i" border="2" 
+					align="center" style="border-width:2px;" rowClasses="list-row-even,list-row-odd">
+				<f:facet name="header">
+					<rich:columnGroup>
+						<rich:column>
+							<h:outputText value="#{View['cronos.table.horario']}" />
+						</rich:column>
+						<rich:column>
+							<h:outputText value="#{View['cronos.table.segunda']}" />
+						</rich:column>
+						<rich:column>
+							<h:outputText value="#{View['cronos.table.terca']}" />
+						</rich:column>
+						<rich:column>
+							<h:outputText value="#{View['cronos.table.quarta']}" />
+						</rich:column>
+						<rich:column>
+							<h:outputText value="#{View['cronos.table.quinta']}" />
+						</rich:column>
+						<rich:column>
+							<h:outputText value="#{View['cronos.table.sexta']}" />
+						</rich:column>
+						<rich:column>
+							<h:outputText value="#{View['cronos.table.sabado']}" />
+						</rich:column>
+					</rich:columnGroup>
+				</f:facet>
+				
+				<rich:columnGroup>
+					<rich:column style="text-align:center;height:80px;width:60px;">
+						<h:outputText value="#{i.horario}" />
+					</rich:column>
+					<rich:column style="text-align:center;height:80px;width:220px;">
+						<h:outputText value="#{i.horarioSegunda}" />
+						<br />
+						<a4j:commandLink onclick="Richfaces.showModalPanel('panelAgendamento');" style="text-decoration: none;"> 
+							<h:outputText value="+" />
+							<f:setPropertyActionListener target="#{obterHorarioSalaFormBean.stringHorario}" value="#{i.horario}" />
+							<f:setPropertyActionListener target="#{obterHorarioSalaFormBean.dia}" value="2" />
+						</a4j:commandLink>
+						<rich:dataTable value="#{i.horariosSegunda}" var="a" align="center">
+						 		<rich:column>
+									<h:outputText value="#{a.horario}" style="color: red;" />						 			
+						 		</rich:column>
+						 		<rich:column>
+									<h:outputText value="#{a.id}" style="color: red;" />						 			
+						 		</rich:column>
+						 		<rich:column>
+									<a4j:commandLink onclick="Richfaces.showModalPanel('panelExcluirAgendamento');" actionListener="#{removerAgendamentoFormBean.obterAgendamento}">
+										<img src="#{facesContext.externalContext.requestContextPath}/img/editar.gif" border="0" />
+										<a4j:actionparam assignTo="#{removerAgendamentoFormBean.id}" value="#{a.id}" />
+									</a4j:commandLink>	 			
+						 		</rich:column>
+						 </rich:dataTable>
+					</rich:column>
+					
+					<rich:column style="text-align:center;height:80px;width:220px;">
+						<h:outputText value="#{i.horarioTerca}" />
+						<br />
+						<a4j:commandLink onclick="Richfaces.showModalPanel('panelAgendamento');" style="text-decoration: none;"> 
+							<h:outputText value="+" />
+							<f:setPropertyActionListener target="#{obterHorarioSalaFormBean.stringHorario}" value="#{i.horario}" />
+							<f:setPropertyActionListener target="#{obterHorarioSalaFormBean.dia}" value="3" />
+						</a4j:commandLink>
+						<rich:dataTable value="#{i.horariosTerca}" var="a" align="center">
+						 		<rich:column>
+									<h:outputText value="#{a.horario}" style="color: red;" />									 			
+						 		</rich:column>
+						 </rich:dataTable>
+					</rich:column>
+					
+					<rich:column style="text-align:center;height:80px;width:220px;">
+						<h:outputText value="#{i.horarioQuarta}" />
+						<br />
+						<a4j:commandLink onclick="Richfaces.showModalPanel('panelAgendamento');" style="text-decoration: none;"> 
+							<h:outputText value="+" />
+							<f:setPropertyActionListener target="#{obterHorarioSalaFormBean.stringHorario}" value="#{i.horario}" />
+							<f:setPropertyActionListener target="#{obterHorarioSalaFormBean.dia}" value="4" />
+						</a4j:commandLink>
+						<rich:dataTable value="#{i.horariosQuarta}" var="a" align="center">
+						 		<rich:column>
+									<h:outputText value="#{a.horario}" style="color: red;" />									 			
+						 		</rich:column>
+						 </rich:dataTable>
+					</rich:column>
+					
+					<rich:column style="text-align:center;height:80px;width:220px;">
+						<h:outputText value="#{i.horarioQuinta}" />
+						<br />
+						<a4j:commandLink onclick="Richfaces.showModalPanel('panelAgendamento');" style="text-decoration: none;"> 
+							<h:outputText value="+" />
+							<f:setPropertyActionListener target="#{obterHorarioSalaFormBean.stringHorario}" value="#{i.horario}" />
+							<f:setPropertyActionListener target="#{obterHorarioSalaFormBean.dia}" value="5" />
+						</a4j:commandLink>
+						 <rich:dataTable value="#{i.horariosQuinta}" var="a" align="center">
+						 		<rich:column>
+									<h:outputText value="#{a.horario}" style="color: red;" />									 			
+						 		</rich:column>
+						 </rich:dataTable>
+					</rich:column>
+					
+					<rich:column style="text-align:center;height:80px;width:220px;">
+						<h:outputText value="#{i.horarioSexta}" />
+						<br />
+						<a4j:commandLink onclick="Richfaces.showModalPanel('panelAgendamento');" style="text-decoration: none;"> 
+							<h:outputText value="+" />
+							<f:setPropertyActionListener target="#{obterHorarioSalaFormBean.stringHorario}" value="#{i.horario}" />
+							<f:setPropertyActionListener target="#{obterHorarioSalaFormBean.dia}" value="6" />
+						</a4j:commandLink>
+						<rich:dataTable value="#{i.horariosSexta}" var="a" align="center">
+						 		<rich:column>
+									<h:outputText value="#{a.horario}" style="color: red;" />									 			
+						 		</rich:column>
+						 </rich:dataTable>
+					</rich:column>
+					
+					<rich:column style="text-align:center;height:80px;width:220px;">
+						<h:outputText value="#{i.horarioSabado}" />
+						<br />
+						<a4j:commandLink onclick="Richfaces.showModalPanel('panelAgendamento');" style="text-decoration: none;"> 
+							<h:outputText value="+" />
+							<f:setPropertyActionListener target="#{obterHorarioSalaFormBean.stringHorario}" value="#{i.horario}" />
+							<f:setPropertyActionListener target="#{obterHorarioSalaFormBean.dia}" value="7" />
+						</a4j:commandLink>
+						<rich:dataTable value="#{i.horariosSabado}" var="a" align="center">
+						 		<rich:column>
+									<h:outputText value="#{a.horario}" style="color: red;" />									 			
+						 		</rich:column>
+						 </rich:dataTable>
+					</rich:column>
+					
+				</rich:columnGroup>
+				
+			</rich:dataTable>			
+			
+			
+		</h:form>
+	</ui:define>
+	
+</ui:composition>
+
+</body>
+
+</html>
+    			

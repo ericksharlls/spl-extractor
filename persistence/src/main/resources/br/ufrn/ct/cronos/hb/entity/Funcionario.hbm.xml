@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping default-lazy="false">
+	<class name="br.ufrn.ct.cronos.entity.Funcionario" table="funcionario">
+    	<id name="id" column="id_funcionario" type="java.lang.Long">
+        	<generator class="identity" />
+      	</id>
+
+      	<property name="nome" column="nome_funcionario" type="java.lang.String" />
+      	<property name="matricula" column="matricula_funcionario" type="java.lang.String" />
+      	<property name="cpf" column="cpf_funcionario" type="java.lang.String" />
+      	<property name="email" column="email_funcionario" type="java.lang.String" />
+      	<property name="telefone" column="telefone_funcionario" type="java.lang.String" />
+      	<property name="ramal" column="ramal_funcionario" type="java.lang.String" />
+      	<property name="idSigaaFuncionario" column="id_sigaa_funcionario" type="java.lang.Long" />
+      	<property name="idTipoFuncionario" column="id_tipo_funcionario" type="java.lang.Long" />
+      	
+	</class>
+</hibernate-mapping>

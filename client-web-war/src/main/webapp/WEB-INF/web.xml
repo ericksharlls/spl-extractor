@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+ <display-name>Cronos</display-name>
+ <distributable/>
+ <context-param>
+  <param-name>org.ajax4jsf.VIEW_HANDLERS</param-name>
+  <param-value>com.sun.facelets.FaceletViewHandler</param-value>
+ </context-param>
+ <context-param>
+  <param-name>javax.faces.DEFAULT_SUFFIX</param-name>
+  <param-value>.xhtml</param-value>
+ </context-param>
+ <context-param>
+  <param-name>facelets.BUILD_BEFORE_RESTORE</param-name>
+  <param-value>true</param-value>
+ </context-param>
+ <context-param>
+  <param-name>facelets.DEVELOPMENT</param-name>
+  <param-value>true</param-value>
+ </context-param>
+ <context-param>
+  <param-name>org.richfaces.SKIN</param-name>
+  <param-value>blueSky</param-value>
+ </context-param>
+ <context-param>
+  <param-name>contextConfigLocation</param-name>
+  <param-value>/WEB-INF/applicationContext.xml</param-value>
+ </context-param>
+ <context-param>
+  <param-name>javax.faces.STATE_SAVING_METHOD</param-name>
+  <param-value>server</param-value>
+ </context-param>
+ <context-param>
+  <param-name>com.sun.faces.validateXml</param-name>
+  <param-value>true</param-value>
+ </context-param>
+ <context-param>
+  <param-name>com.sun.faces.verifyObjects</param-name>
+  <param-value>false</param-value>
+ </context-param>
+ <context-param>
+  <param-name>com.sun.faces.enableRestoreView11Compatibility</param-name>
+  <param-value>true</param-value>
+ </context-param>
+ <context-param>
+  <param-name>org.richfaces.LoadStyleStrategy</param-name>
+  <param-value>ALL</param-value>
+ </context-param>
+ <context-param>
+  <param-name>org.richfaces.LoadScriptStrategy</param-name>
+  <param-value>ALL</param-value>
+ </context-param>
+ <context-param>
+  <param-name>org.ajax4jsf.COMPRESS_SCRIPT</param-name>
+  <param-value>true</param-value>
+ </context-param>
+ <context-param>
+  <param-name>timezone</param-name>
+  <param-value>GMT-3</param-value>
+ </context-param>
+ <!-- Filters -->
+ <filter>
+  <display-name>Ajax4jsf Filter</display-name>
+  <filter-name>ajax4jsf</filter-name>
+  <filter-class>org.ajax4jsf.Filter</filter-class>
+ </filter>
+ <filter>
+  <display-name>MyFacesExtensionsFilter</display-name>
+  <filter-name>MyFacesExtensionsFilter</filter-name>
+  <filter-class>org.apache.myfaces.webapp.filter.ExtensionsFilter</filter-class>
+  <init-param>
+   <param-name>maxFileSize</param-name>
+   <param-value>20m</param-value>
+  </init-param>
+ </filter>
+ <filter>
+  <display-name>RequestContext Filter</display-name>
+  <filter-name>RequestContextFilter</filter-name>
+  <filter-class>org.springframework.web.filter.RequestContextFilter</filter-class>
+ </filter>
+ <filter>
+  <display-name>OpenSessionInView Filter</display-name>
+  <filter-name>OpenSessionInViewFilter</filter-name>
+  <filter-class>org.springframework.orm.hibernate3.support.OpenSessionInViewFilter</filter-class>
+ </filter>
+ <filter>
+  <display-name>SpringSecurityFilterChain</display-name>
+  <filter-name>springSecurityFilterChain</filter-name>
+  <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+ </filter>
+ <filter>
+  <filter-name>Pretty Filter</filter-name>
+  <filter-class>com.ocpsoft.pretty.PrettyFilter</filter-class>
+ </filter>
+ <filter-mapping>
+  <filter-name>ajax4jsf</filter-name>
+  <servlet-name>Faces Servlet</servlet-name>
+  <dispatcher>REQUEST</dispatcher>
+  <dispatcher>FORWARD</dispatcher>
+  <dispatcher>INCLUDE</dispatcher>
+ </filter-mapping>
+ <filter-mapping>
+  <filter-name>MyFacesExtensionsFilter</filter-name>
+  <servlet-name>Faces Servlet</servlet-name>
+ </filter-mapping>
+ <filter-mapping>
+  <filter-name>MyFacesExtensionsFilter</filter-name>
+  <url-pattern>/faces/myFacesExtensionResource/*</url-pattern>
+ </filter-mapping>
+ <filter-mapping>
+  <filter-name>MyFacesExtensionsFilter</filter-name>
+  <url-pattern>*.xhtml</url-pattern>
+ </filter-mapping>
+ <filter-mapping>
+  <filter-name>RequestContextFilter</filter-name>
+  <url-pattern>/*</url-pattern>
+ </filter-mapping>
+ <filter-mapping>
+  <filter-name>OpenSessionInViewFilter</filter-name>
+  <url-pattern>/*</url-pattern>
+ </filter-mapping>
+ <filter-mapping>
+  <filter-name>springSecurityFilterChain</filter-name>
+  <url-pattern>/*</url-pattern>
+ </filter-mapping>
+ <filter-mapping>
+  <filter-name>Pretty Filter</filter-name>
+  <url-pattern>/*</url-pattern>
+  <dispatcher>REQUEST</dispatcher>
+  <dispatcher>FORWARD</dispatcher>
+  <dispatcher>ERROR</dispatcher>
+ </filter-mapping>
+ <!-- Spring -->
+ <listener>
+  <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+ </listener>
+ <listener>
+  <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+ </listener>
+ <!-- As 3 linhas abaixo foram adicionadas para que o JBoss aceitasse o war da aplicacao expandido -->
+ <listener>
+  <listener-class>com.sun.faces.config.ConfigureListener</listener-class>
+ </listener>
+ <!-- As 3 linhas acima foram adicionadas para que o JBoss aceitasse o war da aplicacao expandido -->
+ <!--JSF -->
+ <servlet>
+  <servlet-name>Faces Servlet</servlet-name>
+  <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+  <load-on-startup>1</load-on-startup>
+ </servlet>
+ <servlet-mapping>
+  <servlet-name>Faces Servlet</servlet-name>
+  <url-pattern>*.jsf</url-pattern>
+ </servlet-mapping>
+ <session-config>
+  <session-timeout>25</session-timeout>
+ </session-config>
+ <welcome-file-list>
+  <welcome-file>/index.jsp</welcome-file>
+ </welcome-file-list>
+ <jsp-config>
+  <jsp-property-group>
+   <url-pattern>*.jspf</url-pattern>
+   <is-xml>true</is-xml>
+  </jsp-property-group>
+ </jsp-config>
+ <login-config>
+  <auth-method>BASIC</auth-method>
+ </login-config>
+</web-app>

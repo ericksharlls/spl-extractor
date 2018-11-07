@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:t="http://myfaces.apache.org/tomahawk">
+
+<body>
+
+<ui:composition template="/layout/estrutura/template.xhtml">
+
+	<ui:param name="button" value="turmaForm:cadastrar" />
+
+	<ui:define name="corpo">
+
+		<h:form id="turmaForm" styleClass="formulario">
+			
+			<fieldset>
+				<legend><h:outputFormat value="#{View['cronos.cadastro.titulo']}"><f:param value="#{View['cronos.turma']}"/></h:outputFormat></legend>
+					
+				<ol>
+					<li>
+					 	<h:outputLabel for="codigoDisciplina" value="#{View['cronos.form.codigoDisciplina']}" />
+					 	<h:inputText id="codigoDisciplina" value="#{cadastrarTurmaFormBean.codigoDisciplina}" maxlength="10" style="width: 100px;" />
+					</li>
+					
+					<li>
+					 	<h:outputLabel for="nomeDisciplina" value="#{View['cronos.form.nomeDisciplina']}" />
+					 	<h:inputText id="nomeDisciplina" value="#{cadastrarTurmaFormBean.nomeDisciplina}" styleClass="inputStyle" />
+					</li>
+					
+					 <li>
+						 <h:outputLabel for="horario" value="#{View['cronos.form.horario']}" />
+						 <h:inputText id="horario" value="#{cadastrarTurmaFormBean.horario}" maxlength="15" style="width: 100px;" />
+					 </li>
+					
+					 <li>
+					 	<h:outputLabel for="numero" value="#{View['cronos.form.numero']}" />
+					 	<h:inputText id="numero" value="#{cadastrarTurmaFormBean.numero}" maxlength="1" style="width: 100px;">
+								<rich:jQuery selector="#numero" query="mask('99')" timing="onload" />
+					 	</h:inputText>
+					  </li>
+					
+					<li>
+					 	<h:outputLabel for="capacidade" value="#{View['cronos.form.capacidade']}" />
+					 	<h:inputText id="capacidade" value="#{cadastrarTurmaFormBean.capacidade}" style="width: 100px;">
+								<rich:jQuery selector="#capacidade" query="mask('99')" timing="onload" />
+					 	</h:inputText>
+					</li>
+					
+					<li>
+					    <h:outputLabel for="docente" value="#{View['cronos.form.docente']}" />
+                        <h:selectOneMenu id="docente" value="#{cadastrarTurmaFormBean.idDocente}" styleClass="estiloSelectDepartamento">
+                                <f:selectItem itemLabel="--Selecione--" itemValue="" />
+                                <f:selectItems value="#{listarFuncionarioDocenteFormBean.dados}" />
+                        </h:selectOneMenu>
+					</li>
+					
+					<li>
+						<h:outputLabel for="departamento" value="#{View['cronos.form.departamento']}" />
+						<h:selectOneMenu id="departamento" value="#{cadastrarTurmaFormBean.idDepartamento}" styleClass="estiloSelectDepartamento">
+								<f:selectItem itemLabel="--Selecione--" itemValue="" />
+								<f:selectItems value="#{listarDepartamentoFormBean.dados}" />
+						</h:selectOneMenu>
+					</li>
+					
+                    <li>    
+                        <h:outputLabel for="selectOneRadioTurma" value="#{View['cronos.form.distribuir']}" />
+                        <h:selectOneRadio value="#{cadastrarTurmaFormBean.distribuir}" layout="lineDirection" id="selectOneRadioTurma" styleClass="tabelaInputRadio">
+                            <f:selectItem itemLabel="#{View['cronos.form.sim']}" itemValue="true" id="radioSim" />
+                            <f:selectItem itemLabel="#{View['cronos.form.nao']}" itemValue="false" id="radioNao" />
+                        </h:selectOneRadio>
+                    </li>
+					
+					<li>
+						<h:outputLabel for="perfilTurma" value="#{View['cronos.form.perfilTurma']}" />
+						<h:selectOneMenu id="perfilTurma" value="#{cadastrarTurmaFormBean.idTipo}" styleClass="estiloSelect">
+							<f:selectItem itemLabel="--Selecione--" itemValue="" />
+							<f:selectItems value="#{listarTipoSalaFormBean.dados}" />
+						</h:selectOneMenu>
+					</li>
+					<li>
+                  <h:outputLabel for="predioTurma" value="#{View['cronos.form.predio']}" />
+                  <h:selectOneMenu id="predioTurma" value="#{cadastrarTurmaFormBean.idPredio}" styleClass="estilo_select">
+                        <f:selectItem itemLabel="--Selecione--" itemValue="" />
+                        <f:selectItems value="#{listarPredioFormBean.dados}" />
+                  </h:selectOneMenu>
+               </li>
+               <li>
+                  <h:outputLabel for="periodoTurma" value="#{View['cronos.form.periodo']}" />
+                  <h:selectOneMenu id="periodoTurma" value="#{cadastrarTurmaFormBean.idPeriodo}" styleClass="estilo_select">
+                        <f:selectItem itemLabel="--Selecione--" itemValue="" />
+                        <f:selectItems value="#{listarPeriodoFormBean.dados}" />
+                  </h:selectOneMenu>
+               </li>
+					
+				</ol>
+				
+				<h:commandButton id="cadastrar" action="#{cadastrarTurmaFormBean.cadastrarTurma}" value="#{View['cronos.cadastrar']}" styleClass="submitButton" />
+				<h:outputText value="#{View['cronos.espaco']}" />
+				<h:commandButton id="cancelar" action="#{cadastrarTurmaFormBean.cancelar}" value="#{View['cronos.cancelar']}" styleClass="submitButton" />
+				
+			</fieldset>
+			
+		</h:form>
+
+	</ui:define>
+	
+</ui:composition>
+
+</body>
+
+</html>

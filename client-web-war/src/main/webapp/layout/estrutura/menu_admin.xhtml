@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:a4j="http://richfaces.org/a4j"
+    xmlns:rich="http://richfaces.org/rich"
+    xmlns:c="http://java.sun.com/jstl/core"
+    xmlns:sec="http://www.springframework.org/security/facelets/tags">
+
+<f:view>
+<head>
+</head>
+
+<body bgcolor="#ffffff">
+<h:form>
+    <div id="menu_inferior">
+        <table border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+    <tr>
+        <td>
+            <table style="display: inline-table;" border="0" cellpadding="0" cellspacing="0" width="814">
+            <!-- fwtable fwsrc="Untitled" fwpage="Page 1" fwbase="menu.jpg" fwstyle="Dreamweaver" fwdocid = "718450209" fwnested="0" -->
+              <tr>
+               <td><img src="#{facesContext.externalContext.requestContextPath}/layout/imagens/menu/spacer.gif" width="162" height="1" border="0" alt="" /></td>
+               <td><img src="#{facesContext.externalContext.requestContextPath}/layout/imagens/menu/spacer.gif" width="1" height="1" border="0" alt="" /></td>
+               <td><img src="#{facesContext.externalContext.requestContextPath}/layout/imagens/menu/spacer.gif" width="162" height="1" border="0" alt="" /></td>
+               <td><img src="#{facesContext.externalContext.requestContextPath}/layout/imagens/menu/spacer.gif" width="1" height="1" border="0" alt="" /></td>
+               <td><img src="#{facesContext.externalContext.requestContextPath}/layout/imagens/menu/spacer.gif" width="162" height="1" border="0" alt="" /></td>
+               <td><img src="#{facesContext.externalContext.requestContextPath}/layout/imagens/menu/spacer.gif" width="1" height="1" border="0" alt="" /></td>
+               <td><img src="#{facesContext.externalContext.requestContextPath}/layout/imagens/menu/spacer.gif" width="162" height="1" border="0" alt="" /></td>
+               <td><img src="#{facesContext.externalContext.requestContextPath}/layout/imagens/menu/spacer.gif" width="1" height="1" border="0" alt="" /></td>
+               <td><img src="#{facesContext.externalContext.requestContextPath}/layout/imagens/menu/spacer.gif" width="162" height="1" border="0" alt="" /></td>
+               <td><img src="#{facesContext.externalContext.requestContextPath}/layout/imagens/menu/spacer.gif" width="1" height="1" border="0" alt="" /></td>
+              </tr>
+            
+              <tr>
+               <td>
+                    <h:graphicImage value="/layout/imagens/menu/sala.jpg" width="162" height="132" border="0" id="imagem_sala" rendered="#{!controlNavigationMenuFormBean.menuSalaSelecionado}" /> 
+                    <h:graphicImage value="/layout/imagens/menu/sala_colorido.jpg" width="162" height="132" border="0" id="imagem_sala_colorido" rendered="#{controlNavigationMenuFormBean.menuSalaSelecionado}" /> 
+               </td>
+               <td><h:graphicImage value="/layout/imagens/menu/menu_r1_c2.jpg" width="1" height="132" border="0" id="menu_r1_c2" /></td>
+               <td>
+                    <h:graphicImage value="/layout/imagens/menu/turma.jpg" width="162" height="132" border="0" id="imagem_turma" rendered="#{!controlNavigationMenuFormBean.menuTurmaSelecionado}" />
+                    <h:graphicImage value="/layout/imagens/menu/turma_colorido.jpg" width="162" height="132" border="0" id="imagem_turma_colorido" rendered="#{controlNavigationMenuFormBean.menuTurmaSelecionado}" />
+               </td>
+               <td><h:graphicImage value="/layout/imagens/menu/menu_r1_c4.jpg" width="1" height="132" border="0" id="menu_r1_c4"></h:graphicImage></td>
+               <td>
+                    <h:graphicImage value="/layout/imagens/menu/relatorios.jpg" width="162" height="132" border="0" id="imagem_relatorios" rendered="#{!controlNavigationMenuFormBean.menuRelatoriosSelecionado}" />
+                    <h:graphicImage value="/layout/imagens/menu/relatorios_colorido.jpg" width="162" height="132" border="0" id="imagem_relatorios_colorido" rendered="#{controlNavigationMenuFormBean.menuRelatoriosSelecionado}" />
+               </td>
+               <td><h:graphicImage value="/layout/imagens/menu/menu_r1_c6.jpg" width="1" height="132" border="0" id="menu_r1_c6"></h:graphicImage></td>
+               <td>
+                    <h:graphicImage value="/layout/imagens/menu/distribuicao.jpg" width="162" height="132" border="0" id="imagem_distribuicao" rendered="#{!controlNavigationMenuFormBean.menuDistribuicaoSelecionado}" />
+                    <h:graphicImage value="/layout/imagens/menu/distribuicao_colorido.jpg" width="162" height="132" border="0" id="imagem_distribuicao_colorido" rendered="#{controlNavigationMenuFormBean.menuDistribuicaoSelecionado}" />
+               </td>
+               <td><h:graphicImage value="/layout/imagens/menu/menu_r1_c8.jpg" width="1" height="132" border="0" id="menu_r1_c8"></h:graphicImage></td>
+               <td>
+                    <h:graphicImage value="/layout/imagens/menu/agendamento.jpg" width="162" height="132" border="0" id="imagem_agendamento" rendered="#{!controlNavigationMenuFormBean.menuAgendamentoSelecionado}" />
+                    <h:graphicImage value="/layout/imagens/menu/agendamento_colorido.jpg" width="162" height="132" border="0" id="imagem_agendamento_colorido" rendered="#{controlNavigationMenuFormBean.menuAgendamentoSelecionado}" />
+               </td>
+               <td><h:graphicImage value="/layout/imagens/menu/spacer.gif" width="1" height="132" border="0" /></td>
+              </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td>
+        </td>
+  </tr> 
+</table>
+<table width="814" border="0" cellspacing="0" cellpadding="0" bgcolor="#334f67">
+  <tr>
+    <td height="1" colspan="9" bgcolor="#FFFFFF"></td>
+  </tr>
+  <tr>
+    <td width="162">
+    <table width="162" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <c:if test="${controlNavigationMenuFormBean.menuSalaSelecionado}">
+            <td height="36" align="center" valign="middle" class="submenu_3">
+                <sec:ifAnyGranted roles="ROLE_ADMINISTRADOR">
+                    <h:commandLink action="#{controlNavigationMenuFormBean.cadastrarSala}" value="#{View['cronos.menu.cadastrar']}" />
+                </sec:ifAnyGranted>
+            </td>
+        </c:if>
+        <c:if test="${!controlNavigationMenuFormBean.menuSalaSelecionado}">
+            <td height="36" align="center" valign="middle" class="submenu_3_PB">
+                <sec:ifAnyGranted roles="ROLE_ADMINISTRADOR">
+                    <h:commandLink action="#{controlNavigationMenuFormBean.cadastrarSala}" value="#{View['cronos.menu.cadastrar']}" />
+                </sec:ifAnyGranted>
+            </td>
+        </c:if>
+      </tr>
+      <tr>
+        <td height="1" align="center" valign="middle" bgcolor="#FFFFFF"></td>
+      </tr>
+      <tr>
+        <c:if test="${controlNavigationMenuFormBean.menuSalaSelecionado}">
+            <td height="36" align="center" valign="middle" class="submenu_3">
+                <sec:ifAnyGranted roles="ROLE_ADMINISTRADOR">
+                    <h:commandLink action="#{controlNavigationMenuFormBean.consultarSala}" value="#{View['cronos.menu.listar']}" />
+                </sec:ifAnyGranted>
+            </td>
+        </c:if>
+        <c:if test="${!controlNavigationMenuFormBean.menuSalaSelecionado}">
+            <td height="36" align="center" valign="middle" class="submenu_3_PB">
+                <sec:ifAnyGranted roles="ROLE_ADMINISTRADOR">
+                    <h:commandLink action="#{controlNavigationMenuFormBean.consultarSala}" value="#{View['cronos.menu.listar']}" />
+                </sec:ifAnyGranted>
+            </td>
+        </c:if>
+      </tr>
+      <tr>
+        <td height="1" align="center" valign="middle" bgcolor="#FFFFFF"></td>
+      </tr>
+      <tr>
+        <c:if test="${controlNavigationMenuFormBean.menuSalaSelecionado}">
+            <td height="36" align="center" valign="middle" class="submenu_3">
+                <sec:ifAnyGranted roles="ROLE_ADMINISTRADOR,ROLE_SUPERVISAO">
+                    <h:commandLink action="#{controlNavigationMenuFormBean.registrarEntradaSaida}" value="#{View['cronos.menu.registrarEntradaSaida']}" />
+                </sec:ifAnyGranted>
+            </td>
+        </c:if>
+        <c:if test="${!controlNavigationMenuFormBean.menuSalaSelecionado}">
+            <td height="36" align="center" valign="middle" class="submenu_3_PB">
+                <sec:ifAnyGranted roles="ROLE_ADMINISTRADOR,ROLE_SUPERVISAO">
+                    <h:commandLink action="#{controlNavigationMenuFormBean.registrarEntradaSaida}" value="#{View['cronos.menu.registrarEntradaSaida']}" />
+                </sec:ifAnyGranted>
+            </td>
+        </c:if>
+      </tr>
+    </table></td>
+    <td width="1" bgcolor="#FFFFFF"></td>
+    <td width="162">
+    <table width="162" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <c:if test="${controlNavigationMenuFormBean.menuTurmaSelecionado}">
+            <td height="36" align="center" valign="middle" class="submenu_3">
+                <sec:ifAnyGranted roles="ROLE_ADMINISTRADOR">
+                    <h:commandLink action="#{controlNavigationMenuFormBean.cadastrarTurma}" value="#{View['cronos.menu.cadastrar']}" />
+                </sec:ifAnyGranted>
+            </td>
+        </c:if>
+        <c:if test="${!controlNavigationMenuFormBean.menuTurmaSelecionado}">
+            <td height="36" align="center" valign="middle" class="submenu_3_PB">
+                <sec:ifAnyGranted roles="ROLE_ADMINISTRADOR">
+                    <h:commandLink action="#{controlNavigationMenuFormBean.cadastrarTurma}" value="#{View['cronos.menu.cadastrar']}" />
+                </sec:ifAnyGranted>
+            </td>
+        </c:if>
+      </tr>
+      <tr>
+        <td height="1" align="center" valign="middle" bgcolor="#FFFFFF"></td>
+      </tr>
+      <tr>
+        <c:if test="${controlNavigationMenuFormBean.menuTurmaSelecionado}">
+            <td height="36" align="center" valign="middle" class="submenu_3">
+                <sec:ifAnyGranted roles="ROLE_ADMINISTRADOR">
+                    <h:commandLink action="#{controlNavigationMenuFormBean.consultarTurma}" value="#{View['cronos.menu.listar']}" />
+                </sec:ifAnyGranted>
+            </td>
+        </c:if>
+        <c:if test="${!controlNavigationMenuFormBean.menuTurmaSelecionado}">
+            <td height="36" align="center" valign="middle" class="submenu_3_PB">
+                <sec:ifAnyGranted roles="ROLE_ADMINISTRADOR">
+                    <h:commandLink action="#{controlNavigationMenuFormBean.consultarTurma}" value="#{View['cronos.menu.listar']}" />
+                </sec:ifAnyGranted>
+            </td>
+        </c:if>
+      </tr>
+      <tr>
+        <td height="1" align="center" valign="middle" bgcolor="#FFFFFF"></td>
+      </tr>
+            <tr>
+        <c:if test="${controlNavigationMenuFormBean.menuTurmaSelecionado}">
+            <td height="36" align="center" valign="middle" class="submenu_3">
+                <sec:ifAnyGranted roles="ROLE_ADMINISTRADOR,ROLE_USUARIO,ROLE_SUPERVISAO">
+                    <h:commandLink action="#{controlNavigationMenuFormBean.pesquisarTurma}" value="#{View['cronos.menu.pesquisar']}" />
+                </sec:ifAnyGranted>
+            </td>
+        </c:if>
+        <c:if test="${!controlNavigationMenuFormBean.menuTurmaSelecionado}">
+            <td height="36" align="center" valign="middle" class="submenu_3_PB">
+                <sec:ifAnyGranted roles="ROLE_ADMINISTRADOR,ROLE_USUARIO,ROLE_SUPERVISAO">
+                    <h:commandLink action="#{controlNavigationMenuFormBean.pesquisarTurma}" value="#{View['cronos.menu.pesquisar']}" />
+                </sec:ifAnyGranted>
+            </td>
+        </c:if>
+      </tr>
+    </table>    </td>
+    <td width="1" bgcolor="#FFFFFF"></td>
+    <td width="162"><table width="162" border="0" cellspacing="0" cellpadding="0">
+      <sec:ifAnyGranted roles="ROLE_ADMINISTRADOR">
+      <tr>
+        <c:if test="${controlNavigationMenuFormBean.menuRelatoriosSelecionado}">
+            <td height="27" align="center" valign="middle" class="submenu_4">
+                    <h:commandLink action="#{controlNavigationMenuFormBean.relatorioSala}" value="#{View['cronos.menu.relatorioSalas']}" />
+            </td>
+        </c:if>
+        <c:if test="${!controlNavigationMenuFormBean.menuRelatoriosSelecionado}">
+            <td height="27" align="center" valign="middle" class="submenu_4_PB">
+                    <h:commandLink action="#{controlNavigationMenuFormBean.relatorioSala}" value="#{View['cronos.menu.relatorioSalas']}" />
+            </td>
+        </c:if>
+      </tr>
+      </sec:ifAnyGranted>
+      <tr>
+        <td height="1" align="center" valign="middle" bgcolor="#FFFFFF"></td>
+      </tr>
+      <sec:ifAnyGranted roles="ROLE_ADMINISTRADOR">
+      <tr>
+        <c:if test="${controlNavigationMenuFormBean.menuRelatoriosSelecionado}">
+            <td height="27" align="center" valign="middle" class="submenu_4">
+                    <h:commandLink action="#{controlNavigationMenuFormBean.relatorioSalasCheias}" value="#{View['cronos.menu.relatorioSalasCheias']}" />
+            </td>
+        </c:if>
+        <c:if test="${!controlNavigationMenuFormBean.menuRelatoriosSelecionado}">
+            <td height="27" align="center" valign="middle" class="submenu_4_PB">
+                    <h:commandLink action="#{controlNavigationMenuFormBean.relatorioSalasCheias}" value="#{View['cronos.menu.relatorioSalasCheias']}" />
+            </td>
+        </c:if>
+      </tr>
+      </sec:ifAnyGranted>
+      <tr>
+        <td height="1" align="center" valign="middle" bgcolor="#FFFFFF"></td>
+      </tr>
+      <sec:ifAnyGranted roles="ROLE_ADMINISTRADOR">
+      <tr>
+        <c:if test="${controlNavigationMenuFormBean.menuRelatoriosSelecionado}">
+            <td height="27" align="center" valign="middle" class="submenu_4">               
+                    <h:commandLink action="#{controlNavigationMenuFormBean.relatorioTurmasNaoDistribuidas}" value="#{View['cronos.menu.relatorioTurmasNaoDistribuidas']}" />                
+            </td>
+        </c:if>
+        <c:if test="${!controlNavigationMenuFormBean.menuRelatoriosSelecionado}">
+            <td height="27" align="center" valign="middle" class="submenu_4_PB">
+                    <h:commandLink action="#{controlNavigationMenuFormBean.relatorioTurmasNaoDistribuidas}" value="#{View['cronos.menu.relatorioTurmasNaoDistribuidas']}" />
+            </td>
+        </c:if>
+      </tr>
+      </sec:ifAnyGranted>
+      <tr>
+        <td height="1" align="center" valign="middle" bgcolor="#FFFFFF"></td>
+      </tr>
+      <sec:ifAnyGranted roles="ROLE_ADMINISTRADOR">
+      <tr>
+        <c:if test="${controlNavigationMenuFormBean.menuRelatoriosSelecionado}">
+            <td height="27" align="center" valign="middle" class="submenu_4">
+                    <h:commandLink action="#{controlNavigationMenuFormBean.relatorioDepartamentos}" value="#{View['cronos.menu.relatorioDepartamentos']}" />
+            </td>
+        </c:if>
+        <c:if test="${!controlNavigationMenuFormBean.menuRelatoriosSelecionado}">
+            <td height="27" align="center" valign="middle" class="submenu_4_PB">
+                    <h:commandLink action="#{controlNavigationMenuFormBean.relatorioDepartamentos}" value="#{View['cronos.menu.relatorioDepartamentos']}" />
+            </td>
+        </c:if>
+      </tr>
+      </sec:ifAnyGranted>
+      <sec:ifAnyGranted roles="ROLE_DIRECAO_CT">
+      <tr>
+        <c:if test="${controlNavigationMenuFormBean.menuRelatoriosSelecionado}">
+            <td height="27" align="center" valign="middle" class="submenu_4">               
+                <h:commandLink action="#{controlNavigationMenuFormBean.relatorioOcupacaoSalas}" value="#{View['cronos.menu.relatorioOcupacaoSalas']}" />
+            </td>
+        </c:if>
+        <c:if test="${!controlNavigationMenuFormBean.menuRelatoriosSelecionado}">
+            <td height="27" align="center" valign="middle" class="submenu_4_PB">
+                <h:commandLink action="#{controlNavigationMenuFormBean.relatorioOcupacaoSalas}" value="#{View['cronos.menu.relatorioOcupacaoSalas']}" />
+            </td>
+        </c:if>
+      </tr>
+      </sec:ifAnyGranted>
+      <tr>
+        <td height="1" align="center" valign="middle" bgcolor="#FFFFFF"></td>
+      </tr>
+      <sec:ifAnyGranted roles="ROLE_DIRECAO_CT">
+      <tr>
+        <c:if test="${controlNavigationMenuFormBean.menuRelatoriosSelecionado}">
+            <td height="27" align="center" valign="middle" class="submenu_4">               
+                <h:commandLink action="#{controlNavigationMenuFormBean.relatorioOcupacaoTurmas}" value="#{View['cronos.menu.relatorioOcupacaoTurmas']}" />
+            </td>
+        </c:if>
+        <c:if test="${!controlNavigationMenuFormBean.menuRelatoriosSelecionado}">
+            <td height="27" align="center" valign="middle" class="submenu_4_PB">
+                <h:commandLink action="#{controlNavigationMenuFormBean.relatorioOcupacaoTurmas}" value="#{View['cronos.menu.relatorioOcupacaoTurmas']}" />
+            </td>
+        </c:if>
+      </tr>
+      </sec:ifAnyGranted>
+    </table></td>
+    <td width="1" bgcolor="#FFFFFF"></td>
+    <td width="162"><table width="162" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <c:if test="${controlNavigationMenuFormBean.menuDistribuicaoSelecionado}">
+            <td height="27" align="center" valign="middle" class="submenu_4">
+                <sec:ifAnyGranted roles="ROLE_ADMINISTRADOR">
+                    <h:commandLink action="#{controlNavigationMenuFormBean.distribuirTurmas}" value="#{View['cronos.menu.distribuirTurmas']}" />
+                </sec:ifAnyGranted>
+            </td>
+        </c:if>
+        <c:if test="${!controlNavigationMenuFormBean.menuDistribuicaoSelecionado}">
+            <td height="27" align="center" valign="middle" class="submenu_4_PB">
+                <sec:ifAnyGranted roles="ROLE_ADMINISTRADOR">
+                    <h:commandLink action="#{controlNavigationMenuFormBean.distribuirTurmas}" value="#{View['cronos.menu.distribuirTurmas']}" />
+                </sec:ifAnyGranted>
+            </td>
+        </c:if>
+      </tr>
+      <tr>
+        <td height="1" align="center" valign="middle" bgcolor="#FFFFFF"></td>
+      </tr>
+      <tr>
+        <c:if test="${controlNavigationMenuFormBean.menuDistribuicaoSelecionado}">
+            <td height="27" align="center" valign="middle" class="submenu_4">
+                <sec:ifAnyGranted roles="ROLE_ADMINISTRADOR">
+                    <h:commandLink action="#{controlNavigationMenuFormBean.permutarTurmas}" value="#{View['cronos.menu.permutarTurmas']}" />
+                </sec:ifAnyGranted>
+            </td>
+        </c:if>
+        <c:if test="${!controlNavigationMenuFormBean.menuDistribuicaoSelecionado}">
+            <td height="27" align="center" valign="middle" class="submenu_4_PB">
+                <sec:ifAnyGranted roles="ROLE_ADMINISTRADOR">
+                    <h:commandLink action="#{controlNavigationMenuFormBean.permutarTurmas}" value="#{View['cronos.menu.permutarTurmas']}" />
+                </sec:ifAnyGranted>
+            </td>
+        </c:if>
+      </tr>
+      <tr>
+        <td height="1" align="center" valign="middle" bgcolor="#FFFFFF"></td>
+      </tr>
+      <tr>
+        <c:if test="${controlNavigationMenuFormBean.menuDistribuicaoSelecionado}">
+            <td height="27" align="center" valign="middle" class="submenu_4">
+                <sec:ifAnyGranted roles="ROLE_ADMINISTRADOR">
+                    <h:commandLink action="#{controlNavigationMenuFormBean.alocarTurmas}" value="#{View['cronos.menu.alocarTurmas']}" />
+                </sec:ifAnyGranted> 
+            </td>
+        </c:if>
+        <c:if test="${!controlNavigationMenuFormBean.menuDistribuicaoSelecionado}">
+            <td height="27" align="center" valign="middle" class="submenu_4_PB">
+                <sec:ifAnyGranted roles="ROLE_ADMINISTRADOR">
+                    <h:commandLink action="#{controlNavigationMenuFormBean.alocarTurmas}" value="#{View['cronos.menu.alocarTurmas']}" />
+                </sec:ifAnyGranted> 
+            </td>
+        </c:if>
+      </tr>
+      <tr>
+        <td height="1" align="center" valign="middle" bgcolor="#FFFFFF"></td>
+      </tr>
+      <tr>
+        <c:if test="${controlNavigationMenuFormBean.menuDistribuicaoSelecionado}">
+            <td height="27" align="center" valign="middle" class="submenu_4">
+                <sec:ifAnyGranted roles="ROLE_ADMINISTRADOR">
+                    <h:commandLink action="#{controlNavigationMenuFormBean.desalocarTurma}" value="#{View['cronos.menu.desalocarTurma']}" />
+                </sec:ifAnyGranted>
+            </td>
+        </c:if>
+        <c:if test="${!controlNavigationMenuFormBean.menuDistribuicaoSelecionado}">
+            <td height="27" align="center" valign="middle" class="submenu_4_PB">
+                <sec:ifAnyGranted roles="ROLE_ADMINISTRADOR">
+                    <h:commandLink action="#{controlNavigationMenuFormBean.desalocarTurma}" value="#{View['cronos.menu.desalocarTurma']}" />
+                </sec:ifAnyGranted>
+            </td>
+        </c:if>
+      </tr>
+    </table></td>
+    <td width="1" bgcolor="#FFFFFF"></td>
+    <td>
+    <table width="162" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <c:if test="${controlNavigationMenuFormBean.menuAgendamentoSelecionado}">
+            <td height="36" align="center" valign="middle" class="submenu_3">
+                <sec:ifAnyGranted roles="ROLE_ADMINISTRADOR">
+                    <h:commandLink action="#{controlNavigationMenuFormBean.cadastrarAgendamento}" value="#{View['cronos.menu.cadastrar']}" />
+                </sec:ifAnyGranted>
+                <sec:ifAnyGranted roles="ROLE_CHEFE_DEPARTAMENTO">
+                    <h:commandLink action="#{controlNavigationMenuFormBean.cadastrarAgendamentoParaDepartamento}" value="#{View['cronos.menu.cadastrar']}" />
+                </sec:ifAnyGranted>
+            </td>
+        </c:if>
+        <c:if test="${!controlNavigationMenuFormBean.menuAgendamentoSelecionado}">
+            <td height="36" align="center" valign="middle" class="submenu_3_PB">
+                <sec:ifAnyGranted roles="ROLE_ADMINISTRADOR">
+                    <h:commandLink action="#{controlNavigationMenuFormBean.cadastrarAgendamento}" value="#{View['cronos.menu.cadastrar']}" />
+                </sec:ifAnyGranted>
+                <sec:ifAnyGranted roles="ROLE_CHEFE_DEPARTAMENTO">
+                    <h:commandLink action="#{controlNavigationMenuFormBean.cadastrarAgendamentoParaDepartamento}" value="#{View['cronos.menu.cadastrar']}" />
+                </sec:ifAnyGranted>
+            </td>
+        </c:if>
+      </tr>
+      <tr>
+        <td height="1" bgcolor="#FFFFFF"></td>
+      </tr>
+      <tr>
+        <c:if test="${controlNavigationMenuFormBean.menuAgendamentoSelecionado}">
+            <td height="36" align="center" valign="middle" class="submenu_3">
+                <sec:ifAnyGranted roles="ROLE_USUARIO,ROLE_SUPERVISAO">
+                    <h:commandLink action="#{controlNavigationMenuFormBean.visualizarAgendamentosParaUsuario}" value="#{View['cronos.menu.visualizarAgendamentos']}" />
+                </sec:ifAnyGranted>
+                <sec:ifAnyGranted roles="ROLE_ADMINISTRADOR">
+                    <h:commandLink action="#{controlNavigationMenuFormBean.visualizarAgendamentosParaAdministrador}" value="#{View['cronos.menu.visualizarAgendamentos']}" />                   
+                </sec:ifAnyGranted>
+            </td>
+        </c:if>
+        <c:if test="${!controlNavigationMenuFormBean.menuAgendamentoSelecionado}">
+            <td height="36" align="center" valign="middle" class="submenu_3_PB">
+                <sec:ifAnyGranted roles="ROLE_USUARIO,ROLE_SUPERVISAO">
+                    <h:commandLink action="#{controlNavigationMenuFormBean.visualizarAgendamentosParaUsuario}" value="#{View['cronos.menu.visualizarAgendamentos']}" />
+                </sec:ifAnyGranted>
+                <sec:ifAnyGranted roles="ROLE_ADMINISTRADOR">
+                    <h:commandLink action="#{controlNavigationMenuFormBean.visualizarAgendamentosParaAdministrador}" value="#{View['cronos.menu.visualizarAgendamentos']}" />                   
+                </sec:ifAnyGranted>
+            </td>
+        </c:if>                
+      </tr>
+      <tr>
+        <td height="1" bgcolor="#FFFFFF"></td>
+      </tr>
+        <tr>
+         <c:if test="${controlNavigationMenuFormBean.menuAgendamentoSelecionado}">
+           <td height="36" align="center" valign="middle" class="submenu_3">
+              <sec:ifAnyGranted roles="ROLE_ADMINISTRADOR,ROLE_USUARIO,ROLE_SUPERVISAO">
+                 <h:commandLink action="#{controlNavigationMenuFormBean.pesquisarAgendamentos}" value="#{View['cronos.menu.pesquisar']}" />
+              </sec:ifAnyGranted>
+           </td>
+         </c:if>
+         <c:if test="${!controlNavigationMenuFormBean.menuAgendamentoSelecionado}">
+            <td height="36" align="center" valign="middle" class="submenu_3_PB">
+              <sec:ifAnyGranted roles="ROLE_ADMINISTRADOR,ROLE_USUARIO,ROLE_SUPERVISAO">
+                 <h:commandLink action="#{controlNavigationMenuFormBean.pesquisarAgendamentos}" value="#{View['cronos.menu.pesquisar']}" />               
+              </sec:ifAnyGranted>
+            </td>
+          </c:if>          
+      </tr>
+    </table>    </td>
+  </tr>
+</table>
+    </div>
+    
+</h:form>
+</body>
+</f:view>
+</ui:composition>

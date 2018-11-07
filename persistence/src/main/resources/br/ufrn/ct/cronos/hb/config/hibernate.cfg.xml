@@ -1,0 +1,63 @@
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<!-- Debug -->
+		<property name="hibernate.show_sql">false</property>
+		<property name="hibernate.format_sql">false</property>
+		<property name="hibernate.use_sql_comments">false</property>
+		
+		<!-- Config -->
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+      	<property name="use_outer_join">true</property>
+      	<property name="transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>
+      	<property name="hibernate.cache.use_query_cache">true</property>
+      	<property name="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</property>
+		
+		<!-- Mapeamento de Entidades -->
+		<mapping resource="br/ufrn/ct/cronos/hb/entity/Agendamento.hbm.xml" />
+		<mapping resource="br/ufrn/ct/cronos/hb/entity/Chave.hbm.xml" />
+		<mapping resource="br/ufrn/ct/cronos/hb/entity/Departamento.hbm.xml" />
+		<mapping resource="br/ufrn/ct/cronos/hb/entity/DisponibilidadeSala.hbm.xml" />
+		<mapping resource="br/ufrn/ct/cronos/hb/entity/DisponibilidadeSalaAgendamentoBackup.hbm.xml" />
+		<mapping resource="br/ufrn/ct/cronos/hb/entity/Feriado.hbm.xml" />
+		<mapping resource="br/ufrn/ct/cronos/hb/entity/Funcionario.hbm.xml" />
+		<mapping resource="br/ufrn/ct/cronos/hb/entity/HistoricoChave.hbm.xml" />
+		<mapping resource="br/ufrn/ct/cronos/hb/entity/Horario.hbm.xml" />
+		<mapping resource="br/ufrn/ct/cronos/hb/entity/Operacao.hbm.xml" />
+		<mapping resource="br/ufrn/ct/cronos/hb/entity/PapelUsuario.hbm.xml" />
+		<mapping resource="br/ufrn/ct/cronos/hb/entity/ParametrosRelatorios.hbm.xml" />
+		<mapping resource="br/ufrn/ct/cronos/hb/entity/Periodo.hbm.xml" />
+		<mapping resource="br/ufrn/ct/cronos/hb/entity/PerfilSalaTurma.hbm.xml" />
+		<mapping resource="br/ufrn/ct/cronos/hb/entity/PermissaoUsuario.hbm.xml" />
+		<mapping resource="br/ufrn/ct/cronos/hb/entity/Predio.hbm.xml" />
+        <mapping resource="br/ufrn/ct/cronos/hb/entity/Sala.hbm.xml" />
+        <mapping resource="br/ufrn/ct/cronos/hb/entity/TipoFuncionario.hbm.xml" />
+		<mapping resource="br/ufrn/ct/cronos/hb/entity/Turma.hbm.xml" />
+		<mapping resource="br/ufrn/ct/cronos/hb/entity/TurmaDocente.hbm.xml" />
+		<mapping resource="br/ufrn/ct/cronos/hb/entity/Usuario.hbm.xml" />
+		
+		<!-- Cache de Entidades -->
+		<class-cache usage="read-write" class="br.ufrn.ct.cronos.entity.Agendamento" />
+		<class-cache usage="read-write" class="br.ufrn.ct.cronos.entity.Chave" />
+		<class-cache usage="read-write" class="br.ufrn.ct.cronos.entity.Departamento" />
+		<class-cache usage="read-write" class="br.ufrn.ct.cronos.entity.DisponibilidadeSala" />
+		<class-cache usage="read-write" class="br.ufrn.ct.cronos.entity.DisponibilidadeSalaAgendamentoBackup" />
+		<class-cache usage="read-write" class="br.ufrn.ct.cronos.entity.Feriado" />
+		<class-cache usage="read-write" class="br.ufrn.ct.cronos.entity.Funcionario" />
+		<class-cache usage="read-write" class="br.ufrn.ct.cronos.entity.HistoricoChave" />
+		<class-cache usage="read-write" class="br.ufrn.ct.cronos.entity.Horario" />
+		<class-cache usage="read-write" class="br.ufrn.ct.cronos.entity.Operacao" />
+		<class-cache usage="read-write" class="br.ufrn.ct.cronos.entity.PapelUsuario" />
+		<class-cache usage="read-write" class="br.ufrn.ct.cronos.entity.ParametrosRelatorios" />
+		<class-cache usage="read-write" class="br.ufrn.ct.cronos.entity.Periodo" />
+		<class-cache usage="read-write" class="br.ufrn.ct.cronos.entity.PerfilSalaTurma" />
+		<class-cache usage="read-write" class="br.ufrn.ct.cronos.entity.PermissaoUsuario" />
+        <class-cache usage="read-write" class="br.ufrn.ct.cronos.entity.Predio" />
+        <class-cache usage="read-write" class="br.ufrn.ct.cronos.entity.Sala" />
+        <class-cache usage="read-write" class="br.ufrn.ct.cronos.entity.TipoFuncionario" />
+		<class-cache usage="read-write" class="br.ufrn.ct.cronos.entity.Turma" />
+		<class-cache usage="read-write" class="br.ufrn.ct.cronos.entity.TurmaDocente" />
+		<class-cache usage="read-write" class="br.ufrn.ct.cronos.entity.Usuario" />
+		
+	</session-factory>
+</hibernate-configuration>

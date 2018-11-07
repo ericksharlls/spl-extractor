@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:ui="http://java.sun.com/jsf/facelets"
+   xmlns:f="http://java.sun.com/jsf/core"
+   xmlns:h="http://java.sun.com/jsf/html"
+   xmlns:a4j="http://richfaces.org/a4j"
+   xmlns:rich="http://richfaces.org/rich"
+   xmlns:c="http://java.sun.com/jstl/core"
+   xmlns:t="http://myfaces.apache.org/tomahawk">
+
+<body>
+
+<ui:composition template="/layout/estrutura/template.xhtml">
+
+   <ui:param name="button" value="feriadoForm:cadastrar" />
+
+   <ui:define name="corpo">
+      <a4j:keepAlive beanName="cadastrarFeriadoFormBean" />
+      
+      <h:form id="feriadoForm" styleClass="formulario">
+         
+         <fieldset>
+            <legend><h:outputFormat value="#{View['cronos.cadastro.titulo']}"><f:param value="#{View['cronos.feriado']}"/></h:outputFormat></legend>
+               
+            <ol>
+               <li>
+                  <h:outputLabel for="descricao" value="#{View['cronos.form.descricao']}" />
+                  <h:inputText id="descricao" value="#{cadastrarFeriadoFormBean.descricao}" styleClass="inputStyle" />
+               </li>
+               <li>
+                  <h:outputLabel for="data" value="#{View['cronos.form.data']}" />
+                  <rich:calendar value="#{cadastrarFeriadoFormBean.data}" cellWidth="24px" cellHeight="22px" 
+                  style="width:200px; line-height:1px;" locale="#{cadastrarFeriadoFormBean.locale}" datePattern="dd/MM/yyyy" id="data" />
+               </li>
+               <li>
+                  <h:outputLabel for="periodo" value="#{View['cronos.form.periodo']}" />
+                  <h:selectOneMenu id="periodo" value="#{cadastrarFeriadoFormBean.idPeriodo}" styleClass="estilo_select">
+                        <f:selectItem itemLabel="--Selecione--" itemValue="" />
+                        <f:selectItems value="#{listarPeriodoFormBean.dados}" />
+                  </h:selectOneMenu>
+               </li>
+            </ol> 
+            
+            <h:commandButton id="cadastrar" action="#{cadastrarFeriadoFormBean.cadastrarFeriado}" value="#{View['cronos.cadastrar']}" styleClass="submitButton" />
+            <h:outputText value="#{View['cronos.espaco']}" />
+            <h:commandButton id="cancelar" action="#{cadastrarFeriadoFormBean.cancelar}" value="#{View['cronos.cancelar']}" styleClass="submitButton" />
+            
+         </fieldset>
+         
+      </h:form>
+      
+   </ui:define>
+   
+</ui:composition>
+
+</body>
+
+</html>

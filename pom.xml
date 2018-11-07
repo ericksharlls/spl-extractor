@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>br.ufrn.ct.cronos</groupId>
+	<artifactId>cronos</artifactId>
+	<packaging>pom</packaging>
+	<version>0.0.1.0-SNAPSHOT</version>
+	<name>Cronos</name>
+	<url>http://maven.apache.org</url>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<!--
+				   A versão 2.6 só inclui no jar os arquivos *.java da pasta
+				   src/main/java. Os arquivos .xml e .properties são
+				   ignorados, conforme definido em:
+				   http://jira.codehaus.org/browse/MECLIPSE-443
+				   http://jira.codehaus.org/browse/MECLIPSE-538
+				-->
+				<version>2.5.1</version>
+				<configuration>
+					<projectNameTemplate>
+						[artifactId]-[version]
+					</projectNameTemplate>
+					<wtpmanifest>true</wtpmanifest>
+					<wtpapplicationxml>true</wtpapplicationxml>
+					<wtpversion>2.0</wtpversion>
+					<manifest>
+						${basedir}/src/main/resources/META-INF/MANIFEST.MF
+					</manifest>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<modules>
+		<module>core</module>
+		<module>persistence</module>
+		<module>service</module>
+		<module>client-web</module>
+		<module>client-web-war</module>
+	</modules>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>br.ufrn.ct.cronos</groupId>
+				<artifactId>cronos-core</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>br.ufrn.ct.cronos</groupId>
+				<artifactId>cronos-persistence</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>br.ufrn.ct.cronos</groupId>
+				<artifactId>cronos-service</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>dev.home.componente.dao</groupId>
+				<artifactId>componente-dao</artifactId>
+				<version>${dev.home.componentes.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>dev.home.componente.service</groupId>
+				<artifactId>componente-service</artifactId>
+				<version>${dev.home.componentes.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>dev.home.componente.web</groupId>
+				<artifactId>componente-web</artifactId>
+				<version>${dev.home.componentes.version}</version>
+				<exclusions>
+                    <exclusion>
+                        <groupId>jasperreports</groupId>
+						<artifactId>jasperreports</artifactId>
+                    </exclusion>
+                </exclusions>
+			</dependency>
+			<dependency>
+				<groupId>dev.home.componente.autenticador</groupId>
+				<artifactId>componente-autenticador</artifactId>
+				<version>${dev.home.componentes.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>dev.home.componente.utils</groupId>
+				<artifactId>componente-utils</artifactId>
+				<version>${dev.home.componentes.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.aspectj</groupId>
+				<artifactId>aspectjrt</artifactId>
+				<version>1.6.1</version>
+			</dependency>
+			<dependency>
+				<groupId>org.aspectj</groupId>
+				<artifactId>aspectjweaver</artifactId>
+				<version>1.6.1</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-aop</artifactId>
+				<version>${org.springframework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-aspects</artifactId>
+				<version>${org.springframework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-beans</artifactId>
+				<version>${org.springframework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context</artifactId>
+				<version>${org.springframework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context-support</artifactId>
+				<version>${org.springframework.version}</version>
+			</dependency>
+			<!-- A dependencia ABAIXO foi alterada para usar uma versao mais recente do spring-core. Em 08/12/2016 -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-core</artifactId>
+				<!--<version>${org.springframework.version}</version> -->
+				<version>3.2.9.RELEASE</version>
+			</dependency>
+			<!-- A dependencia ACIMA foi alterada para usar uma versao mais recente do spring-core. Em 08/12/2016 -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-jdbc</artifactId>
+				<version>${org.springframework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-orm</artifactId>
+				<version>${org.springframework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-tx</artifactId>
+				<version>${org.springframework.version}</version>
+			</dependency>
+			<!-- A dependencia ABAIXO foi alterada para usar uma versao mais recente do spring-web. Em 08/12/2016 -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-web</artifactId>
+				<version>${org.springframework.version}</version>
+			</dependency>
+			<!--<dependency> -->
+			<!--	<groupId>org.springframework</groupId> -->
+			<!--	<artifactId>spring-web</artifactId> -->
+			<!--	<version>3.2.9.RELEASE</version> -->
+			<!--</dependency> -->
+			<!-- A dependencia ACIMA foi alterada para usar uma versao mais recente do spring-web. Em 08/12/2016 -->
+			<dependency>
+				<groupId>org.springframework.security</groupId>
+				<artifactId>spring-security-core</artifactId>
+				<version>2.0.4</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.security</groupId>
+				<artifactId>facelets-taglib</artifactId>
+				<version>0.1</version>
+				<exclusions>
+					<exclusion>
+						<groupId>com.sun.facelets</groupId>
+						<artifactId>jsf-facelets</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>com.sun.facelets</groupId>
+						<artifactId>jsf-facelets</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>javax.faces</groupId>
+						<artifactId>jsf-api</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>junit</groupId>
+						<artifactId>junit</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	
+	<properties>
+		<dev.home.componentes.version>1.0-SNAPSHOT</dev.home.componentes.version>
+		<org.springframework.version>2.5.6</org.springframework.version>
+	</properties>
+Teste LEgal
+</project>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:t="http://myfaces.apache.org/tomahawk">
+
+<body>
+
+<ui:composition template="/layout/estrutura/template.xhtml">
+
+	<ui:param name="button" value="relatorioOcupacaoTurmasForm:relatorio" />
+
+	<ui:define name="corpo">
+		<h:form id="relatorioOcupacaoTurmasForm" styleClass="formulario">
+			
+			<fieldset>
+				<legend><h:outputFormat value="#{View['cronos.form.relatorioOcupacaoTurmas']}"><f:param value="#{View['cronos.departamento']}"/></h:outputFormat></legend>
+				 
+				 <ol>
+				 	<li>
+				 		<h:outputLabel for="dataInicial" value="#{View['cronos.form.dataInicial']}" />
+				 		<rich:calendar value="#{relatorioOcupacaoTurmasFormBean.dataInicial}" cellWidth="24px" cellHeight="22px" 
+        				style="width:200px; line-height:1px;" locale="#{relatorioOcupacaoTurmasFormBean.locale}" datePattern="dd/MM/yyyy" id="dataInicial" />		
+				 	</li>
+				 	
+				 	<li>
+				 		<h:outputLabel for="dataFinal" value="#{View['cronos.form.dataFinal']}" />
+				 		<rich:calendar value="#{relatorioOcupacaoTurmasFormBean.dataFinal}" cellWidth="24px" cellHeight="22px" 
+        				style="width:200px; line-height:1px;" locale="#{relatorioOcupacaoTurmasFormBean.locale}" datePattern="dd/MM/yyyy" id="dataFinal" />		
+				 	</li>
+				 	
+				 	<li>
+                <h:outputLabel for="idPeriodo" value="#{View['cronos.form.periodo']}" />
+                <h:selectOneMenu id="idPeriodo" value="#{relatorioOcupacaoTurmasFormBean.idPeriodo}" styleClass="estiloSelectDepartamento">
+                     <f:selectItem itemLabel="--Selecione--" itemValue="" />
+                     <f:selectItems value="#{listarPeriodoFormBean.dados}" />
+                     <a4j:support event="onchange" reRender="turma,disciplinaTurma,docenteTurma,horarioTurma,salaTurma" action="#{relatorioOcupacaoTurmasFormBean.limparDadosTurma}" />
+               </h:selectOneMenu>
+               </li>
+               
+               <li>
+                <h:outputLabel for="idPredio" value="#{View['cronos.form.predio']}" />
+                <h:selectOneMenu id="idPredio" value="#{relatorioOcupacaoTurmasFormBean.idPredio}" styleClass="estiloSelectDepartamento">
+                     <f:selectItem itemLabel="--Selecione--" itemValue="" />
+                     <f:selectItems value="#{listarPredioFormBean.dados}" />
+                     <a4j:support event="onchange" reRender="turma,disciplinaTurma,docenteTurma,horarioTurma,salaTurma" action="#{relatorioOcupacaoTurmasFormBean.limparDadosTurma}" />
+               </h:selectOneMenu>
+               </li>
+               <li>
+                <h:outputLabel for="idDepartamento" value="#{View['cronos.form.departamento']}" />
+                <h:selectOneMenu id="idDepartamento" value="#{relatorioOcupacaoTurmasFormBean.idDepartamento}" styleClass="estiloSelectDepartamento">
+                     <f:selectItem itemLabel="--Selecione--" itemValue="" />
+                     <f:selectItems value="#{listarDepartamentoFormBean.dados}" />
+                     <a4j:support event="onchange" reRender="turma,disciplinaTurma,docenteTurma,horarioTurma,salaTurma" action="#{relatorioOcupacaoTurmasFormBean.limparDadosTurma}" />
+               </h:selectOneMenu>
+               </li>
+				 	<li>
+				 		<h:outputLabel for="turma" value="#{View['cronos.form.turma']}" />
+			    		<h:selectOneMenu id="turma" value="#{relatorioOcupacaoTurmasFormBean.idTurma}" styleClass="estiloSelect">
+				 			<f:selectItem itemLabel="--Selecione--" itemValue="" />
+							<f:selectItems value="#{relatorioOcupacaoTurmasFormBean.turmasPorPeriodoEPredio}" />
+							<a4j:support event="onchange" reRender="disciplinaTurma,docenteTurma,horarioTurma,salaTurma" action="#{relatorioOcupacaoTurmasFormBean.atualizarTurma}" />
+						</h:selectOneMenu>		
+				 	</li>
+				 	
+				 	<li>
+						<h:outputLabel for="disciplinaTurma" value="#{View['cronos.table.disciplinaTurma']}" />
+						<h:outputText id="disciplinaTurma" value="#{relatorioOcupacaoTurmasFormBean.turma.nomeDisciplina}" />
+					</li>
+				
+					<li>
+						<h:outputLabel for="docenteTurma" value="#{View['cronos.table.docenteTurma']}" />
+						<h:outputText id="docenteTurma" value="#{relatorioOcupacaoTurmasFormBean.turma.docente}" />
+					</li>
+					
+					<li>
+						<h:outputLabel for="horarioTurma" value="#{View['cronos.table.horarioTurma']}" />
+						<h:outputText id="horarioTurma" value="#{relatorioOcupacaoTurmasFormBean.turma.horario}" />
+					</li>
+					<li>
+						<h:outputLabel for="salaTurma" value="#{View['cronos.table.sala']}" />
+						<h:outputText id="salaTurma" value="#{relatorioOcupacaoTurmasFormBean.turma.sala}" />
+					</li>
+				 	
+				 </ol>
+				 
+				<h:commandButton id="relatorioOcupacaoTurmas" action="#{relatorioOcupacaoTurmasFormBean.gerarRelatorioOcupacaoTurmas}" value="#{View['cronos.gerarRelatorio']}" styleClass="submitButton" />
+				
+			</fieldset>
+			
+		</h:form>
+	</ui:define>
+	
+</ui:composition>
+
+</body>
+
+</html>

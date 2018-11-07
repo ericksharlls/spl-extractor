@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:t="http://myfaces.apache.org/tomahawk">
+
+<body>
+
+<ui:composition template="/layout/estrutura/template.xhtml">
+
+	<ui:param name="button" value="funcionarioForm:listar" />
+
+	<ui:define name="corpo">
+		<h:form id="usuarioForm" styleClass="formulario" style="width:650px;">
+			
+			<a href="#{facesContext.externalContext.requestContextPath}/admin/funcionario/novo" style="color: white;font-size: 16px;text-decoration: none; 
+				float: left; padding: 0px 10px 1px 10px; display: block; background:#308402; margin-left: 250px;">
+				Cadastrar Novo
+			</a>
+		
+			<br /> <br />
+			
+			<fieldset style="margin-bottom: 15px;">
+               <ol>
+               <li>
+			     <h:outputLabel for="idTipoFuncionario" value="#{View['cronos.form.tipoFuncionario']}" />
+			         <h:selectOneMenu id="idTipoFuncionario" value="#{consultarFuncionarioFormBean.idTipoFuncionario}" styleClass="estiloSelectDepartamento">
+                        <f:selectItem itemLabel="--Selecione--" itemValue="" />
+                        <f:selectItems value="#{listarTipoFuncionarioFormBean.dados}" />
+                        <a4j:support event="onchange" reRender="funcionarioTable" />
+                    </h:selectOneMenu>
+               </li>
+               </ol>
+            </fieldset>
+            
+			<rich:spacer height="5" />
+			
+			<rich:dataTable id="funcionarioTable" value="#{consultarFuncionarioFormBean.dados}" 
+				var="i" rows="#{consultarFuncionarioFormBean.linhas}" border="0" align="center" cellspacing="0" width="100%"  
+				rowClasses="list-row-even,list-row-odd" binding="#{consultarFuncionarioFormBean.table}">
+				<f:facet name="header">
+					<rich:columnGroup>
+						<rich:column>
+							<h:outputText value="#{View['cronos.table.nome']}" />
+						</rich:column>
+						<rich:column>
+							<h:outputText value="#{View['cronos.table.matricula']}" />
+						</rich:column>
+						<rich:column>
+                            <h:outputText value="#{View['cronos.table.cpf']}" />
+                        </rich:column>
+						<rich:column>
+                     <h:outputText value="#{View['cronos.table.telefone']}" />
+                  </rich:column>
+						<rich:column>
+							<h:outputText value="#{View['cronos.table.email']}" />
+						</rich:column>
+						<rich:column colspan="2">
+							<h:outputText value="#{View['cronos.espaco']}" />
+						</rich:column>
+					</rich:columnGroup>
+				</f:facet>
+				<rich:columnGroup>
+					<rich:column style="text-align:center;">
+						<h:outputText value="#{i.nome}" />
+					</rich:column>
+					<rich:column style="text-align:center;">
+						<h:outputText value="#{i.matricula}" />
+					</rich:column>
+					<rich:column style="text-align:center;">
+                        <h:outputText value="#{i.cpf}" />
+                    </rich:column>
+				   <rich:column style="text-align:center;">
+                  <h:outputText value="#{i.telefone}" />
+               </rich:column>
+					<rich:column style="text-align:center;">
+						<h:outputText value="#{i.email}" />
+					</rich:column>
+					<rich:column style="text-align:center;">
+						<a href="#{facesContext.externalContext.requestContextPath}/admin/funcionario/editar/#{i.id}" style="text-decoration: none;">
+							<img src="#{facesContext.externalContext.requestContextPath}/img/editar.gif" border="0" />
+						</a>
+					</rich:column>
+					<rich:column style="text-align:center;">
+					<h:commandLink>
+					
+					</h:commandLink>
+						<a href="#{facesContext.externalContext.requestContextPath}/admin/funcionario/excluir/#{i.id}" style="text-decoration: none;">
+							<img src="#{facesContext.externalContext.requestContextPath}/img/excluir.gif" border="0" />
+						</a>
+					</rich:column>
+				</rich:columnGroup>
+				<f:facet name="footer">
+					 <rich:datascroller id="funcionarioTableScroller" align="center" for="funcionarioTable" maxPages="20" renderIfSinglePage="false" stepControls="hide" />
+				</f:facet>
+			</rich:dataTable>
+			
+		</h:form>
+	</ui:define>
+	
+</ui:composition>
+
+</body>
+
+</html>

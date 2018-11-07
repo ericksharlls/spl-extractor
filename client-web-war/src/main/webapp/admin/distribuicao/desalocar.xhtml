@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:t="http://myfaces.apache.org/tomahawk">
+
+<body>
+
+<ui:composition template="/layout/estrutura/template.xhtml">
+
+	<ui:define name="corpo">
+
+		<h:form id="desalocarTurmasForm" styleClass="formulario" style="width:740px;">
+			<fieldset><legend>Desalocar Turma</legend>
+            <ol>
+             <li>
+                <h:outputLabel for="idPeriodo" value="#{View['cronos.form.periodo']}" />
+                <h:selectOneMenu id="idPeriodo" value="#{desalocarTurmaFormBean.idPeriodo}" styleClass="estiloSelectDepartamento">
+                     <f:selectItem itemLabel="--Selecione--" itemValue="" />
+                     <f:selectItems value="#{listarPeriodoFormBean.dados}" />
+                     <a4j:support event="onchange" reRender="panelTurma" action="#{desalocarTurmaFormBean.limparDadosTurma}" />
+               </h:selectOneMenu>
+               </li>
+               <li>
+                <h:outputLabel for="idPredio" value="#{View['cronos.form.predio']}" />
+                <h:selectOneMenu id="idPredio" value="#{desalocarTurmaFormBean.idPredio}" styleClass="estiloSelectDepartamento">
+                     <f:selectItem itemLabel="--Selecione--" itemValue="" />
+                     <f:selectItems value="#{listarPredioFormBean.dados}" />
+                     <a4j:support event="onchange" reRender="panelTurma" action="#{desalocarTurmaFormBean.limparDadosTurma}" />
+               </h:selectOneMenu>
+               </li>
+            </ol>
+			
+			<rich:spacer height="20" />
+			
+			<rich:panel style="width:700px;" headerClass="outpanelHeader" id="panelTurma">
+       		 	<f:facet name="header">
+            		<rich:spacer height="4" />
+        		</f:facet>
+        		<h2 align="center"><h:outputText value="Turma" /></h2>
+        		
+        		
+       			<h:panelGrid columns="2" columnClasses="gridContent">
+            	<rich:panel style="width:500px;text-align:left;" bodyClass="inpanelBody">
+              	 	 <f:facet name="header">
+                  	  	Turma
+                	 </f:facet>
+                     <ul>
+                     	<li style="padding: 3px;">				
+                     <h:selectOneMenu id="turma" value="#{desalocarTurmaFormBean.idTurma}" styleClass="estiloSelect">
+								<f:selectItem itemLabel="--Selecione--" itemValue="" />
+								<f:selectItems value="#{desalocarTurmaFormBean.turmasDistribuidas}" />
+								<a4j:support event="onchange" reRender="nomeTurma,docenteTurma,horarioTurma,numeroTurma,salaTurma,capacidadeTurma,perfilTurma,alunosMatriculados" actionListener="#{desalocarTurmaFormBean.atualizarTurma}" />
+							</h:selectOneMenu>
+						</li>
+                     	<li style="padding: 3px;"> <h:outputText style="font-size: 15px;" value="#{View['cronos.table.disciplinaTurma']}" /> <h:outputText style="font-size: 12px;" value="#{desalocarTurmaFormBean.turma.nomeDisciplina}" id="nomeTurma" /></li>
+                     	<li style="padding: 3px;"> <h:outputText style="font-size: 15px;" value="#{View['cronos.table.docenteTurma']}" /> <h:outputText style="font-size: 12px;" value="#{desalocarTurmaFormBean.turma.docente}" id="docenteTurma" /> </li>
+                     	<li style="padding: 3px;"> <h:outputText style="font-size: 15px;" value="#{View['cronos.table.horarioTurma']}" /> <h:outputText style="font-size: 12px;" value="#{desalocarTurmaFormBean.turma.horario}" id="horarioTurma" /></li>
+                     	<li style="padding: 3px;"> <h:outputText style="font-size: 15px;" value="#{View['cronos.table.numeroTurma']}" /> <h:outputText style="font-size: 12px;" value="#{desalocarTurmaFormBean.turma.numero}" id="numeroTurma" /></li>
+                     	<li style="padding: 3px;"> <h:outputText style="font-size: 15px;" value="#{View['cronos.form.sala']}" /> <h:outputText style="font-size: 12px;" value="#{desalocarTurmaFormBean.turma.sala}" id="salaTurma" /></li>
+                     	<li style="padding: 3px;"> <h:outputText style="font-size: 15px;" value="#{View['cronos.table.capacidadeSala']}" /> <h:outputText style="font-size: 12px;" value="#{desalocarTurmaFormBean.turma.capacidadesDasSalas}" id="capacidadeTurma" /></li>
+                     	<li style="padding: 3px;"> <h:outputText style="font-size: 15px;" value="#{View['cronos.table.perfilTurma']}" /> <h:outputText style="font-size: 12px;" value="#{desalocarTurmaFormBean.turma.perfilTurma}" id="perfilTurma" /></li>
+                     	<li style="padding: 3px;"> <h:outputText style="font-size: 15px;" value="#{View['cronos.table.alunosMatriculados']}" /> <h:outputText style="font-size: 12px;" value="#{desalocarTurmaFormBean.turma.alunosMatriculados}" id="alunosMatriculados" /></li>
+                     </ul>
+            </rich:panel>
+        </h:panelGrid>
+    </rich:panel>
+			
+			
+			<rich:spacer height="30" />
+			
+			<h:commandButton id="desalocar" action="#{desalocarTurmaFormBean.desalocar}" value="Desalocar turma" styleClass="submitButton" />
+			</fieldset>
+    	</h:form>
+
+	</ui:define>
+	
+</ui:composition>
+
+</body>
+
+</html>

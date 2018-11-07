@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:sec="http://www.springframework.org/security/facelets/tags">
+
+<f:view>
+<h:form>
+<body>
+
+	<div id="acesso_restrito">
+		<div id="mensagem" style="color: white; float: right; font-size:14px; margin-top:50px; text-shadow:1px 1px 0px #000; margin-right:20px;">
+			<h:outputText value="#{View['cronos.boasvindas']}" /> <h:outputText value="#{recuperarUsuarioLogado.usuario}" />.
+		</div>
+	</div>
+	<div id="menu_superior">
+		<sec:ifAnyGranted roles="ROLE_ADMINISTRADOR">
+			<a href="#{facesContext.externalContext.requestContextPath}/admin/funcionario/listar" style="color: white;font-size: 14px;text-decoration: none;float: left;margin-left: 20px;padding: 0px 10px 1px 10px; display: block; background:#308402;">
+				<h:outputText value="#{View['cronos.menu.interessados']}" />
+			</a>
+		</sec:ifAnyGranted>
+		<sec:ifAnyGranted roles="ROLE_ADMINISTRADOR">
+			<a href="#{facesContext.externalContext.requestContextPath}/admin/usuario/listar" style="color:white; font-size:14px; text-decoration:none; float: left; margin-left:25px; padding:0px 10px 1px 10px; display:block; background:#308402;">
+				<h:outputText value="#{View['cronos.menu.usuarios']}" />
+			</a>
+		</sec:ifAnyGranted>
+		<sec:ifAnyGranted roles="ROLE_ADMINISTRADOR,ROLE_SUPERVISAO">
+			<a href="#{facesContext.externalContext.requestContextPath}/relatoriosExtras/index" style="color: white;font-size: 14px;text-decoration: none;float: left;margin-left: 20px;padding: 0px 10px 1px 10px; display: block; background:#308402;">
+				<h:outputText value="#{View['cronos.menu.relatoriosExtras']}" />
+			</a>
+		</sec:ifAnyGranted>
+		<sec:ifAnyGranted roles="ROLE_ADMINISTRADOR">
+         <a href="#{facesContext.externalContext.requestContextPath}/admin/periodo/listar" style="color: white;font-size: 14px;text-decoration: none;float: left;margin-left: 20px;padding: 0px 10px 1px 10px; display: block; background:#308402;">
+            <h:outputText value="#{View['cronos.menu.periodo']}" />
+         </a>
+      </sec:ifAnyGranted>
+      <sec:ifAnyGranted roles="ROLE_ADMINISTRADOR">
+         <a href="#{facesContext.externalContext.requestContextPath}/admin/feriado/listar" style="color: white;font-size: 14px;text-decoration: none;float: left;margin-left: 20px;padding: 0px 10px 1px 10px; display: block; background:#308402;">
+            <h:outputText value="#{View['cronos.menu.feriado']}" />
+         </a>
+      </sec:ifAnyGranted>
+		<a href="#{facesContext.externalContext.requestContextPath}/logout">
+			<img name="SAIROUT" src="#{facesContext.externalContext.requestContextPath}/layout/imagens/menu/SAIROUT.gif" width="92" height="20" border="0" id="SAIROUT" alt="" />
+		</a>
+		
+	</div>
+
+</body>
+</h:form>
+</f:view>
+</ui:composition>

@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping default-lazy="false">
+	<class name="br.ufrn.ct.cronos.entity.Turma" table="turma">
+    	<id name="id" column="id_turma" type="java.lang.Long">
+    		<generator class="identity" />
+    	</id>
+      	
+      	<property name="nomeDisciplina" column="nome_componente_turma" type="java.lang.String" />
+      	<property name="codigoDisciplina" column="codigo_componente_turma" type="java.lang.String" />
+      	<property name="capacidade" column="capacidade_turma" type="java.lang.Integer" />
+      	<property name="docente" column="nome_docente_turma" type="java.lang.String" />
+      	<property name="horario" column="horario_turma" type="java.lang.String" />
+      	<property name="numero" column="numero_turma" type="java.lang.String" />
+      	<property name="alunosMatriculados" column="alunos_matriculados_turma" type="java.lang.Integer" />
+      	<property name="distribuir" column="distribuir" type="java.lang.Boolean" />
+      	<property name="local" column="local" type="java.lang.String" />
+      	<property name="idTipo" column="id_perfil" type="java.lang.Long" />
+      	<property name="idPredio" column="id_predio" type="java.lang.Long" />
+      	<property name="idPeriodo" column="id_periodo" type="java.lang.Long" />
+      	<property name="idDepartamento" column="id_departamento" type="java.lang.Long" />
+      	<property name="idSalaTemp" column="id_sala_temp" type="java.lang.Long" />
+      	<property name="idTurmaSIGAA" column="id_turma_sigaa" type="java.lang.Long" />
+      	
+	</class>
+</hibernate-mapping>

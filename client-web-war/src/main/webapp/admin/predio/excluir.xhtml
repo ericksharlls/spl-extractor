@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:t="http://myfaces.apache.org/tomahawk">
+
+<body>
+
+<ui:composition template="/WEB-INF/templates/template.xhtml">
+
+	<ui:param name="button" value="predioForm:remover" />
+
+	<ui:define name="menu">
+		<ui:include src="../../WEB-INF/templates/menu.xhtml" />
+	</ui:define>
+	
+	<ui:define name="corpo">
+		<a4j:keepAlive beanName="removerPredioFormBean" />
+		<h:form id="predioForm">
+			<fieldset>
+				<legend><h:outputFormat value="#{View['cronos.exclusao.titulo']}"><f:param value="#{View['cronos.predio']}"/></h:outputFormat></legend>
+				<div id="formularios">
+					<div class="dados">
+						<div class="campos">
+							<div class="header">
+								<img alt="(Obrigatorio)" src="#{facesContext.externalContext.requestContextPath}/img/vazio.gif" /> <label for="nome"><h:outputText value="#{View['cronos.form.nome']}" /></label>
+							</div>
+							<div class="input">
+								<h:outputText id="nome" value="#{removerPredioFormBean.nome}" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</fieldset>
+			<div>
+				<br />
+				<h:commandButton id="remover" action="#{removerPredioFormBean.removerPredio}" value="#{View['cronos.remover']}" styleClass="submitButton" />
+				<h:outputText value="#{View['cronos.espaco']}" />
+				<h:commandButton id="cancelar" action="#{removerPredioFormBean.cancelar}" value="#{View['cronos.cancelar']}" styleClass="submitButton" />
+			</div>
+		</h:form>
+	</ui:define>
+	
+</ui:composition>
+
+</body>
+
+</html>

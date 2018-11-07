@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping default-lazy="false">
+   <class name="br.ufrn.ct.cronos.entity.DisponibilidadeSalaAgendamentoBackup" table="disponibilidade_sala_agendamento_backup">
+      <id name="id" column="id_disponibilidade_sala" type="java.lang.Long">
+         <generator class="identity" />
+      </id>
+      
+      <property name="dataReserva" column="data_reserva" type="java.util.Date" />
+      <property name="idPeriodo" column="id_periodo" type="java.lang.Long" />
+      <property name="idSala" column="id_sala" type="java.lang.Long" />
+      <property name="idHorarioSala" column="id_horario_sala" type="java.lang.Long" />
+      <property name="idTurma" column="id_turma" type="java.lang.Long" />
+      <property name="idAgendamento" column="id_agendamento" type="java.lang.Long" />
+         
+   </class>
+</hibernate-mapping>

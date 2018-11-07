@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:t="http://myfaces.apache.org/tomahawk">
+
+<body>
+
+<ui:composition template="/layout/estrutura/template.xhtml">
+
+	<ui:param name="button" value="turmaForm:remover" />
+	
+	<ui:define name="corpo">
+		<a4j:keepAlive beanName="removerTurmaFormBean" />
+		<h:form id="turmaForm" styleClass="formulario">
+			<fieldset>
+				<legend><h:outputFormat value="#{View['cronos.exclusao.titulo']}"><f:param value="#{View['cronos.turma']}"/></h:outputFormat></legend>
+				
+				<ol>
+					<li>
+						<h:outputLabel for="codigoDisciplina" value="#{View['cronos.form.codigoDisciplina']}" />
+						<h:outputText id="codigoDisciplina" value="#{removerTurmaFormBean.codigoDisciplina}" />
+					</li>
+					<li>
+						<h:outputLabel for="disciplina" value="#{View['cronos.form.disciplina']}" />
+						<h:outputText id="disciplina" value="#{removerTurmaFormBean.nomeDisciplina}" />
+					</li>
+					<li>
+						<h:outputLabel for="horario" value="#{View['cronos.table.horario']}" />
+						<h:outputText id="horario" value="#{removerTurmaFormBean.horario}" />
+					</li>
+					<li>
+						<h:outputLabel for="docente" value="#{View['cronos.form.docente']}" />
+						<h:outputText id="docente" value="#{removerTurmaFormBean.docente}" />
+					</li>
+					<li>
+						<h:outputLabel for="capacidade" value="#{View['cronos.form.capacidade']}" />
+						<h:outputText id="capacidade" value="#{removerTurmaFormBean.capacidade}" />
+					</li>
+					<li>
+						<h:outputLabel for="numeroTurma" value="#{View['cronos.table.numeroTurma']}" />
+						<h:outputText id="numeroTurma" value="#{removerTurmaFormBean.numero}" />
+					</li>
+					<li>
+						<h:outputLabel for="perfil" value="#{View['cronos.form.perfil']}" />
+						<h:outputText id="perfil" value="#{removerTurmaFormBean.perfil}" />
+					</li>
+					<li>
+                  <h:outputLabel for="salaTurma" value="#{View['cronos.form.sala']}" />
+                  <h:outputText id="salaTurma" value="#{removerTurmaFormBean.sala}" />
+               </li>
+				</ol>				
+				
+				<h:commandButton id="remover" action="#{removerTurmaFormBean.removerTurma}" value="#{View['cronos.remover']}" styleClass="submitButton" />
+				<h:outputText value="#{View['cronos.espaco']}" />
+				<h:commandButton id="cancelar" action="#{removerTurmaFormBean.cancelar}" value="#{View['cronos.cancelar']}" styleClass="submitButton" />
+				
+			</fieldset>
+
+		</h:form>
+	</ui:define>
+	
+</ui:composition>
+
+</body>
+
+</html>

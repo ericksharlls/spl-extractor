@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+    	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+    
+    <!-- MANTER OS BEANS EM ORDEM ALFABETICA -->
+
+	<bean id="controlNavigationMenuFormBean" class="br.ufrn.ct.cronos.web.ControlNavigationMenuFormBean" scope="session" />
+	
+	<bean id="recuperarUsuarioLogado" class="br.ufrn.ct.cronos.web.RecuperarUsuarioLogado" scope="session" />     
+	
+	<bean id="atualizarFeriadoFormBean" class="br.ufrn.ct.cronos.web.atualizarferiado.AtualizarFeriadoFormBean" scope="request" />
+	
+	<bean id="atualizarFuncionarioFormBean" class="br.ufrn.ct.cronos.web.atualizarfuncionario.AtualizarFuncionarioFormBean" scope="request" />
+	 
+    <bean id="atualizarPredioFormBean" class="br.ufrn.ct.cronos.web.atualizarpredio.AtualizarPredioFormBean" scope="request" />
+    
+    <bean id="atualizarSalaFormBean" class="br.ufrn.ct.cronos.web.atualizarsala.AtualizarSalaFormBean" scope="request" />
+    
+    <bean id="atualizarPeriodoFormBean" class="br.ufrn.ct.cronos.web.atualizarperiodo.AtualizarPeriodoFormBean" scope="request" />
+    
+    <bean id="atualizarTurmaFormBean" class="br.ufrn.ct.cronos.web.atualizarturma.AtualizarTurmaFormBean" scope="session" />
+    
+    <bean id="atualizarUsuarioFormBean" class="br.ufrn.ct.cronos.web.atualizarusuario.AtualizarUsuarioFormBean" scope="request" />
+    
+    <bean id="alterarTurmasFormBean" class="br.ufrn.ct.cronos.web.distribuirturmas.AlterarTurmasFormBean" scope="session" />
+    
+    <bean id="cadastrarFeriadoFormBean" class="br.ufrn.ct.cronos.web.cadastrarferiado.CadastrarFeriadoFormBean" scope="request" />
+    
+    <bean id="cadastrarFuncionarioFormBean" class="br.ufrn.ct.cronos.web.cadastrarfuncionario.CadastrarFuncionarioFormBean" scope="request" />
+    
+    <bean id="cadastrarPredioFormBean" class="br.ufrn.ct.cronos.web.cadastrarpredio.CadastrarPredioFormBean" scope="request" />
+    
+    <bean id="cadastrarUsuarioFormBean" class="br.ufrn.ct.cronos.web.cadastrarusuario.CadastrarUsuarioFormBean" scope="request" />
+    
+    <bean id="cadastrarSalaFormBean" class="br.ufrn.ct.cronos.web.cadastrarsala.CadastrarSalaFormBean" scope="request" />
+    
+    <bean id="cadastrarPeriodoFormBean" class="br.ufrn.ct.cronos.web.cadastrarperiodo.CadastrarPeriodoFormBean" scope="request" />
+    
+    <bean id="cadastrarTurmaFormBean" class="br.ufrn.ct.cronos.web.cadastrarturma.CadastrarTurmaFormBean" scope="request" />
+    
+    <bean id="consultarAgendamentoFormBean" class="br.ufrn.ct.cronos.web.consultaragendamento.ConsultarAgendamentoFormBean" scope="session" />
+    
+    <bean id="consultarFuncionarioFormBean" class="br.ufrn.ct.cronos.web.consultarfuncionario.ConsultarFuncionarioFormBean" scope="session" />
+    
+    <bean id="consultarPredioFormBean" class="br.ufrn.ct.cronos.web.consultarpredio.ConsultarPredioFormBean" scope="request" />
+    
+    <bean id="consultarSalaFormBean" class="br.ufrn.ct.cronos.web.consultarsala.ConsultarSalaFormBean" scope="session" />
+    
+    <bean id="consultarSalasDisponiveisFormBean" class="br.ufrn.ct.cronos.web.consultarsaladisponiveis.ConsultarSalasDisponiveisFormBean" scope="session" />
+    
+    <bean id="consultarSalasParaMarcacoesFormBean" class="br.ufrn.ct.cronos.web.consultarsalasparamarcacoes.ConsultarSalasParaMarcacoesFormBean" scope="session" />
+    
+    <bean id="consultarSalasParaReservaPorDepartamentoFormBean" class="br.ufrn.ct.cronos.web.consultarsalasparareservapordepartamento.ConsultarSalasParaReservaPorDepartamentoFormBean" scope="session" />
+    
+    <bean id="consultarSalasParaMarcacoesFormBeanFuturo" class="br.ufrn.ct.cronos.web.consultarsalasparamarcacoes.ConsultarSalasParaMarcacoesFormBeanFuturo" scope="session" />
+    
+    <bean id="consultarFeriadoFormBean" class="br.ufrn.ct.cronos.web.consultarferiado.ConsultarFeriadoFormBean" scope="request" />
+    
+    <bean id="consultarPeriodoFormBean" class="br.ufrn.ct.cronos.web.consultarperiodo.ConsultarPeriodoFormBean" scope="request" />
+    
+    <bean id="consultarTurmaFormBean" class="br.ufrn.ct.cronos.web.consultarturma.ConsultarTurmaFormBean" scope="request" />
+    
+    <bean id="consultarTurmaPorCodigoEDocenteFormBean" class="br.ufrn.ct.cronos.web.consultarturmaporcodigoedocenteformbean.ConsultarTurmaPorCodigoEDocenteFormBean" scope="session" />
+    
+    <bean id="consultarSalaPorPredioFormBean" class="br.ufrn.ct.cronos.web.consultarsalaporpredio.ConsultarSalaPorPredioFormBean" scope="request" />
+    
+    <bean id="consultarUsuarioFormBean" class="br.ufrn.ct.cronos.web.consultarusuario.ConsultarUsuarioFormBean" scope="request" />
+    
+    <bean id="controlNavigationFormBean" class="br.ufrn.ct.cronos.web.ControlNavigationFormBean" scope="singleton" />
+    
+    <bean id="desalocarTurmaFormBean" class="br.ufrn.ct.cronos.web.desalocarturma.DesalocarTurmaFormBean" scope="session" />
+    
+    <!-- Codigo abaixo adicionado em 30/09 para testar o padrao Strategy -->
+    
+    <bean id="distribuirTurmasFormBean" class="br.ufrn.ct.cronos.web.distribuirturmas.DistribuirTurmasFormBean" scope="request" />
+    
+    <!-- Codigo acima adicionado em 30/09 para testar o padrao Strategy -->
+    
+    <bean id="manterTurmasAntigasFormBean" class="br.ufrn.ct.cronos.web.manterturmasantigas.ManterTurmasAntigasFormBean" scope="request" />
+    
+    <bean id="importarTurmasFormBean" class="br.ufrn.ct.cronos.web.distribuirturmas.ImportarTurmasFormBean" scope="request" />
+    
+    <bean id="listarDepartamentoFormBean" class="br.ufrn.ct.cronos.web.listardepartamento.ListarDepartamentoFormBean" scope="request" />
+    
+    <bean id="listarFuncionarioFormBean" class="br.ufrn.ct.cronos.web.listarfuncionario.ListarFuncionarioFormBean" scope="request" />
+    
+    <bean id="listarFuncionarioDocenteFormBean" class="br.ufrn.ct.cronos.web.listarfuncionariodocente.ListarFuncionarioDocenteFormBean" scope="request" />
+    
+    <bean id="listarOperacaoFormBean" class="br.ufrn.ct.cronos.web.listaroperacao.ListarOperacaoFormBean" scope="request" />
+    
+    <bean id="listarPerfilFormBean" class="br.ufrn.ct.cronos.web.listarperfil.ListarPerfilFormBean" scope="request" />
+    
+    <bean id="listarPeriodoFormBean" class="br.ufrn.ct.cronos.web.listarperiodo.ListarPeriodoFormBean" scope="request" />
+    
+    <bean id="listarPredioFormBean" class="br.ufrn.ct.cronos.web.listarpredio.ListarPredioFormBean" scope="request" />
+    
+    <bean id="listarSalaFormBean" class="br.ufrn.ct.cronos.web.listarsala.ListarSalaFormBean" scope="request" />
+    
+    <bean id="listarTipoFuncionarioFormBean" class="br.ufrn.ct.cronos.web.listartipofuncionario.ListarTipoFuncionarioFormBean" scope="request" />
+    
+    <bean id="listarTipoSalaFormBean" class="br.ufrn.ct.cronos.web.listartiposala.ListarTipoSalaFormBean" scope="request" />
+    
+    <bean id="listarTurmaFormBean" class="br.ufrn.ct.cronos.web.listarturma.ListarTurmaFormBean" scope="request" />
+    
+    <bean id="listarTurmasDistribuidasFormBean" class="br.ufrn.ct.cronos.web.listarturmadistribuidas.ListarTurmasDistribuidasFormBean" scope="request" />
+    
+    <bean id="obterHorarioSalaFormBean" class="br.ufrn.ct.cronos.web.obterhorariosalaformbean.ObterHorarioSalaFormBean" scope="session" />
+    
+    <bean id="permutarTurmaFormBean" class="br.ufrn.ct.cronos.web.permutarturma.PermutarTurmaFormBean" scope="session" />
+    
+    <bean id="registrarOperacaoChaveFormBean" class="br.ufrn.ct.cronos.web.registraroperacaochave.RegistrarOperacaoChaveFormBean" scope="request" />
+    
+    <bean id="relatorioDepartamentosFormBean" class="br.ufrn.ct.cronos.web.relatoriodepartamentos.RelatorioDepartamentosFormBean" scope="request" />
+    
+    <bean id="relatorioHistoricoChavesFormBean" class="br.ufrn.ct.cronos.web.relatoriohistoricochaves.RelatorioHistoricoChavesFormBean" scope="session" />
+    
+    <bean id="relatorioUtilizacaoHorariosSalasFormBean" class="br.ufrn.ct.cronos.web.relatoriohorariosalas.RelatorioUtilizacaoHorariosSalasFormBean" scope="request" />
+    
+    <bean id="relatorioUtilizacaoHorariosPredioFormBean" class="br.ufrn.ct.cronos.web.relatorioocupacaohorariossalas.RelatorioUtilizacaoHorariosPredioFormBean" scope="request" />
+    
+    <bean id="relatorioOcupacaoTurmasFormBean" class="br.ufrn.ct.cronos.web.relatorioocupacaoturmas.RelatorioOcupacaoTurmasFormBean" scope="session" />
+    
+    <bean id="relatorioSalasFormBean" class="br.ufrn.ct.cronos.web.relatoriosalas.RelatorioSalasFormBean" scope="request" />
+    
+    <bean id="relatorioSalasCheiasFormBean" class="br.ufrn.ct.cronos.web.relatoriosalascheias.RelatorioSalasCheiasFormBean" scope="request" />
+    
+    <bean id="relatorioTurmasNaoDistribuidasFormBean" class="br.ufrn.ct.cronos.web.relatorioturmasnaodistribuidas.RelatorioTurmasNaoDistribuidasFormBean" scope="request" />
+    
+    <bean id="removerFeriadoFormBean" class="br.ufrn.ct.cronos.web.removerferiado.RemoverFeriadoFormBean" scope="request" />
+    
+    <bean id="removerFuncionarioFormBean" class="br.ufrn.ct.cronos.web.removerfuncionario.RemoverFuncionarioFormBean" scope="request" />
+    
+    <bean id="removerAgendamentoFormBean" class="br.ufrn.ct.cronos.web.removeragendamento.RemoverAgendamentoFormBean" scope="session" />
+    
+    <bean id="removerPredioFormBean" class="br.ufrn.ct.cronos.web.removerpredio.RemoverPredioFormBean" scope="request" />
+    
+    <bean id="removerSalaFormBean" class="br.ufrn.ct.cronos.web.removersala.RemoverSalaFormBean" scope="request" />
+    
+    <bean id="removerPeriodoFormBean" class="br.ufrn.ct.cronos.web.removerperiodo.RemoverPeriodoFormBean" scope="request" />
+    
+    <bean id="removerTurmaFormBean" class="br.ufrn.ct.cronos.web.removerturma.RemoverTurmaFormBean" scope="request" />
+    
+    <bean id="removerUsuarioFormBean" class="br.ufrn.ct.cronos.web.removerusuario.RemoverUsuarioFormBean" scope="request" />
+    
+</beans>

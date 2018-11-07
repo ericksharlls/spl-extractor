@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:t="http://myfaces.apache.org/tomahawk">
+
+<body>
+
+<ui:composition template="/layout/estrutura/template.xhtml">
+
+	<ui:define name="corpo">
+	
+		<form action="https://www.sigaa.ufrn.br/sigaa/turmasCapacidadesCTServlet" method="post">
+			<table>
+				<tr>
+					<th><label>Usuario</label></th>
+					<th><input type="text" name="login" /></th>
+				</tr>
+				<tr>
+					<th><label>Senha</label></th>
+					<th><input type="password" name="senha" /></th>
+				</tr>
+				<tr>
+					<th><label>Ano</label></th>
+					<th><input type="text" name="ano" /></th>
+				</tr>
+				<tr>
+					<th><label>Periodo</label></th>
+					<th><input type="text" name="periodo" /></th>
+				</tr>
+				<tr>
+					<td><input type="submit" value="Enviar" /></td>
+				</tr>
+			</table>
+		</form>
+		
+	</ui:define>
+	
+</ui:composition>
+
+</body>
+
+</html>

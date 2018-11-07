@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:t="http://myfaces.apache.org/tomahawk">
+
+<body>
+
+<ui:composition template="/layout/estrutura/template.xhtml">
+
+	<ui:param name="button" value="funcionario:atualizar" />
+
+	<ui:define name="corpo">
+		<a4j:keepAlive beanName="atualizarFuncionarioFormBean" />
+		
+		<h:form id="funcionarioForm" styleClass="formulario">
+			
+			<fieldset>
+				<legend><h:outputFormat value="#{View['cronos.edicao.titulo']}"><f:param value="#{View['cronos.interessado']}"/></h:outputFormat></legend>
+					
+				<ol>
+					<li>
+						<h:outputLabel for="nome" value="#{View['cronos.form.nome']}" />
+						<h:inputText id="nome" value="#{atualizarFuncionarioFormBean.nome}" styleClass="inputStyle" maxlength="48" />
+					</li>
+					
+					<li>
+                        <h:outputLabel for="tipoFuncionario" value="#{View['cronos.form.tipoFuncionario']}" />
+                        <h:selectOneMenu id="tipoFuncionario" value="#{atualizarFuncionarioFormBean.idTipoFuncionario}" styleClass="estilo_select">
+                            <f:selectItem itemLabel="--Selecione--" itemValue="" />
+                            <f:selectItems value="#{listarTipoFuncionarioFormBean.dados}" />
+                        </h:selectOneMenu>
+                    </li>
+					
+					<li>
+						<h:outputLabel for="email" value="#{View['cronos.form.email']}" />
+						<h:inputText id="email" value="#{atualizarFuncionarioFormBean.email}" styleClass="inputStyle" maxlength="45" />
+					</li>
+
+               <li>
+                  <h:outputLabel for="cpf" value="#{View['cronos.form.cpf']}" />
+                  <h:inputText id="cpf" value="#{atualizarFuncionarioFormBean.cpf}" styleClass="inputStyle">
+                     <rich:jQuery selector="#cpf" query="mask('999.999.999-99')" timing="onload" />
+                  </h:inputText>
+               </li>
+					
+					<li>
+						<h:outputLabel for="matricula" value="#{View['cronos.form.matricula']}" />
+						<h:inputText id="matricula" value="#{atualizarFuncionarioFormBean.matricula}" styleClass="inputStyle" maxlength="11" />
+					</li>
+					
+				<li>
+                  <h:outputLabel for="telefone" value="#{View['cronos.form.telefone']}" />
+                  <h:inputText id="dddTelefone" value="#{atualizarFuncionarioFormBean.dddTelefone}" styleClass="inputStyle" style="width: 25px;">
+                     <rich:jQuery selector="#dddTelefone" query="mask('99')" timing="onload" />
+                  </h:inputText>
+                  <h:outputText value=" - " />                                  
+                  <h:inputText id="telefone" value="#{atualizarFuncionarioFormBean.telefone}" styleClass="inputStyle" style="width: 150px;">
+                     <rich:jQuery selector="#telefone" query="mask('99999-9999')" timing="onload" />
+                  </h:inputText>
+               </li>
+					
+				</ol>	
+				
+				<h:commandButton id="atualizar" action="#{atualizarFuncionarioFormBean.atualizarFuncionario}" value="#{View['cronos.atualizar']}" styleClass="submitButton" />
+				<h:outputText value="#{View['cronos.espaco']}" />
+				<h:commandButton id="cancelar" action="#{atualizarFuncionarioFormBean.cancelar}" value="#{View['cronos.cancelar']}" styleClass="submitButton" />
+				
+			</fieldset>
+			
+		</h:form>
+		
+	</ui:define>
+	
+</ui:composition>
+
+</body>
+
+</html>

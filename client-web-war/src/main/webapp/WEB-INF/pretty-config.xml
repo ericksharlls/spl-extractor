@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pretty-config
+	xmlns="http://ocpsoft.com/prettyfaces-xsd"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://ocpsoft.com/prettyfaces-xsd 
+	http://ocpsoft.com/xml/ns/prettyfaces/pretty-1.0.xsd">
+	
+	<url-mapping id="LoginPage">
+		<pattern> /login </pattern>
+		<view-id> /login.jsf </view-id>
+	</url-mapping>
+	
+	<url-mapping id="InicioPage">
+		<pattern> /home </pattern>
+		<view-id> /inicio.jsf </view-id>
+	</url-mapping>
+	
+	<url-mapping id="NovoFuncionarioPage">
+		<pattern> /admin/funcionario/novo </pattern>
+		<view-id> /admin/funcionario/novo.jsf </view-id>
+	</url-mapping>
+	
+	<url-mapping id="ListarFuncionarioPage">
+		<pattern> /admin/funcionario/listar </pattern>
+		<view-id> /admin/funcionario/listar.jsf </view-id>
+	</url-mapping>
+	
+	<url-mapping id="EditarFuncionarioPage">
+		<pattern> /admin/funcionario/editar/#{atualizarFuncionarioFormBean.id} </pattern>
+		<view-id> /admin/funcionario/editar.jsf </view-id>
+		<action onPostback="false">#{atualizarFuncionarioFormBean.obterFuncionario}</action>
+	</url-mapping>
+	
+	<url-mapping id="ExcluirFuncionarioPage">
+		<pattern> /admin/funcionario/excluir/#{removerFuncionarioFormBean.id} </pattern>
+		<view-id> /admin/funcionario/excluir.jsf </view-id>
+		<action onPostback="false">#{removerFuncionarioFormBean.obterFuncionario}</action>
+	</url-mapping>
+
+	<url-mapping id="NovoUsuarioPage">
+		<pattern> /admin/usuario/novo </pattern>
+		<view-id> /admin/usuario/novo.jsf </view-id>
+	</url-mapping>
+	
+	<url-mapping id="ListarUsuarioPage">
+		<pattern> /admin/usuario/listar </pattern>
+		<view-id> /admin/usuario/listar.jsf </view-id>
+	</url-mapping>
+	
+	<url-mapping id="EditarUsuarioPage">
+		<pattern> /admin/usuario/editar/#{atualizarUsuarioFormBean.id} </pattern>
+		<view-id> /admin/usuario/editar.jsf </view-id>
+		<action onPostback="false">#{atualizarUsuarioFormBean.obterUsuario}</action>
+	</url-mapping>
+	
+	<url-mapping id="ExcluirUsuarioPage">
+		<pattern> /admin/usuario/excluir/#{removerUsuarioFormBean.id} </pattern>
+		<view-id> /admin/usuario/excluir.jsf </view-id>
+		<action onPostback="false">#{removerUsuarioFormBean.obterUsuario}</action>
+	</url-mapping>
+	
+	<url-mapping id="NovoProdutoPage">
+		<pattern> /admin/produto/novo </pattern>
+		<view-id> /admin/produto/novo.jsf </view-id>
+	</url-mapping>
+	
+	<url-mapping id="ListarProdutoPage">
+		<pattern> /admin/produto/listar </pattern>
+		<view-id> /admin/produto/listar.jsf </view-id>
+	</url-mapping>
+	
+	<url-mapping id="EditarProdutoPage">
+		<pattern> /admin/produto/editar/#{atualizarProdutoFormBean.id} </pattern>
+		<view-id> /admin/produto/editar.jsf </view-id>
+		<action onPostback="false">#{atualizarProdutoFormBean.obterProduto}</action>
+	</url-mapping>
+	
+	<url-mapping id="ExcluirProdutoPage">
+		<pattern> /admin/produto/excluir/#{removerProdutoFormBean.id} </pattern>
+		<view-id> /admin/produto/excluir.jsf </view-id>
+		<action onPostback="false">#{removerProdutoFormBean.obterProduto}</action>
+	</url-mapping>
+	
+	<url-mapping id="NovoPeriodoPage">
+      <pattern> /admin/periodo/novo </pattern>
+      <view-id> /admin/periodo/novo.jsf </view-id>
+   </url-mapping>
+	
+	<url-mapping id="ListarPeriodoPage">
+		<pattern> /admin/periodo/listar </pattern>
+		<view-id> /admin/periodo/listar.jsf </view-id>
+	</url-mapping>
+	
+	<url-mapping id="EditarPeriodoPage">
+		<pattern> /admin/periodo/editar/#{atualizarPeriodoFormBean.id} </pattern>
+		<view-id> /admin/periodo/editar.jsf </view-id>
+		<action onPostback="false">#{atualizarPeriodoFormBean.obterPeriodo}</action>
+	</url-mapping>
+	
+	<url-mapping id="ExcluirPeriodoPage">
+		<pattern> /admin/periodo/excluir/#{removerPeriodoFormBean.id} </pattern>
+		<view-id> /admin/periodo/excluir.jsf </view-id>
+		<action onPostback="false">#{removerPeriodoFormBean.obterPeriodo}</action>
+	</url-mapping>
+	
+	<url-mapping id="ListarSalaPage">
+		<pattern> /admin/sala/listar </pattern>
+		<view-id> /admin/sala/listar.jsf </view-id>
+	</url-mapping>
+	
+	<url-mapping id="ListarSalaPorPredioPage">
+		<pattern> /admin/sala/listarPorPredio </pattern>
+		<view-id> /admin/sala/listarPorPredio.jsf </view-id>
+	</url-mapping>
+	
+	<url-mapping id="NovoSalaPage">
+		<pattern> /admin/sala/novo </pattern>
+		<view-id> /admin/sala/novo.jsf </view-id>
+	</url-mapping>
+	
+	<url-mapping id="RelatorioSalasPage">
+		<pattern> /admin/relatorio/sala </pattern>
+		<view-id> /admin/relatorio/sala.jsf </view-id>
+	</url-mapping>
+	
+	<url-mapping id="RelatorioSalasCheiasPage">
+		<pattern> /admin/relatorio/salasCheias </pattern>
+		<view-id> /admin/relatorio/salasCheias.jsf </view-id>
+	</url-mapping>
+	
+	<url-mapping id="RelatorioUtilizacaoHorariosSalasPage">
+		<pattern> /direcao/relatorio/utilizacaoHorariosSalas </pattern>
+		<view-id> /direcao/relatorio/utilizacaoHorariosSalas.jsf </view-id>
+	</url-mapping>
+	
+	<url-mapping id="RelatorioOcupacaoTurmasPage">
+		<pattern> /direcao/relatorio/ocupacaoTurmas </pattern>
+		<view-id> /direcao/relatorio/ocupacaoTurmas.jsf </view-id>
+	</url-mapping>
+	
+	<url-mapping id="RelatorioUtilizacaoHorariosPredioPage">
+      <pattern> /direcao/relatorio/utilizacaoHorariosPredio </pattern>
+      <view-id> /direcao/relatorio/utilizacaoHorariosPredio.jsf </view-id>
+   </url-mapping>
+   
+   <url-mapping id="RelatorioHistoricoChavesPage">
+      <pattern> /relatoriosExtras/historicoChaves </pattern>
+      <view-id> /relatoriosExtras/historicoChaves.jsf </view-id>
+   </url-mapping>
+	
+	<url-mapping id="PaginaInicialRelatoriosExtraPage">
+		<pattern> /relatoriosExtras/index </pattern>
+		<view-id> /relatoriosExtras/index.jsf </view-id>
+	</url-mapping>
+	
+	<url-mapping id="EditarSalaPage">
+		<pattern> /admin/sala/editar/#{atualizarSalaFormBean.id} </pattern>
+		<view-id> /admin/sala/editar.jsf </view-id>
+		<action onPostback="false">#{atualizarSalaFormBean.obterSala}</action>
+	</url-mapping>
+	
+	<url-mapping id="ExcluirSalaPage">
+		<pattern> /admin/sala/excluir/#{removerSalaFormBean.id} </pattern>
+		<view-id> /admin/sala/excluir.jsf </view-id>
+		<action onPostback="false">#{removerSalaFormBean.obterSala}</action>
+	</url-mapping>
+	
+	<url-mapping id="ObterHorarioSalaPage">
+		<pattern> /admin/agendamento/salas </pattern>
+		<view-id> /admin/agendamento/salas.jsf </view-id>
+	</url-mapping>
+	
+	<url-mapping id="ConsultarHorarioSalaPage">
+		<pattern> /admin/agendamento/consultar </pattern>
+		<view-id> /admin/agendamento/consultar.jsf </view-id>
+	</url-mapping>
+
+	<url-mapping id="VisualizarHorarioSalaPageAdministrador">
+		<pattern> /admin/agendamento/visualizar </pattern>
+		<view-id> /admin/agendamento/visualizar.jsf </view-id>
+	</url-mapping>
+	
+	<url-mapping id="VisualizarHorarioSalaPageUsuario">
+		<pattern> /usuario/agendamento/visualizar </pattern>
+		<view-id> /usuario/agendamento/visualizar.jsf </view-id>
+	</url-mapping>
+	
+	<url-mapping id="PesquisarAgendamentos">
+      <pattern> /usuario/agendamento/pesquisar </pattern>
+      <view-id> /usuario/agendamento/pesquisar.jsf </view-id>
+   </url-mapping>
+   
+   <url-mapping id="ConsultarHorarioSalaPageDepartamento">
+        <pattern> /departamento/agendamento/consultar </pattern>
+        <view-id> /departamento/agendamento/consultar.jsf </view-id>
+    </url-mapping>
+	
+	<url-mapping id="NovoPredioPage">
+		<pattern> /admin/predio/novo </pattern>
+		<view-id> /admin/predio/novo.jsf </view-id>
+	</url-mapping>
+	
+	<url-mapping id="ListarPredioPage">
+		<pattern> /admin/predio/listar </pattern>
+		<view-id> /admin/predio/listar.jsf </view-id>
+	</url-mapping>
+	
+	<url-mapping id="EditarPredioPage">
+		<pattern> /admin/predio/editar/#{atualizarPredioFormBean.id} </pattern>
+		<view-id> /admin/predio/editar.jsf </view-id>
+		<action onPostback="false">#{atualizarPredioFormBean.obterPredio}</action>
+	</url-mapping>
+	
+	<url-mapping id="ExcluirPredioPage">
+		<pattern> /admin/predio/excluir/#{removerPredioFormBean.id} </pattern>
+		<view-id> /admin/predio/excluir.jsf </view-id>
+		<action onPostback="false">#{removerPredioFormBean.obterPredio}</action>
+	</url-mapping>
+	
+	<url-mapping id="NovoTurmaPage">
+		<pattern> /admin/turma/novo </pattern>
+		<view-id> /admin/turma/novo.jsf </view-id>
+	</url-mapping>
+	
+	<url-mapping id="ListarTurmaPage">
+		<pattern> /admin/turma/listar </pattern>
+		<view-id> /admin/turma/listar.jsf </view-id>
+	</url-mapping>
+	
+	<url-mapping id="PesquisarTurmaPage">
+		<pattern> /usuario/turma/pesquisar </pattern>
+		<view-id> /usuario/turma/pesquisar.jsf </view-id>
+	</url-mapping>
+	
+	<url-mapping id="EditarTurmaPage">
+		<pattern> /admin/turma/editar/#{atualizarTurmaFormBean.id} </pattern>
+		<view-id> /admin/turma/editar.jsf </view-id>
+		<action onPostback="false">#{atualizarTurmaFormBean.obterTurma}</action>
+	</url-mapping>
+	
+	<url-mapping id="ExcluirTurmaPage">
+		<pattern> /admin/turma/excluir/#{removerTurmaFormBean.id} </pattern>
+		<view-id> /admin/turma/excluir.jsf </view-id>
+		<action onPostback="false">#{removerTurmaFormBean.obterTurma}</action>
+	</url-mapping>
+	
+	<url-mapping id="DistribuirTurmasPage">
+		<pattern> /admin/distribuicao/distribuicao </pattern>
+		<view-id> /admin/distribuicao/distribuicao.jsf </view-id>
+	</url-mapping>
+	
+	<url-mapping id="PermutarTurmasPage">
+		<pattern> /admin/distribuicao/permutar </pattern>
+		<view-id> /admin/distribuicao/permutar.jsf </view-id>
+	</url-mapping>
+	
+	<url-mapping id="AlocarTurmasPage">
+		<pattern> /admin/distribuicao/alocar </pattern>
+		<view-id> /admin/distribuicao/alocar.jsf </view-id>
+	</url-mapping>
+	
+	<url-mapping id="DesalocarTurmasPage">
+		<pattern> /admin/distribuicao/desalocar </pattern>
+		<view-id> /admin/distribuicao/desalocar.jsf </view-id>
+	</url-mapping>
+	
+	<url-mapping id="RelatorioDepartamentosPage">
+		<pattern> /admin/relatorio/departamento </pattern>
+		<view-id> /admin/relatorio/departamento.jsf </view-id>
+	</url-mapping>
+	
+	<url-mapping id="RelatorioTurmasNaoDistribuidasPage">
+		<pattern> /admin/relatorio/turmasNaoDistribuidas </pattern>
+		<view-id> /admin/relatorio/turmasNaoDistribuidas.jsf </view-id>
+	</url-mapping>
+	
+	<url-mapping id="RegistrarEntradaSaidaEmSalasPage">
+		<pattern> /supervisao/sala/registrarEntradaSaida </pattern>
+		<view-id> /supervisao/sala/registrarEntradaSaida.jsf </view-id>
+	</url-mapping>
+
+   <url-mapping id="NovoFeriadoPage">
+      <pattern> /admin/feriado/novo </pattern>
+      <view-id> /admin/feriado/novo.jsf </view-id>
+   </url-mapping>
+	
+	<url-mapping id="ListarFeriadoPage">
+      <pattern> /admin/feriado/listar </pattern>
+      <view-id> /admin/feriado/listar.jsf </view-id>
+   </url-mapping>
+	
+	<url-mapping id="EditarFeriadoPage">
+      <pattern> /admin/feriado/editar/#{atualizarFeriadoFormBean.id} </pattern>
+      <view-id> /admin/feriado/editar.jsf </view-id>
+      <action onPostback="false">#{atualizarFeriadoFormBean.obterFeriado}</action>
+   </url-mapping>
+   
+   <url-mapping id="ExcluirFeriadoPage">
+      <pattern> /admin/feriado/excluir/#{removerFeriadoFormBean.id} </pattern>
+      <view-id> /admin/feriado/excluir.jsf </view-id>
+      <action onPostback="false">#{removerFeriadoFormBean.obterFeriado}</action>
+   </url-mapping>
+	
+</pretty-config>

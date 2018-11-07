@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:t="http://myfaces.apache.org/tomahawk">
+
+<body>
+
+<ui:composition template="/layout/estrutura/template.xhtml">
+
+	<ui:param name="button" value="turmaForm:cadastrar" />
+
+<ui:define name="corpo">
+	<a4j:keepAlive beanName="alterarTurmasFormBean" />
+	
+		<h:form id="turmaForm" style="width: 770px;" styleClass="formulario">
+			<t:div styleClass="aviso" rendered="#{!alterarTurmasFormBean.visible}">
+				<img alt="Aviso" src="#{facesContext.externalContext.requestContextPath}/img/warning.gif" />&#160;
+				<h:outputFormat value="#{View['cronos.aviso.semdados']}"><f:param value="#{View['cronos.turma']}"/></h:outputFormat>
+			</t:div>
+			
+			<fieldset style="margin-bottom: 15px;">
+				<legend><h:outputFormat value="#{View['cronos.form.turmasPorDepartamento']}"><f:param value="#{View['cronos.departamento']}"/></h:outputFormat></legend>
+				
+				<ol>
+					<li>
+                  <h:outputLabel for="idPeriodo" value="#{View['cronos.form.periodo']}" />
+                  <h:selectOneMenu id="idPeriodo" value="#{alterarTurmasFormBean.idPeriodo}" styleClass="estiloSelectGrande">
+                     <f:selectItem itemLabel="--Selecione--" itemValue="" />
+							<f:selectItems value="#{listarPeriodoFormBean.dados}" />
+							<a4j:support event="onchange" reRender="turmaTable" />
+                  </h:selectOneMenu>
+					</li>
+               <li>
+                  <h:outputLabel for="departamento" value="#{View['cronos.form.departamento']}" />
+                  <h:selectOneMenu id="departamento" value="#{alterarTurmasFormBean.idDepartamento}" styleClass="estiloSelectDepartamento">
+                     <f:selectItem itemLabel="--Selecione--" itemValue="" />
+                     <f:selectItems value="#{listarDepartamentoFormBean.dados}" />
+                     <a4j:support event="onchange" reRender="turmaTable" />
+                  </h:selectOneMenu>
+               </li>
+            </ol>
+				
+			</fieldset>
+			
+			<rich:dataTable id="turmaTable" value="#{alterarTurmasFormBean.dados}"  
+				var="i" rows="#{alterarTurmasFormBean.linhas}" border="0" align="center" cellspacing="0" width="100%"  
+				rowClasses="list-row-even,list-row-odd" binding="#{alterarTurmasFormBean.table}" rendered="#{alterarTurmasFormBean.visible}">
+				<f:facet name="header">
+					<rich:columnGroup>
+						<rich:column>
+							<h:outputText value="#{View['cronos.table.disciplina']}" />
+						</rich:column>
+						<rich:column>
+							<h:outputText value="#{View['cronos.table.docente']}" />
+						</rich:column>
+						<rich:column>
+							<h:outputText value="#{View['cronos.table.horario']}" />
+						</rich:column>
+						<rich:column>
+                     <h:outputText value="#{View['cronos.table.numero']}" />
+                  </rich:column>
+						<rich:column>
+							<h:outputText value="#{View['cronos.table.perfil']}" />
+						</rich:column>
+						<rich:column>
+							<h:outputText value="Distribuir" />
+						</rich:column>
+						<rich:column>
+							<h:outputText value="#{View['cronos.table.predio']}" />
+						</rich:column>
+						<rich:column colspan="2">
+							<h:outputText value="#{View['cronos.espaco']}" />
+						</rich:column>
+					</rich:columnGroup>
+				</f:facet>
+				<rich:columnGroup>
+					<rich:column style="text-align:center;">
+						<h:outputText value="#{i.nomeDisciplina}" />
+					</rich:column>
+					<rich:column style="text-align:center;">
+						<h:outputText value="#{i.docente}" />
+					</rich:column>
+					<rich:column style="text-align:center;">
+						<h:outputText value="#{i.horario}" />
+					</rich:column>
+               <rich:column style="text-align:center;">
+                  <h:outputText value="#{i.numero}" />
+               </rich:column>
+					<rich:column style="text-align:center;">
+						<h:selectOneMenu id="perfilTurma" value="#{i.idTipo}" style="width:105px; font-size:11,5px;">
+								<f:selectItems value="#{listarTipoSalaFormBean.dados}" />
+						</h:selectOneMenu>
+					</rich:column>
+					<rich:column style="text-align:center;">
+						<h:selectOneRadio value="#{i.distribuir}" layout="lineDirection" id="selectOneRadioTurma" style="margin-right: 0; font-size: 11px; width: none;">
+							<f:selectItem itemLabel="#{View['cronos.form.sim']}" itemValue="true" id="radioSim" />
+							<f:selectItem itemLabel="#{View['cronos.form.nao']}" itemValue="false" id="radioNao" />
+						</h:selectOneRadio>
+					</rich:column>
+					<rich:column style="text-align:center;">
+						<h:selectOneMenu id="predioTurma" value="#{i.idPredio}" style="width:140px; font-size:11,5px;">
+								<f:selectItems value="#{listarPredioFormBean.dados}" />
+						</h:selectOneMenu>
+					</rich:column>
+					<rich:column style="text-align:center;">
+						<a href="#{facesContext.externalContext.requestContextPath}/admin/turma/editar/#{i.id}" style="text-decoration: none;">
+							<img src="#{facesContext.externalContext.requestContextPath}/img/editar.gif" border="0" />
+						</a>
+					</rich:column>
+					<rich:column style="text-align:center;">
+						<a href="#{facesContext.externalContext.requestContextPath}/admin/turma/excluir/#{i.id}" style="text-decoration: none;">
+							<img src="#{facesContext.externalContext.requestContextPath}/img/excluir.gif" border="0" />
+						</a>
+					</rich:column>
+				</rich:columnGroup>
+				<f:facet name="footer">
+					  <rich:datascroller id="turmaTableScroller" align="center" for="turmaTable" maxPages="55" renderIfSinglePage="false" stepControls="hide" reRender="turmaTable" />
+				</f:facet>
+			</rich:dataTable>
+			
+			<rich:spacer height="30" />
+			
+			<h:commandButton id="gravar" action="#{alterarTurmasFormBean.gravar}" value="Gravar turmas" styleClass="submitButton" />
+			
+		</h:form>
+	</ui:define>
+	
+</ui:composition>
+
+</body>
+
+</html>

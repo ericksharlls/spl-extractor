@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping default-lazy="false">
+   <class name="br.ufrn.ct.cronos.entity.Feriado" table="feriado">
+      <id name="id" column="id_feriado" type="java.lang.Long">
+         <generator class="identity" />
+      </id>
+
+      <property name="descricao" column="descricao_feriado" type="java.lang.String" />
+      <property name="data" column="data_feriado" type="java.util.Date" />
+      <property name="idPeriodo" column="id_periodo" type="java.lang.Long" />
+         
+   </class>
+</hibernate-mapping>

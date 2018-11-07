@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping default-lazy="false">
+	<class name="br.ufrn.ct.cronos.entity.Periodo" table="periodo">
+    	<id name="id" column="id_periodo" type="java.lang.Long">
+        	<generator class="identity" />
+      	</id>
+
+      	<property name="nome" column="nome_periodo" type="java.lang.String" />
+      	<property name="descricao" column="descricao_periodo" type="java.lang.String" />
+      	<property name="dataInicio" column="data_inicio_periodo" type="java.util.Date" />
+      	<property name="dataTermino" column="data_termino_periodo" type="java.util.Date" />
+      	<property name="isPeriodoLetivo" column="is_periodo_letivo" type="java.lang.Boolean" />
+      	<property name="ano" column="ano_periodo" type="java.lang.Integer" />
+      	<property name="numero" column="numero_periodo" type="java.lang.Integer" />
+      	
+	</class>
+</hibernate-mapping>

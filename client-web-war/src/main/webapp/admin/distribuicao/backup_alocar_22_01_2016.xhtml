@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:a4j="http://richfaces.org/a4j"
+    xmlns:rich="http://richfaces.org/rich"
+    xmlns:c="http://java.sun.com/jstl/core"
+    xmlns:t="http://myfaces.apache.org/tomahawk">
+
+<body>
+
+<ui:composition template="/layout/estrutura/template.xhtml">
+
+    <ui:param name="button" value="salaForm:cadastrar" />
+
+    <ui:define name="corpo">
+        
+        <h:form id="alocarTurmasForm" styleClass="formulario">
+        
+            <fieldset><legend>Selecione uma turma</legend>
+                
+                <ol> 
+                  <li>
+                <h:outputLabel for="idPeriodo" value="#{View['cronos.form.periodo']}" />
+                <h:selectOneMenu id="idPeriodo" value="#{consultarSalasDisponiveisFormBean.idPeriodo}" styleClass="estiloSelectDepartamento">
+                     <f:selectItem itemLabel="--Selecione--" itemValue="" />
+                     <f:selectItems value="#{listarPeriodoFormBean.dados}" />
+                     <a4j:support event="onchange" reRender="turma,disciplinaTurma,docenteTurma,horarioTurma,perfilTurma,capacidadeTurma,salaTurma,salasDisponiveis" action="#{consultarSalasDisponiveisFormBean.limparDadosTurma}" />
+               </h:selectOneMenu>
+               </li>
+               <li>
+                <h:outputLabel for="idPredio" value="#{View['cronos.form.predio']}" />
+                <h:selectOneMenu id="idPredio" value="#{consultarSalasDisponiveisFormBean.idPredio}" styleClass="estiloSelectDepartamento">
+                     <f:selectItem itemLabel="--Selecione--" itemValue="" />
+                     <f:selectItems value="#{listarPredioFormBean.dados}" />
+                     <a4j:support event="onchange" reRender="turma,disciplinaTurma,docenteTurma,horarioTurma,perfilTurma,capacidadeTurma,salaTurma,salasDisponiveis" action="#{consultarSalasDisponiveisFormBean.limparDadosTurma}" />
+               </h:selectOneMenu>
+               </li>
+               <li>
+                  <h:outputLabel for="departamento" value="#{View['cronos.form.departamento']}" />
+                  <h:selectOneMenu id="departamento" value="#{consultarSalasDisponiveisFormBean.idDepartamento}" styleClass="estiloSelectDepartamento">
+                     <f:selectItem itemLabel="--Selecione--" itemValue="" />
+                     <f:selectItems value="#{listarDepartamentoFormBean.dados}" />
+                     <a4j:support event="onchange" reRender="turma,disciplinaTurma,docenteTurma,horarioTurma,perfilTurma,capacidadeTurma,salaTurma,salasDisponiveis" action="#{consultarSalasDisponiveisFormBean.limparDadosTurma}" />
+                  </h:selectOneMenu>
+               </li>
+                    <li>
+                        <h:outputLabel for="turma" value="#{View['cronos.form.nome']}" />
+                        <h:selectOneMenu id="turma" value="#{consultarSalasDisponiveisFormBean.idTurma}" styleClass="estiloSelect">
+                            <f:selectItem itemLabel="--Selecione--" itemValue="" />
+                            <f:selectItems value="#{consultarSalasDisponiveisFormBean.turmasPorPeriodoEPredio}" />
+                            <a4j:support event="onchange" reRender="disciplinaTurma,docenteTurma,horarioTurma,perfilTurma,capacidadeTurma,salaTurma,salasDisponiveis" action="#{consultarSalasDisponiveisFormBean.atualizarTurma}" />
+                        </h:selectOneMenu>
+                    </li>
+                
+                    <li>
+                        <h:outputLabel for="disciplinaTurma" value="#{View['cronos.table.disciplinaTurma']}" />
+                        <h:outputText id="disciplinaTurma" value="#{consultarSalasDisponiveisFormBean.turma.nomeDisciplina}" />
+                    </li>
+                
+                    <li>
+                        <h:outputLabel for="docenteTurma" value="#{View['cronos.table.docenteTurma']}" />
+                        <h:outputText id="docenteTurma" value="#{consultarSalasDisponiveisFormBean.turma.docente}" />
+                    </li>
+                    
+                    <li>
+                        <h:outputLabel for="horarioTurma" value="#{View['cronos.table.horarioTurma']}" />
+                        <h:outputText id="horarioTurma" value="#{consultarSalasDisponiveisFormBean.turma.horario}" />
+                    </li>
+                    
+                    <li>
+                        <h:outputLabel for="perfilTurma" value="#{View['cronos.table.perfil']}" />
+                        <h:outputText id="perfilTurma" value="#{consultarSalasDisponiveisFormBean.turma.perfil}" />
+                    </li>
+                    
+                    <li>
+                  <h:outputLabel for="capacidadeTurma" value="#{View['cronos.form.capacidade']}" />
+                  <h:outputText id="capacidadeTurma" value="#{consultarSalasDisponiveisFormBean.turma.capacidade}" />
+               </li>
+                
+                    <li>
+                        <h:outputLabel for="salaTurma" value="#{View['cronos.table.sala']}" />
+                        <h:outputText id="salaTurma" value="#{consultarSalasDisponiveisFormBean.turma.sala}" />
+                    </li>
+                </ol>
+                
+                <rich:spacer height="20" />
+            
+            <rich:extendedDataTable value="#{consultarSalasDisponiveisFormBean.dadosDataModel}" var="sala" id="salasDisponiveis" align="center" 
+                     width="550px" height="300px" sortMode="single" selection="#{consultarSalasDisponiveisFormBean.selection}" style="margin-left: auto; margin-right: auto;">
+                
+                <rich:column width="195" sortable="true" sortBy="#{sala.nome}" filterBy="#{sala.nome}" label="Nome" id="nomeSala" filterEvent="onkeyup">
+                    <f:facet name="header">
+                        <h:outputText value="Nome" id="colunaNome" />
+                    </f:facet>
+                    <h:outputText value="#{sala.nome}" id="nome" />
+                </rich:column>
+                
+                <rich:column width="70" sortable="false" label="Capacidade" id="capacidadeSala">
+                    <f:facet name="header">
+                        <h:outputText value="Capacidade" id="colunaCapacidade"/>
+                    </f:facet>
+                    <h:outputText value="#{sala.capacidade}" id="capacidade"/>
+                </rich:column>
+                
+                <rich:column width="95" sortable="true" id="perfilSala" sortBy="#{sala.perfilSala}" filterBy="#{sala.perfilSala}" filterEvent="onkeyup" label="Perfil">
+                    <f:facet name="header">
+                        <h:outputText value="Perfil" id="colunaPerfil"/>
+                    </f:facet>
+                    <h:outputText value="#{sala.perfilSala}" id="perfil"/>
+                </rich:column>
+                
+                 <rich:column width="62" sortable="false" label="Tipo do quadro" id="tipoQuadroSala">
+                    <f:facet name="header">
+                        <h:outputText value="Quadro" id="colunaTipoQuadro" />
+                    </f:facet>
+                    <h:outputText value="#{sala.tipoQuadro}" id="tipoQuadro" />
+                </rich:column>
+                
+                <rich:column width="100" sortable="false" label="Predio" id="predioSala">
+                    <f:facet name="header">
+                        <h:outputText value="#{View['cronos.table.predio']}" id="colunaPredio"/>
+                    </f:facet>
+                    <h:outputText value="#{sala.predio}" id="predio"/>
+                </rich:column>
+               
+                <a4j:support action="#{consultarSalasDisponiveisFormBean.selecionar}" event="onselectionchange" />
+                
+            </rich:extendedDataTable>
+            
+            <h:commandButton id="alocar" action="#{consultarSalasDisponiveisFormBean.alocar}" value="Alocar" styleClass="submitButton" />
+                    
+        </fieldset>
+            
+        </h:form>   
+        
+    </ui:define>
+    
+</ui:composition>
+
+</body>
+
+</html>

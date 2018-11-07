@@ -1,0 +1,317 @@
+form.formulario html, body, h1, form, fieldset, legend, ol, li {
+	margin: 0;
+	padding: 0;
+}
+form.formulario body {
+	background: #ffffff;
+	color: #111111;
+	font-family: "Century Gothic", "Times New Roman", Times, serif;
+	padding: 20px;
+}
+form.formulario {
+	background: #E8EDFF;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	padding: 20px;
+	width: 550px;
+	margin-right:auto;
+  	margin-left:auto;
+  	border: 1px solid #006699;
+}
+form.formulario p{
+	color: #384313;
+	font-size: 16px;
+	font-weight: bold;
+	padding-bottom: 10px;
+	text-shadow: 0 1px 1px #c0d576;
+	text-align:left;
+}
+form.formulario fieldset {
+	border: none;
+	margin-bottom: 10px;
+}
+form.formulario fieldset:last-of-type {
+	margin-bottom: 0;
+}
+form.formulario legend {
+	color: #384313;
+	font-size: 24px;
+	font-weight: bold;
+	padding-bottom: 10px;
+	text-shadow: 0 1px 1px #fff;
+	text-align: left;
+}
+/*form#payment > fieldset > legend:before {
+	content: "Passo " counter(fieldsets) ": ";
+	counter-increment: fieldsets;
+}*/
+form.formulario fieldset fieldset legend {
+	color: #111111;
+	font-size: 13px;
+	font-weight: normal;
+	padding-bottom: 0;
+}
+form.formulario ol li {
+	background: #E8EDFF;
+	background: rgba(255, 255, 255, .3);
+	border-color: #fff;
+	/*border-color: rgba(255,255,255,.6);*/
+	border-style: solid;
+	border-width: 2px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	line-height: 30px;
+	list-style: none;
+	padding: 5px 10px;
+	margin-bottom: 2px;
+	text-align: left;
+}
+form.formulario ol ol li {
+	background: none;
+	border: none;
+	float: left;
+}
+
+form.formulario ol li table.tabelaInputRadio td {
+    line-height: none;
+}
+
+form.formulario .inputRadio {
+	margin-left: 1px;
+	line-height: 15px;
+	margin-right: 15px;
+	width: auto;
+}
+
+form.formulario li label {
+	color:#069;
+	float: left;
+	text-align:right;
+	margin-right:20px;
+	font-size: 14px;
+	width: 195px;
+}
+
+form.formulario li table label {
+    width: 20px;
+    line-height: normal;
+}
+
+form.formulario fieldset fieldset label {
+	background:none no-repeat left 50%;
+	line-height: 20px;
+	padding: 0 0 0 30px;
+	width: auto;
+}
+
+form.formulario input[type=radio] label {
+    float: left;
+    margin-right: 5px;
+    text-align: left;
+}
+
+form.formulario input[type=radio] {
+	float: left;
+	margin-right: 5px;
+}
+
+form.formulario .submitButton {
+	background: #069;
+	border: none;
+	-moz-border-radius: 20px;
+	-webkit-border-radius: 20px;
+	-khtml-border-radius: 20px;
+	border-radius: 20px;
+	color: #ffffff;
+	display: block;
+	/*font: 18px Georgia, "Times New Roman", Times, serif;*/
+	letter-spacing: 1px;
+	margin: auto;
+	padding: 7px 15px;
+	text-shadow: 0 1px 1px #000000;
+	display: inline;
+	margin: 20px auto auto;
+}
+
+.submitButton {
+	background: #069;
+	border: none;
+	-moz-border-radius: 20px;
+	-webkit-border-radius: 20px;
+	-khtml-border-radius: 20px;
+	border-radius: 20px;
+	color: #ffffff;
+	display: block;
+	/*font: 18px Georgia, "Times New Roman", Times, serif;*/
+	letter-spacing: 1px;
+	margin: auto;
+	padding: 7px 15px;
+	text-shadow: 0 1px 1px #000000;
+	display: inline;
+	margin: 20px auto auto;
+}
+
+form.formulario .submitButton:hover {
+	background: #EC6313;
+	cursor: pointer;
+}
+
+table{
+  margin-right:auto;
+  margin-left:auto;
+}
+
+table.tabelaInputRadio{
+	margin-left: 1px;
+	margin-top: 5px;
+}
+
+.errorMessage {
+	height: 14px;
+	background-image: url(../imagens/ico_error.gif);
+	background-position: left center;
+	background-repeat: no-repeat;
+	text-align: left;
+	text-indent: 30px;
+	list-style: none;
+	font-weight: bold;
+	color: #534741;
+}
+
+.warnMessage {
+	height: 14px;
+	background-image: url(../imagens/ico_alert.gif);
+	background-position: left center;
+	background-repeat: no-repeat;
+	text-align: left;
+	text-indent: 30px;
+	list-style: none;
+	font-weight: bold;
+	color: #535341;
+}
+
+.sucessMessage {
+	height: 14px;
+	background-image: url(../imagens/ico_sucess.gif);
+	background-position: left center;
+	background-repeat: no-repeat;
+	text-align: left;
+	text-indent: 30px;
+	list-style: none;
+	font-weight: bold;
+	color: #414853;
+}
+
+.estiloSelect {
+	border: solid 1px #003366;
+	font-size:12px;
+	width: 160px;
+}
+
+.estiloSelectDepartamento {
+	border: solid 1px #003366;
+	font-size: 12px;
+	width: 305px;
+}
+
+.estiloSelectGrande {
+	border: solid 1px #003366;
+	font-size:13px;
+	width: 250px;
+}
+
+.list-row-even { 
+	background-color:#EDEFF6;
+	border-color: #C9C9C9;
+	font-weight: bold;
+	text-align: center;
+	height: 25px;
+}
+
+.list-row-odd {
+	border-color: #C9C9C9;
+	font-weight: bold;
+	text-align: center;
+	height: 25px;
+}
+
+.rich-table {
+	border-collapse: none;
+}
+
+.rich-extdt{
+  margin-right:auto;
+  margin-left:auto;
+}
+
+.inputStyle{
+	text-align: left;
+	width: 250px;
+}
+
+.manyListbox{
+ width: 120px;
+ font-size: 14px;
+ text-align: center;
+}
+
+.manyListbox2{
+ width: 250px;
+ font-size: 14px;
+ text-align: center;
+ height: 100px;
+}
+
+.manyListbox3{
+ width: 270px;
+ font-size: 13px;
+ text-align: center;
+}
+
+.manyListboxDiasSemana{
+ width: 150px;
+ font-size: 14px;
+ text-align: center;
+ margin-left: 170px;
+}
+
+.colunaTabelaControleChave1 {
+	background-color: #FDDED6;
+}
+
+.colunaTabelaControleChave2 {
+	background-color: #E3FDD6;
+}
+
+.inputTabelaControleChave {
+	text-align: center;
+	width: 250px;
+	font-size: 22px;
+}
+
+.rich-calendar-input  {
+	width: 110px;
+	text-align: center;
+}
+
+.rich-picklist-source-cell {
+	line-height: 18px;
+	text-align: center;
+}
+ 
+ .rich-picklist-target-cell-selected {
+   line-height: 22px;
+   text-align: center;
+ }
+  
+.rich-picklist-source-cell-selected {
+	line-height: 22px;
+	text-align: center;
+}
+
+.rich-picklist-target-cell {
+	line-height: 18px;
+	text-align: center;
+}

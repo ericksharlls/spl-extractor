@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:t="http://myfaces.apache.org/tomahawk">
+
+<body>
+
+<ui:composition template="/layout/estrutura/template.xhtml">
+
+	<ui:param name="button" value="salaForm:atualizar" />
+
+	<ui:define name="corpo">
+		<a4j:keepAlive beanName="atualizarUsuarioFormBean" />
+		
+		<h:form id="salaForm" styleClass="formulario">
+			
+			<fieldset>
+				<legend><h:outputFormat value="#{View['cronos.edicao.titulo']}"><f:param value="#{View['cronos.usuario']}"/></h:outputFormat></legend>
+					
+				<ol>
+					<li>
+						<h:outputLabel for="funcionario" value="#{View['cronos.form.funcionario']}" />
+						<h:outputText id="funcionario" value="#{atualizarUsuarioFormBean.nomeFuncionario}" styleClass="inputStyle" />
+					</li>
+					
+					<li>
+						<h:outputLabel for="login" value="#{View['cronos.form.login']}" />
+						<h:outputText id="login" value="#{atualizarUsuarioFormBean.login}" styleClass="inputStyle" />
+					</li>
+					
+					<li>
+						<h:outputLabel for="selectOneDesabilitarUsuario" value="#{View['cronos.form.desabilitarUsuario']}" />
+							<h:selectOneRadio value="#{atualizarUsuarioFormBean.desabilitarUsuario}" layout="lineDirection" id="selectOneDesabilitarUsuario" styleClass="tabelaInputRadio">
+							<f:selectItem itemLabel="#{View['cronos.form.sim']}" itemValue="true" id="radioSimDesabilitarUsuario" />
+							<f:selectItem itemLabel="#{View['cronos.form.nao']}" itemValue="false" id="radioNaoDesabilitarUsuario" />
+						</h:selectOneRadio>
+					</li>
+					
+					<li>
+						<h:outputLabel for="senha" value="#{View['cronos.form.senha']}" />
+						<h:inputSecret id="senha" value="#{atualizarUsuarioFormBean.senha}" styleClass="inputStyle" maxlength="12" />
+					</li>
+					
+					<li>
+						<h:outputLabel for="senhaConfirmacao" value="#{View['cronos.form.senhaConfirmacao']}" />
+						<h:inputSecret id="senhaConfirmacao" value="#{atualizarUsuarioFormBean.senhaConfirmacao}" styleClass="inputStyle" maxlength="12" />
+					</li>
+					
+					<li>	
+						<h:outputLabel for="perfil" value="#{View['cronos.form.perfil']}" />
+						<h:selectOneMenu id="perfil" value="#{atualizarUsuarioFormBean.idPapel}" styleClass="estiloSelectGrande">
+							<f:selectItem itemLabel="--Selecione--" itemValue="" />
+							<f:selectItems value="#{listarPerfilFormBean.dados}" />
+						</h:selectOneMenu>
+					</li>
+					
+				</ol>	
+				
+				<h:commandButton id="atualizar" action="#{atualizarUsuarioFormBean.atualizarUsuario}" value="#{View['cronos.atualizar']}" styleClass="submitButton" />
+				<h:outputText value="#{View['cronos.espaco']}" />
+				<h:commandButton id="cancelar" action="#{atualizarUsuarioFormBean.cancelar}" value="#{View['cronos.cancelar']}" styleClass="submitButton" />
+				
+			</fieldset>
+			
+		</h:form>
+		
+	</ui:define>
+	
+</ui:composition>
+
+</body>
+
+</html>

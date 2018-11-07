@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:t="http://myfaces.apache.org/tomahawk">
+
+<body>
+
+<ui:composition template="/layout/estrutura/template.xhtml">
+
+	<ui:param name="button" value="salaForm:remover" />
+	
+	<ui:define name="corpo">
+		<a4j:keepAlive beanName="removerSalaFormBean" />
+		<h:form id="salaForm" styleClass="formulario">
+			<fieldset>
+				<legend><h:outputFormat value="#{View['cronos.exclusao.titulo']}"><f:param value="#{View['cronos.sala']}"/></h:outputFormat></legend>
+			
+					<ol>
+						<li>
+							<h:outputLabel for="nome" value="#{View['cronos.form.nome']}" />
+			 	 			<h:outputText id="nome" value="#{removerSalaFormBean.nome}" />		
+						</li>				
+				 		<li>
+							<h:outputLabel for="tipoQuadro" value="#{View['cronos.form.tipoQuadro']}" />
+				 			<h:outputText id="tipoQuadro" value="#{removerSalaFormBean.tipoQuadro}" /> 			
+				 		</li>
+						<li>
+							<h:outputLabel for="perfil" value="#{View['cronos.form.perfil']}" />
+				 			<h:outputText id="perfil" value="#{removerSalaFormBean.perfil}" />			
+						</li>
+						<li>
+							<h:outputLabel for="capacidade" value="#{View['cronos.form.capacidade']}" />
+				 			<h:outputText id="capacidade" value="#{removerSalaFormBean.capacidade}" />			
+						</li>
+						<li>
+							<h:outputLabel for="predio" value="#{View['cronos.form.predio']}" />
+							<h:outputText id="predio" value="#{removerSalaFormBean.predio}" />
+						</li>
+				
+				</ol>	
+				
+				<h:commandButton id="remover" action="#{removerSalaFormBean.removerSala}" value="#{View['cronos.remover']}" styleClass="submitButton" />
+				<h:outputText value="#{View['cronos.espaco']}" />
+				<h:commandButton id="cancelar" action="#{removerSalaFormBean.cancelar}" value="#{View['cronos.cancelar']}" styleClass="submitButton" />					
+	
+			</fieldset>
+		</h:form>
+	</ui:define>
+	
+</ui:composition>
+
+</body>
+
+</html>

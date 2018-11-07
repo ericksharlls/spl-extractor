@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:ui="http://java.sun.com/jsf/facelets"
+   xmlns:f="http://java.sun.com/jsf/core"
+   xmlns:h="http://java.sun.com/jsf/html"
+   xmlns:a4j="http://richfaces.org/a4j"
+   xmlns:rich="http://richfaces.org/rich"
+   xmlns:c="http://java.sun.com/jstl/core"
+   xmlns:t="http://myfaces.apache.org/tomahawk">
+
+<body>
+
+<ui:composition template="/layout/estrutura/template.xhtml">
+
+   <ui:param name="button" value="relatorioHistoricoChavesForm:relatorio" />
+
+   <ui:define name="corpo">
+      <h:form id="relatorioHistoricoChavesForm" styleClass="formulario" style="width:650px;">
+         
+         <fieldset>
+            <legend><h:outputFormat value="#{View['cronos.form.relatorioHistoricoChaves']}"><f:param value="#{View['cronos.departamento']}"/></h:outputFormat></legend>
+             
+             <ol>
+               
+               <li>
+                  <h:outputLabel for="data" value="#{View['cronos.form.data']}" />
+                  <rich:calendar value="#{relatorioHistoricoChavesFormBean.data}" cellWidth="24px" cellHeight="22px" 
+                        style="width:200px; line-height:1px;" locale="#{relatorioUtilizacaoHorariosSalasFormBean.locale}" datePattern="dd/MM/yyyy" id="data" />
+               </li>
+               
+                <li>
+                    <h:outputLabel value="#{View['cronos.form.predio']}" for="predio" />
+                    <h:selectOneMenu id="predio" value="#{relatorioHistoricoChavesFormBean.idPredio}" styleClass="estiloSelectGrande">
+                            <f:selectItem itemLabel="--Selecione--" itemValue="" />
+                            <f:selectItems value="#{listarPredioFormBean.dados}" />
+                            <a4j:support event="onchange" reRender="sala" />
+                    </h:selectOneMenu>
+                </li>
+               
+               <li>
+                  <h:outputLabel for="sala" value="#{View['cronos.form.sala']}" />
+                  <h:selectOneMenu id="sala" value="#{relatorioHistoricoChavesFormBean.idSala}" styleClass="estiloSelectGrande">
+                            <f:selectItem itemLabel="--Selecione--" itemValue="" />
+                            <f:selectItems value="#{relatorioHistoricoChavesFormBean.salasPorPredio}" />
+                            <a4j:support event="onchange" reRender="relatorioHistoricoChavesTable" />
+                  </h:selectOneMenu>
+               </li>
+               
+             </ol>
+            
+            <rich:spacer height="10" />
+            
+            <rich:dataTable id="relatorioHistoricoChavesTable" value="#{relatorioHistoricoChavesFormBean.dados}" 
+                var="i" border="0" align="center" cellspacing="0" width="100%"  
+                rowClasses="list-row-even,list-row-odd">
+                <f:facet name="header">
+                    <rich:columnGroup>
+                        <rich:column>
+                            <h:outputText value="#{View['cronos.table.sala']}" />
+                        </rich:column>
+                        <rich:column>
+                            <h:outputText value="#{View['cronos.table.chave']}" />
+                        </rich:column>
+                        <rich:column>
+                            <h:outputText value="#{View['cronos.table.responsavel']}" />
+                        </rich:column>
+                        <rich:column>
+                            <h:outputText value="#{View['cronos.table.operacao']}" />
+                        </rich:column>
+                        <rich:column>
+                            <h:outputText value="#{View['cronos.table.horario']}" />
+                        </rich:column>
+                          <rich:column>
+                            <h:outputText value="#{View['cronos.table.usuarioSistema']}" />
+                        </rich:column>
+                    </rich:columnGroup>
+                </f:facet>
+                <rich:columnGroup>
+                    <rich:column style="text-align:center;">
+                        <h:outputText value="#{i.sala}" />
+                    </rich:column>
+                    <rich:column style="text-align:center;">
+                        <h:outputText value="#{i.descricaoChave}" />
+                    </rich:column>
+                    <rich:column style="text-align:center;">
+                        <h:outputText value="#{i.responsavel}" />
+                    </rich:column>
+                    <rich:column style="text-align:center;">
+                        <h:outputText value="#{i.operacao}" />
+                    </rich:column>
+                    <rich:column style="text-align:center;">
+                        <h:outputText value="#{i.horario}" />
+                    </rich:column>
+                    <rich:column style="text-align:center;">
+                        <h:outputText value="#{i.usuarioSistema}" />
+                    </rich:column>
+                </rich:columnGroup>
+                <f:facet name="footer">
+                     <rich:datascroller id="salaTableScroller" align="center" for="relatorioHistoricoChavesTable" maxPages="20" renderIfSinglePage="false" stepControls="hide" />
+                </f:facet>
+            </rich:dataTable>
+
+            <rich:spacer height="20" />
+            
+            <h:commandButton id="gerarPDFRelatorioHistoricoChaves" action="#{relatorioHistoricoChavesFormBean.gerarRelatorioEmArquivoPDF}" value="#{View['cronos.gerarRelatorioEmArquivoPDF']}" styleClass="submitButton" />
+            
+         </fieldset>
+         
+      </h:form>
+   </ui:define>
+   
+</ui:composition>
+
+</body>
+
+</html>

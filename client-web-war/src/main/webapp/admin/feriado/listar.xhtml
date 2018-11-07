@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:ui="http://java.sun.com/jsf/facelets"
+   xmlns:f="http://java.sun.com/jsf/core"
+   xmlns:h="http://java.sun.com/jsf/html"
+   xmlns:a4j="http://richfaces.org/a4j"
+   xmlns:rich="http://richfaces.org/rich"
+   xmlns:c="http://java.sun.com/jstl/core"
+   xmlns:t="http://myfaces.apache.org/tomahawk">
+
+<body>
+
+<ui:composition template="/layout/estrutura/template.xhtml">
+
+   <ui:param name="button" value="feriadoForm:listar" />
+
+   <ui:define name="corpo">
+      <h:form id="feriadoForm">
+         
+         <center></center>
+         <a href="#{facesContext.externalContext.requestContextPath}/admin/feriado/novo" style="color: white;font-size: 14px;text-decoration: none; 
+            float: left; padding: 0px 10px 1px 10px; display: block; background:#308402; margin-left: 350px;">
+            Cadastrar
+         </a>
+      
+         <br />
+         <rich:spacer height="5" />
+         
+         <rich:dataTable id="feriadoTable" value="#{consultarFeriadoFormBean.dados}" 
+            var="i" rows="#{consultarFeriadoFormBean.linhas}" border="0" align="center" cellspacing="0" width="80%"  
+            rowClasses="list-row-even,list-row-odd" binding="#{consultarFeriadoFormBean.table}">
+            <f:facet name="header">
+               <rich:columnGroup>
+                  <rich:column>
+                     <h:outputText value="#{View['cronos.table.descricao']}" />
+                  </rich:column>
+                  <rich:column>
+                     <h:outputText value="#{View['cronos.table.data']}" />
+                  </rich:column>
+                  <rich:column>
+                     <h:outputText value="#{View['cronos.table.periodo']}" />
+                  </rich:column>
+                  <rich:column colspan="2">
+                     <h:outputText value="#{View['cronos.espaco']}" />
+                  </rich:column>
+               </rich:columnGroup>
+            </f:facet>
+            <rich:columnGroup>
+               <rich:column style="text-align:center;">
+                  <h:outputText value="#{i.descricao}" />
+               </rich:column>
+               <rich:column style="text-align:center;">
+                  <h:outputText value="#{i.data}" />
+               </rich:column>
+               <rich:column style="text-align:center;">
+                  <h:outputText value="#{i.periodo}" />
+               </rich:column>
+               <rich:column style="text-align:center;" width="10%">
+                  <a href="#{facesContext.externalContext.requestContextPath}/admin/feriado/editar/#{i.id}" style="text-decoration: none;">
+                     <img src="#{facesContext.externalContext.requestContextPath}/img/editar.gif" border="0" />
+                  </a>
+               </rich:column>
+               <rich:column style="text-align:center;" width="10%">
+                  <a href="#{facesContext.externalContext.requestContextPath}/admin/feriado/excluir/#{i.id}" style="text-decoration: none;">
+                     <img src="#{facesContext.externalContext.requestContextPath}/img/excluir.gif" border="0" />
+                  </a>
+               </rich:column>
+            </rich:columnGroup>
+            <f:facet name="footer">
+                <rich:datascroller id="feriadoTableScroller" align="center" for="feriadoTable" maxPages="20" renderIfSinglePage="false" stepControls="hide" />
+            </f:facet>
+         </rich:dataTable>
+         
+      </h:form>
+   </ui:define>
+   
+</ui:composition>
+
+</body>
+
+</html>

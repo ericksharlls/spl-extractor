@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+    xmlns:c="http://java.sun.com/jstl/core"
+    xmlns:t="http://myfaces.apache.org/tomahawk">
+    
+    <f:loadBundle basename="br.ufrn.ct.cronos.web.Mensagens" var="View" />
+    
+	<t:div rendered="#{(facesContext.maximumSeverity!=null) or (not empty param.experid_session) or (not empty param.login_error)}" align="left" style="margin-bottom: 0.9em; margin-bottom: 0.9em; background: none repeat scroll 0% 0% rgb(255, 255, 153); border: 1px solid rgb(255, 204, 51); padding: 5px 0px 10px;">
+		<h:messages id="errorMessages" errorClass="errorMessage" rendered="#{(!empty facesContext.maximumSeverity) and (facesContext.maximumSeverity.ordinal == 2) }" />
+		<h:messages id="warnMessages" warnClass="warnMessage" rendered="#{(!empty facesContext.maximumSeverity) and (facesContext.maximumSeverity.ordinal == 1) }" />
+		<h:messages id="successMessages" infoClass="sucessMessage" rendered="#{(!empty facesContext.maximumSeverity) and (facesContext.maximumSeverity.ordinal == 0) }" />
+		<c:if test="${not empty param.login_error}">
+   			<ul id="errorMessages" >
+   				<li class="errorMessage">
+   					<h:outputText value="#{View['cronos.autenticacao.falha']}" />
+   					<h:outputText value="#{SPRING_SECURITY_LAST_EXCEPTION.message}" />
+   				</li>
+   			</ul>
+		</c:if>
+		<c:if test="${not empty param.experid_session}">
+   			<ul id="errorMessages" >
+   				<li class="errorMessage">
+   					<h:outputText value="#{View['cronos.autenticacao.expira']}" />
+   				</li>
+   			</ul>
+		</c:if>
+		
+	</t:div>
+	
+</ui:composition>

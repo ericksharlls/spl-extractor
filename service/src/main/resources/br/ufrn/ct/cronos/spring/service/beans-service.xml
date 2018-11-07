@@ -1,0 +1,588 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+    	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<!-- MANTER OS BEANS EM ORDEM ALFABETICA -->
+	
+	<import resource="classpath:br/ufrn/ct/cronos/spring/persistence/beans-persistence.xml" />
+	<import resource="classpath:dev/home/componente/service/spring/beans-componente-service.xml" />
+	
+	<!-- Codigo abaixo adicionado em 30/09 para testar o padrao Strategy -->
+	
+	<bean id="DistribuirTurmasEAJ" class="br.ufrn.ct.cronos.service.distribuirturmas.ServiceDistribuirTurmasEAJ">
+	    <property name="disponibilidadeSalaDao" ref="disponibilidadeSalaDao" />
+        <property name="turmaDao" ref="turmaDao" />
+        <property name="periodoDao" ref="periodoDao" />
+        <property name="feriadoDao" ref="feriadoDao" />
+        <property name="horarioDao" ref="horarioDao" />
+	</bean>
+	
+	<bean id="DistribuirTurmasCCHLA" class="br.ufrn.ct.cronos.service.distribuirturmas.ServiceDistribuirTurmasCCHLA">
+        <property name="disponibilidadeSalaDao" ref="disponibilidadeSalaDao" />
+        <property name="turmaDao" ref="turmaDao" />
+        <property name="periodoDao" ref="periodoDao" />
+        <property name="feriadoDao" ref="feriadoDao" />
+        <property name="horarioDao" ref="horarioDao" />
+    </bean>
+	
+	<bean id="DistribuirTurmasCT" class="br.ufrn.ct.cronos.service.distribuirturmas.ServiceDistribuirTurmasCT">
+	   <property name="disponibilidadeSalaDao" ref="disponibilidadeSalaDao" />
+        <property name="turmaDao" ref="turmaDao" />
+        <property name="periodoDao" ref="periodoDao" />
+        <property name="feriadoDao" ref="feriadoDao" />
+        <property name="horarioDao" ref="horarioDao" />
+        <property name="salaDao" ref="salaDao" />
+        <property name="funcionarioDao" ref="funcionarioDao" />
+	</bean>
+	
+	<!-- Codigo acima adicionado em 30/09 para testar o padrao Strategy -->
+	
+	<bean id="AgendarHorario" parent="abstractService" class="br.ufrn.ct.cronos.service.agendarhorario.ServiceAgendarHorario">
+		<property name="agendamentoDao" ref="agendamentoDao" />
+		<property name="disponibilidadeSalaDao" ref="disponibilidadeSalaDao" />
+		<property name="feriadoDao" ref="feriadoDao" />
+        <property name="horarioDao" ref="horarioDao" />
+		<property name="disponibilidadeSalaAgendamentoBackupDao" ref="disponibilidadeSalaAgendamentoBackupDao" />
+		<property name="usuarioDao" ref="usuarioDao" />
+	</bean>
+	
+	<bean id="AlocarTurma" parent="abstractService" class="br.ufrn.ct.cronos.service.alocarturma.ServiceAlocarTurma">
+		<property name="turmaDao" ref="turmaDao" />
+		<property name="salaDao" ref="salaDao" />
+		<property name="disponibilidadeSalaDao" ref="disponibilidadeSalaDao" />
+		<property name="horarioDao" ref="horarioDao" />
+		<property name="periodoDao" ref="periodoDao" />
+		<property name="feriadoDao" ref="feriadoDao" />
+	</bean>
+	
+	<bean id="AtualizarFeriado" parent="abstractService" class="br.ufrn.ct.cronos.service.atualizarferiado.ServiceAtualizarFeriado">
+      <property name="feriadoDao" ref="feriadoDao" />
+      <property name="periodoDao" ref="periodoDao" />
+   </bean>
+	
+	<bean id="AtualizarFuncionario" parent="abstractService" class="br.ufrn.ct.cronos.service.atualizarfuncionario.ServiceAtualizarFuncionario">
+		<property name="funcionarioDao" ref="funcionarioDao" />
+	</bean>
+	
+	<bean id="AtualizarPredio" parent="abstractService" class="br.ufrn.ct.cronos.service.atualizarpredio.ServiceAtualizarPredio">
+		<property name="predioDao" ref="predioDao" />
+	</bean>
+	
+	<bean id="AtualizarSala" parent="abstractService" class="br.ufrn.ct.cronos.service.atualizarsala.ServiceAtualizarSala">
+		<property name="salaDao" ref="salaDao" />
+	</bean>
+	
+	<bean id="AtualizarPeriodo" parent="abstractService" class="br.ufrn.ct.cronos.service.atualizarperiodo.ServiceAtualizarPeriodo">
+		<property name="periodoDao" ref="periodoDao" />
+	</bean>
+	
+	<bean id="AtualizarTurma" parent="abstractService" class="br.ufrn.ct.cronos.service.atualizarturma.ServiceAtualizarTurma">
+		<property name="turmaDao" ref="turmaDao" />
+		<property name="turmaDocenteDao" ref="turmaDocenteDao" />
+	</bean>
+	
+	<bean id="AtualizarUsuario" parent="abstractService" class="br.ufrn.ct.cronos.service.atualizarusuario.ServiceAtualizarUsuario">
+		<property name="usuarioDao" ref="usuarioDao" />
+		<property name="permissaoUsuarioDao" ref="permissaoUsuarioDao" />
+	</bean>
+	
+	<bean id="CadastrarFeriado" parent="abstractService" class="br.ufrn.ct.cronos.service.cadastrarferiado.ServiceCadastrarFeriado">
+      <property name="feriadoDao" ref="feriadoDao" />
+      <property name="periodoDao" ref="periodoDao" />
+   </bean>
+	
+	<bean id="CadastrarFuncionario" parent="abstractService" class="br.ufrn.ct.cronos.service.cadastrarfuncionario.ServiceCadastrarFuncionario">
+		<property name="funcionarioDao" ref="funcionarioDao" />
+	</bean>
+	
+	<bean id="CadastrarPredio" parent="abstractService" class="br.ufrn.ct.cronos.service.cadastrarpredio.ServiceCadastrarPredio">
+		<property name="predioDao" ref="predioDao" />
+	</bean>
+	
+	<bean id="CadastrarSala" parent="abstractService" class="br.ufrn.ct.cronos.service.cadastrarsala.ServiceCadastrarSala">
+		<property name="salaDao" ref="salaDao" />
+	</bean>
+	
+	<bean id="CadastrarPeriodo" parent="abstractService" class="br.ufrn.ct.cronos.service.cadastrarperiodo.ServiceCadastrarPeriodo">
+		<property name="periodoDao" ref="periodoDao" />
+	</bean>
+	
+	<bean id="CadastrarTurma" parent="abstractService" class="br.ufrn.ct.cronos.service.cadastrarturma.ServiceCadastrarTurma">
+		<property name="turmaDao" ref="turmaDao" />
+		<property name="turmaDocenteDao" ref="turmaDocenteDao" />
+	</bean>
+	
+	<bean id="CadastrarUsuario" parent="abstractService" class="br.ufrn.ct.cronos.service.cadastrarusuario.ServiceCadastrarUsuario">
+		<property name="usuarioDao" ref="usuarioDao" />
+		<property name="permissaoUsuarioDao" ref="permissaoUsuarioDao" />
+	</bean>
+	
+	<bean id="ConsultarAgendamento" parent="abstractService" class="br.ufrn.ct.cronos.service.consultaragendamento.ServiceConsultarAgendamento">
+      <property name="agendamentoDao" ref="agendamentoDao" />
+      <property name="funcionarioDao" ref="funcionarioDao" />
+      <property name="disponibilidadeSalaDao" ref="disponibilidadeSalaDao" />
+      <property name="periodoDao" ref="periodoDao" />
+   </bean>
+	
+	<bean id="ConsultarFuncionario" parent="abstractService" class="br.ufrn.ct.cronos.service.consultarfuncionario.ServiceConsultarFuncionario">
+		<property name="funcionarioDao" ref="funcionarioDao" />
+		<property name="tipoFuncionarioDao" ref="tipoFuncionarioDao" />
+	</bean>
+	
+	<bean id="ConsultarFeriado" parent="abstractService" class="br.ufrn.ct.cronos.service.consultarferiado.ServiceConsultarFeriado">
+      <property name="feriadoDao" ref="feriadoDao" />
+      <property name="periodoDao" ref="periodoDao" />
+   </bean>
+	
+	<bean id="ConsultarPredio" parent="abstractService" class="br.ufrn.ct.cronos.service.consultarpredio.ServiceConsultarPredio">
+		<property name="predioDao" ref="predioDao" />
+	</bean>
+	
+	<bean id="ConsultarSala" parent="abstractService" class="br.ufrn.ct.cronos.service.consultarsala.ServiceConsultarSala">
+		<property name="salaDao" ref="salaDao" />
+		<property name="predioDao" ref="predioDao" />
+		<property name="perfilSalaTurmaDao" ref="perfilSalaTurmaDao" />
+	</bean>
+	
+	<bean id="ConsultarSalasDisponiveis" parent="abstractService" class="br.ufrn.ct.cronos.service.consultarsalasdisponiveis.ServiceConsultarSalasDisponiveis">
+		<property name="salaDao" ref="salaDao" />
+		<property name="turmaDao" ref="turmaDao" />
+		<property name="perfilSalaTurmaDao" ref="perfilSalaTurmaDao" />
+		<property name="predioDao" ref="predioDao" />
+		<property name="periodoDao" ref="periodoDao" />
+		<property name="feriadoDao" ref="feriadoDao" />
+		<property name="horarioDao" ref="horarioDao" />
+	</bean>
+	
+	<bean id="ConsultarSalasParaMarcacoes" parent="abstractService" class="br.ufrn.ct.cronos.service.consultarsalasparamarcacoes.ServiceConsultarSalasParaMarcacoes">
+		<property name="perfilSalaTurmaDao" ref="perfilSalaTurmaDao" />
+		<property name="agendamentoDao" ref="agendamentoDao" />
+		<property name="periodoDao" ref="periodoDao" />
+		<property name="feriadoDao" ref="feriadoDao" />
+		    <property name="horarioDao" ref="horarioDao" />
+	</bean>
+	
+	<bean id="ConsultarSalasParaReservaPorDepartamento" parent="abstractService" class="br.ufrn.ct.cronos.service.consultarsalasparareservapordepartamento.ServiceConsultarSalasParaReservaPorDepartamento">
+      <property name="funcionarioDao" ref="funcionarioDao" />
+   </bean>
+	
+	<bean id="ConsultarSalasParaMarcacoesFuturo" parent="abstractService" class="br.ufrn.ct.cronos.service.consultarsalasparamarcacoes.ServiceConsultarSalasParaMarcacoesFuturo">
+		<property name="perfilSalaTurmaDao" ref="perfilSalaTurmaDao" />
+		<property name="agendamentoDao" ref="agendamentoDao" />
+	</bean>
+	
+	<bean id="ConsultarSalaPorPredio" parent="abstractService" class="br.ufrn.ct.cronos.service.consultarsalaporpredio.ServiceConsultarSalaPorPredio">
+		<property name="salaDao" ref="salaDao" />
+	</bean>
+	
+	<bean id="ConsultarPeriodo" parent="abstractService" class="br.ufrn.ct.cronos.service.consultarperiodo.ServiceConsultarPeriodo">
+		<property name="periodoDao" ref="periodoDao" />
+	</bean>
+	
+	<bean id="ConsultarTurma" parent="abstractService" class="br.ufrn.ct.cronos.service.consultarturma.ServiceConsultarTurma">
+		<property name="turmaDao" ref="turmaDao" />
+		<property name="perfilSalaTurmaDao" ref="perfilSalaTurmaDao" />
+		<property name="turmaDocenteDao" ref="turmaDocenteDao" />
+		<property name="funcionarioDao" ref="funcionarioDao" />
+	</bean>
+	
+	<bean id="ConsultarTurmaPorCodigoEDocente" parent="abstractService" class="br.ufrn.ct.cronos.service.consultarturmaporcodigoedocente.ServiceConsultarTurmaPorCodigoEDocente">
+		<property name="turmaDao" ref="turmaDao" />
+		<property name="disponibilidadeSalaDao" ref="disponibilidadeSalaDao" />
+		<property name="perfilSalaTurmaDao" ref="perfilSalaTurmaDao" />
+		<property name="horarioDao" ref="horarioDao" />
+		<property name="turmaDocenteDao" ref="turmaDocenteDao" />
+		<property name="funcionarioDao" ref="funcionarioDao" />
+	</bean>
+	
+	<bean id="ConsultarUsuario" parent="abstractService" class="br.ufrn.ct.cronos.service.consultarusuario.ServiceConsultarUsuario">
+		<property name="usuarioDao" ref="usuarioDao" />
+		<property name="funcionarioDao" ref="funcionarioDao" />
+		<property name="papelUsuarioDao" ref="papelUsuarioDao" />
+	</bean>
+	
+	<bean id="ContadorPredio" parent="abstractService" class="br.ufrn.ct.cronos.service.contadorpredio.ServiceContadorPredio">
+		<property name="predioDao" ref="predioDao" />
+	</bean>
+	
+	<bean id="ContadorSala" parent="abstractService" class="br.ufrn.ct.cronos.service.contadorsala.ServiceContadorSala">
+		<property name="salaDao" ref="salaDao" />
+	</bean>
+	
+	<bean id="ContadorSalaPorPredio" parent="abstractService" class="br.ufrn.ct.cronos.service.contadorsalaporpredio.ServiceContadorSalaPorPredio">
+		<property name="salaDao" ref="salaDao" />
+	</bean>
+	
+	<bean id="ContadorTurma" parent="abstractService" class="br.ufrn.ct.cronos.service.contadorturma.ServiceContadorTurma">
+		<property name="turmaDao" ref="turmaDao" />
+	</bean>
+	
+	<bean id="ContadorUsuario" parent="abstractService" class="br.ufrn.ct.cronos.service.contadorusuario.ServiceContadorUsuario">
+		<property name="usuarioDao" ref="usuarioDao" />
+	</bean>
+	
+	<bean id="DesalocarTurma" parent="abstractService" class="br.ufrn.ct.cronos.service.desalocarturma.ServiceDesalocarTurma">
+		<property name="turmaDao" ref="turmaDao" />
+		<property name="disponibilidadeSalaDao" ref="disponibilidadeSalaDao" />
+	</bean>
+	
+	<bean id="DistribuirTurmas" parent="abstractService" class="br.ufrn.ct.cronos.service.distribuirturmas.ServiceDistribuirTurmas">
+		<property name="disponibilidadeSalaDao" ref="disponibilidadeSalaDao" />
+		<property name="turmaDao" ref="turmaDao" />
+		<property name="horarioDao" ref="horarioDao" />
+		<property name="periodoDao" ref="periodoDao" />
+		<property name="feriadoDao" ref="feriadoDao" />
+		<property name="salaDao" ref="salaDao" />
+	</bean>
+	
+	<bean id="DistribuirTurmasAntigas" parent="abstractService" class="br.ufrn.ct.cronos.service.distribuirturmasantigas.ServiceDistribuirTurmasAntigas">
+        <property name="turmaDao" ref="turmaDao" />
+        <property name="disponibilidadeSalaDao" ref="disponibilidadeSalaDao" />
+        <property name="horarioDao" ref="horarioDao" />
+        <property name="periodoDao" ref="periodoDao" />
+        <property name="feriadoDao" ref="feriadoDao" />
+    </bean>
+	
+	<bean id="GravarTurma" parent="abstractService" class="br.ufrn.ct.cronos.service.gravarturma.ServiceGravarTurma">
+		<property name="turmaDao" ref="turmaDao" />
+	</bean>
+	
+	<!--  Abaixo, servico para Importacao de Turmas -->
+	
+	<bean id="ImportarTurmasCCHLA" class="br.ufrn.ct.cronos.service.importarturmas.ServiceImportarTurmasCCHLA">
+        <property name="periodoDao" ref="periodoDao" />
+        <property name="turmaDao" ref="turmaDao" />
+    </bean>
+    
+    <bean id="ImportarTurmasCT" class="br.ufrn.ct.cronos.service.importarturmas.ServiceImportarTurmasCT">
+        <property name="periodoDao" ref="periodoDao" />
+        <property name="turmaDao" ref="turmaDao" />
+    </bean>
+    
+    <bean id="ImportarTurmasEAJ" class="br.ufrn.ct.cronos.service.importarturmas.ServiceImportarTurmasEAJ">
+        <property name="periodoDao" ref="periodoDao" />
+    </bean>
+    
+    <bean id="ImportarTurmasCTVersao02" class="br.ufrn.ct.cronos.service.importarturmas.ServiceImportarTurmasCTVersao02">
+        <property name="periodoDao" ref="periodoDao" />
+        <property name="funcionarioDao" ref="funcionarioDao" />
+        <property name="turmaDao" ref="turmaDao" />
+        <property name="turmaDocenteDao" ref="turmaDocenteDao" />
+    </bean>
+    
+    <bean id="ImportarTurmasCCHLAVersao02" class="br.ufrn.ct.cronos.service.importarturmas.ServiceImportarTurmasCCHLAVersao02">
+        <property name="periodoDao" ref="periodoDao" />
+        <property name="funcionarioDao" ref="funcionarioDao" />
+        <property name="turmaDao" ref="turmaDao" />
+        <property name="turmaDocenteDao" ref="turmaDocenteDao" />
+    </bean>
+    
+    <!--  Acima, servico para Importacao de Turmas -->
+	
+	<bean id="ListarDepartamento" parent="abstractService" class="br.ufrn.ct.cronos.service.listardepartamento.ServiceListarDepartamento">
+		<property name="departamentoDao" ref="departamentoDao" />
+	</bean>
+	
+	<bean id="ListarFuncionario" parent="abstractService" class="br.ufrn.ct.cronos.service.listarfuncionario.ServiceListarFuncionario">
+		<property name="funcionarioDao" ref="funcionarioDao" />
+	</bean>
+	
+	<bean id="ListarFuncionarioDocente" parent="abstractService" class="br.ufrn.ct.cronos.service.listarfuncionariodocente.ServiceListarFuncionarioDocente">
+        <property name="funcionarioDao" ref="funcionarioDao" />
+    </bean>
+	
+	<bean id="ListarOperacao" parent="abstractService" class="br.ufrn.ct.cronos.service.listaroperacao.ServiceListarOperacao">
+		<property name="operacaoDao" ref="operacaoDao" />
+	</bean>
+	
+	<bean id="ListarPerfil" parent="abstractService" class="br.ufrn.ct.cronos.service.listarperfil.ServiceListarPerfil">
+		<property name="papelUsuarioDao" ref="papelUsuarioDao" />
+	</bean>
+	
+	<bean id="ListarPeriodo" parent="abstractService" class="br.ufrn.ct.cronos.service.listarperiodo.ServiceListarPeriodo">
+      <property name="periodoDao" ref="periodoDao" />
+   </bean>
+	
+	<bean id="ListarPredio" parent="abstractService" class="br.ufrn.ct.cronos.service.listarpredio.ServiceListarPredio">
+		<property name="predioDao" ref="predioDao" />
+	</bean>
+	
+	<bean id="ListarTipoSala" parent="abstractService" class="br.ufrn.ct.cronos.service.listartiposala.ServiceListarTipoSala">
+		<property name="perfilSalaTurmaDao" ref="perfilSalaTurmaDao" />
+	</bean>
+	
+	<bean id="ListarSala" parent="abstractService" class="br.ufrn.ct.cronos.service.listarsala.ServiceListarSala">
+		<property name="salaDao" ref="salaDao" />
+	</bean>
+	
+	<bean id="ListarSalaPorPredio" parent="abstractService" class="br.ufrn.ct.cronos.service.listarsalaporpredio.ServiceListarSalaPorPredio">
+		<property name="salaDao" ref="salaDao" />
+	</bean>
+	
+	<bean id="ListarTipoFuncionario" parent="abstractService" class="br.ufrn.ct.cronos.service.listartipofuncionario.ServiceListarTipoFuncionario">
+        <property name="tipoFuncionarioDao" ref="tipoFuncionarioDao" />
+    </bean>
+	
+	<bean id="ListarTurma" parent="abstractService" class="br.ufrn.ct.cronos.service.listarturma.ServiceListarTurma">
+		<property name="turmaDao" ref="turmaDao" />
+	</bean>
+	
+	<bean id="ListarTurmasDistribuidas" parent="abstractService" class="br.ufrn.ct.cronos.service.listarturmasdistribuidas.ServiceListarTurmasDistribuidas">
+		<property name="turmaDao" ref="turmaDao" />
+	</bean>
+	
+	<bean id="ObterAgendamento" parent="abstractService" class="br.ufrn.ct.cronos.service.obteragendamento.ServiceObterAgendamento">
+		<property name="agendamentoDao" ref="agendamentoDao" />
+		<property name="funcionarioDao" ref="funcionarioDao" />
+		<property name="disponibilidadeSalaDao" ref="disponibilidadeSalaDao" />
+		<property name="horarioDao" ref="horarioDao" />
+	</bean>
+	
+   <bean id="ObterFeriado" parent="abstractService" class="br.ufrn.ct.cronos.service.obterferiado.ServiceObterFeriado">
+      <property name="feriadoDao" ref="feriadoDao" />
+      <property name="periodoDao" ref="periodoDao" />
+   </bean>
+	
+	<bean id="ObterFuncionario" parent="abstractService" class="br.ufrn.ct.cronos.service.obterfuncionario.ServiceObterFuncionario">
+		<property name="funcionarioDao" ref="funcionarioDao" />
+	</bean>
+	
+	<bean id="ObterHorarioSala" parent="abstractService" class="br.ufrn.ct.cronos.service.obterhorariosala.ServiceObterHorarioSala">
+		<property name="turmaDao" ref="turmaDao" />
+		<property name="agendamentoDao" ref="agendamentoDao" />
+		<property name="disponibilidadeSalaDao" ref="disponibilidadeSalaDao" />
+		<property name="horarioDao" ref="horarioDao" />
+		<property name="funcionarioDao" ref="funcionarioDao" />
+		<property name="turmaDocenteDao" ref="turmaDocenteDao" />
+	</bean>
+	
+	<bean id="ObterPredio" parent="abstractService" class="br.ufrn.ct.cronos.service.obterpredio.ServiceObterPredio">
+		<property name="predioDao" ref="predioDao" />
+	</bean>
+	
+	<bean id="ObterSala" parent="abstractService" class="br.ufrn.ct.cronos.service.obtersala.ServiceObterSala">
+		<property name="salaDao" ref="salaDao" />
+		<property name="predioDao" ref="predioDao" />
+		<property name="perfilSalaTurmaDao" ref="perfilSalaTurmaDao" />
+	</bean>
+	
+	<bean id="ObterSemestreLetivo" parent="abstractService" class="br.ufrn.ct.cronos.service.obtersemestreletivo.ServiceObterSemestreLetivo">
+		<property name="periodoDao" ref="periodoDao" />
+	</bean>
+	
+	<bean id="ObterTurma" parent="abstractService" class="br.ufrn.ct.cronos.service.obterturma.ServiceObterTurma">
+		<property name="turmaDao" ref="turmaDao" />
+		<property name="disponibilidadeSalaDao" ref="disponibilidadeSalaDao" />
+		<property name="perfilSalaTurmaDao" ref="perfilSalaTurmaDao" />
+		<property name="horarioDao" ref="horarioDao" />
+		<property name="turmaDocenteDao" ref="turmaDocenteDao" />
+		<property name="funcionarioDao" ref="funcionarioDao" />
+	</bean>
+	
+	<bean id="ObterTurmaCompleta" parent="abstractService" class="br.ufrn.ct.cronos.service.permutarturma.ServiceObterTurmaCompleta">
+		<property name="turmaDao" ref="turmaDao" />
+		<property name="disponibilidadeSalaDao" ref="disponibilidadeSalaDao" />
+		<property name="perfilSalaTurmaDao" ref="perfilSalaTurmaDao" />
+		<property name="horarioDao" ref="horarioDao" />
+		<property name="turmaDocenteDao" ref="turmaDocenteDao" />
+		<property name="funcionarioDao" ref="funcionarioDao" />
+	</bean>
+	
+	<bean id="ObterUsuario" parent="abstractService" class="br.ufrn.ct.cronos.service.obterusuario.ServiceObterUsuario">
+		<property name="usuarioDao" ref="usuarioDao" />
+		<property name="funcionarioDao" ref="funcionarioDao" />
+		<property name="papelUsuarioDao" ref="papelUsuarioDao" />
+	</bean>
+	
+	<bean id="PermutarTurma" parent="abstractService" class="br.ufrn.ct.cronos.service.permutarturma.ServicePermutarTurma">
+		<property name="turmaDao" ref="turmaDao" />
+		<property name="disponibilidadeSalaDao" ref="disponibilidadeSalaDao" />
+		<property name="horarioDao" ref="horarioDao" />
+		<property name="feriadoDao" ref="feriadoDao" />
+		<property name="periodoDao" ref="periodoDao" />
+	</bean>
+
+    <bean id="RelatorioHistoricoChave" parent="abstractService" class="br.ufrn.ct.cronos.service.relatoriohistoricochave.ServiceRelatorioHistoricoChave">
+        <property name="chaveDao" ref="chaveDao" />
+        <property name="funcionarioDao" ref="funcionarioDao" />
+        <property name="historicoChaveDao" ref="historicoChaveDao" />
+        <property name="operacaoDao" ref="operacaoDao" />
+        <property name="parametrosRelatoriosDao" ref="parametrosRelatoriosDao" />
+        <property name="periodoDao" ref="periodoDao" />
+        <property name="salaDao" ref="salaDao" />
+    </bean>
+    
+    <bean id="RelatorioHistoricoChavePorSala" parent="abstractService" class="br.ufrn.ct.cronos.service.relatoriohistoricochaveporsala.ServiceRelatorioHistoricoChavePorSala">
+        <property name="chaveDao" ref="chaveDao" />
+        <property name="funcionarioDao" ref="funcionarioDao" />
+        <property name="historicoChaveDao" ref="historicoChaveDao" />
+        <property name="operacaoDao" ref="operacaoDao" />
+        <property name="salaDao" ref="salaDao" />
+        <property name="usuarioDao" ref="usuarioDao" />
+    </bean>
+
+	<bean id="RelatorioHorarioSalas" parent="abstractService" class="br.ufrn.ct.cronos.service.relatoriohorariosalas.ServiceRelatorioHorarioSalas">
+		<property name="salaDao" ref="salaDao" />
+		<property name="chaveDao" ref="chaveDao" />
+		<property name="historicoChaveDao" ref="historicoChaveDao" />
+		<property name="horarioDao" ref="horarioDao" />
+		<property name="parametrosRelatoriosDao" ref="parametrosRelatoriosDao" />
+		<property name="periodoDao" ref="periodoDao" />
+	</bean>
+	
+	<!-- Codigo abaixo adicionado em 18/10 para testar o padrao Strategy -->
+	
+	<bean abstract="true" id="RegistrarOperacaoChave" parent="abstractService" class="br.ufrn.ct.cronos.service.registraroperacaochave.ServiceRegistrarOperacaoChave">
+		<property name="chaveDao" ref="chaveDao" />
+		<property name="historicoChaveDao" ref="historicoChaveDao" />
+		<property name="usuarioDao" ref="usuarioDao" />
+		<property name="funcionarioDao" ref="funcionarioDao" />
+	</bean>
+	
+	<bean id="RegistrarOperacaoChaveComResponsavel" parent="RegistrarOperacaoChave" class="br.ufrn.ct.cronos.service.registraroperacaochave.ServiceRegistrarOperacaoChaveComResponsavel">
+        <property name="chaveDao" ref="chaveDao" />
+        <property name="historicoChaveDao" ref="historicoChaveDao" />
+        <property name="usuarioDao" ref="usuarioDao" />
+        <property name="funcionarioDao" ref="funcionarioDao" />
+    </bean>
+    
+    <bean id="RegistrarOperacaoChaveSemResponsavel" parent="RegistrarOperacaoChave" class="br.ufrn.ct.cronos.service.registraroperacaochave.ServiceRegistrarOperacaoChaveSemResponsavel">
+        <property name="chaveDao" ref="chaveDao" />
+        <property name="historicoChaveDao" ref="historicoChaveDao" />
+        <property name="usuarioDao" ref="usuarioDao" />
+        <property name="funcionarioDao" ref="funcionarioDao" />
+    </bean>
+    
+    <!-- Codigo acima adicionado em 18/10 para testar o padrao Strategy -->
+	
+	<bean id="RelatorioOcupacaoTurmas" parent="abstractService" class="br.ufrn.ct.cronos.service.relatorioocupacaoturmas.ServiceRelatorioOcupacaoTurmas">
+		<property name="horarioDao" ref="horarioDao" />
+		<property name="turmaDao" ref="turmaDao" />
+		<property name="chaveDao" ref="chaveDao" />
+		<property name="disponibilidadeSalaDao" ref="disponibilidadeSalaDao" />
+		<property name="historicoChaveDao" ref="historicoChaveDao" />
+		<property name="parametrosRelatoriosDao" ref="parametrosRelatoriosDao" />
+		<property name="periodoDao" ref="periodoDao" />
+		
+	</bean>
+	
+	<bean id="RelatorioDepartamentos" parent="abstractService" class="br.ufrn.ct.cronos.service.relatoriodepartamentos.ServiceRelatorioDepartamentos">
+		<property name="turmaDao" ref="turmaDao" />
+		<property name="disponibilidadeSalaDao" ref="disponibilidadeSalaDao" />
+		<property name="periodoDao" ref="periodoDao" />
+		<property name="departamentoDao" ref="departamentoDao" />
+		<property name="parametrosRelatoriosDao" ref="parametrosRelatoriosDao" />
+		<property name="horarioDao" ref="horarioDao" />
+        <property name="turmaDocenteDao" ref="turmaDocenteDao" />
+        <property name="funcionarioDao" ref="funcionarioDao" />
+	</bean>
+	  
+	<bean id="RelatorioOcupacaoHorariosSalas" parent="abstractService" class="br.ufrn.ct.cronos.service.relatorioocupacaohorariossalas.ServiceRelatorioOcupacaoHorariosSalas">
+      <property name="disponibilidadeSalaDao" ref="disponibilidadeSalaDao" />
+      <property name="horarioDao" ref="horarioDao" />
+      <property name="salaDao" ref="salaDao" />
+      <property name="periodoDao" ref="periodoDao" />
+      <property name="predioDao" ref="predioDao" />
+      <property name="parametrosRelatoriosDao" ref="parametrosRelatoriosDao" />
+   </bean>
+	
+	<bean id="RelatorioTurmasNaoDistribuidas" parent="abstractService" class="br.ufrn.ct.cronos.service.relatorioturmasnaodistribuidas.ServiceRelatorioTurmasNaoDistribuidas">
+	   <property name="turmaDao" ref="turmaDao" />
+		<property name="disponibilidadeSalaDao" ref="disponibilidadeSalaDao" />
+	   <property name="periodoDao" ref="periodoDao" />
+	   <property name="departamentoDao" ref="departamentoDao" />
+	   <property name="parametrosRelatoriosDao" ref="parametrosRelatoriosDao" />
+	   <property name="funcionarioDao" ref="funcionarioDao" />
+	   <property name="turmaDocenteDao" ref="turmaDocenteDao" />
+	</bean>
+	
+	<bean id="RelatorioSalas" parent="abstractService" class="br.ufrn.ct.cronos.service.relatoriosalas.ServiceRelatorioSalas">
+		<property name="turmaDao" ref="turmaDao" />
+		<property name="salaDao" ref="salaDao" />
+		<property name="horarioDao" ref="horarioDao" />
+		<property name="disponibilidadeSalaDao" ref="disponibilidadeSalaDao" />
+		<property name="periodoDao" ref="periodoDao" />
+		<property name="parametrosRelatoriosDao" ref="parametrosRelatoriosDao" />
+		<property name="funcionarioDao" ref="funcionarioDao" />
+		<property name="turmaDocenteDao" ref="turmaDocenteDao" />
+	</bean>
+	
+	<bean id="RelatorioSalasCheias" parent="abstractService" class="br.ufrn.ct.cronos.service.relatoriosalascheias.ServiceRelatorioSalasCheias">
+		<property name="turmaDao" ref="turmaDao" />
+		<property name="disponibilidadeSalaDao" ref="disponibilidadeSalaDao" />
+		<property name="periodoDao" ref="periodoDao" />
+		<property name="parametrosRelatoriosDao" ref="parametrosRelatoriosDao" />
+	</bean>
+	
+	<bean id="RemoverFeriado" parent="abstractService" class="br.ufrn.ct.cronos.service.removerferiado.ServiceRemoverFeriado">
+      <property name="feriadoDao" ref="feriadoDao" />
+   </bean>
+	
+	<bean id="RemoverFuncionario" parent="abstractService" class="br.ufrn.ct.cronos.service.removerfuncionario.ServiceRemoverFuncionario">
+		<property name="funcionarioDao" ref="funcionarioDao" />
+		<property name="usuarioDao" ref="usuarioDao" />
+	</bean>
+	
+	<bean id="RemoverAgendamentoPorInteressado" parent="abstractService" class="br.ufrn.ct.cronos.service.removeragendamentoporinteressado.ServiceRemoverAgendamentoPorInteressado">
+		<property name="agendamentoDao" ref="agendamentoDao" />
+		<property name="disponibilidadeSalaDao" ref="disponibilidadeSalaDao" />
+		<property name="disponibilidadeSalaAgendamentoBackupDao" ref="disponibilidadeSalaAgendamentoBackupDao" />
+	</bean>
+	
+	<bean id="RemoverPredio" parent="abstractService" class="br.ufrn.ct.cronos.service.removerpredio.ServiceRemoverPredio">
+		<property name="predioDao" ref="predioDao" />
+	</bean>
+	
+	<bean id="RemoverSala" parent="abstractService" class="br.ufrn.ct.cronos.service.removersala.ServiceRemoverSala">
+		<property name="salaDao" ref="salaDao" />
+	</bean>
+	
+	<bean id="RemoverPeriodo" parent="abstractService" class="br.ufrn.ct.cronos.service.removerperiodo.ServiceRemoverPeriodo">
+		<property name="periodoDao" ref="periodoDao" />
+	</bean>
+	
+	<bean id="RemoverTurma" parent="abstractService" class="br.ufrn.ct.cronos.service.removerturma.ServiceRemoverTurma">
+		<property name="turmaDao" ref="turmaDao" />
+		<property name="disponibilidadeSalaDao" ref="disponibilidadeSalaDao" />
+	</bean>
+	
+	<bean id="RelatorioTermoCompromisso" parent="abstractService" class="br.ufrn.ct.cronos.service.relatoriotermocompromisso.ServiceRelatorioTermoCompromisso">
+		<property name="salaDao" ref="salaDao" />
+		<property name="periodoDao" ref="periodoDao" />
+		<property name="feriadoDao" ref="feriadoDao" />
+		<property name="funcionarioDao" ref="funcionarioDao" />
+		<property name="parametrosRelatoriosDao" ref="parametrosRelatoriosDao" />
+	</bean>
+
+	<bean id="RemoverUsuario" parent="abstractService" class="br.ufrn.ct.cronos.service.removerusuario.ServiceRemoverUsuario">
+		<property name="usuarioDao" ref="usuarioDao" />
+		<property name="permissaoUsuarioDao" ref="permissaoUsuarioDao" />
+	</bean>	
+	
+	<bean name="detalheTarefa" class="org.springframework.scheduling.quartz.JobDetailBean">
+    	<property name="jobClass" value="br.ufrn.ct.cronos.service.removeragendamentosanteriores.ServiceRemoverAgendamentosAnteriores" />
+    	<property name="jobDataAsMap">
+    		<map>
+    			<entry key="agendamentoDao" value-ref="agendamentoDao" />
+    			<entry key="disponibilidadeSalaDao" value-ref="disponibilidadeSalaDao" />
+    		</map>
+    	</property>
+  	</bean>
+	
+	<bean id="cronTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="detalheTarefa" />
+		<property name="cronExpression" value="0 35 22 * * ?" />
+	</bean>
+	
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="cronTrigger" />
+			</list>
+		</property>
+	</bean>
+	
+	
+</beans>

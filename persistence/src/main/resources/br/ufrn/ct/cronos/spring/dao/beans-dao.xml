@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+   
+   	<!-- MANTER OS BEANS EM ORDEM ALFABETICA -->
+   	
+   	<bean id="agendamentoDao" parent="dao" class="br.ufrn.ct.cronos.dao.impl.AgendamentoDaoImpl" />
+   	
+   	<bean id="chaveDao" parent="dao" class="br.ufrn.ct.cronos.dao.impl.ChaveDaoImpl" />
+   	
+   	<bean id="departamentoDao" parent="dao" class="br.ufrn.ct.cronos.dao.impl.DepartamentoDaoImpl" />
+   	
+   	<bean id="disponibilidadeSalaDao" parent="dao" class="br.ufrn.ct.cronos.dao.impl.DisponibilidadeSalaDaoImpl">
+   	  <property name="horarioDao" ref="horarioDao" />
+   	  <property name="periodoDao" ref="periodoDao" />
+   	  <property name="feriadoDao" ref="feriadoDao" />
+   	</bean>
+   	
+   	<bean id="disponibilidadeSalaAgendamentoBackupDao" parent="dao" class="br.ufrn.ct.cronos.dao.impl.DisponibilidadeSalaAgendamentoBackupDaoImpl" />
+   	
+   	<bean id="feriadoDao" parent="dao" class="br.ufrn.ct.cronos.dao.impl.FeriadoDaoImpl" />
+   	
+   	<bean id="funcionarioDao" parent="dao" class="br.ufrn.ct.cronos.dao.impl.FuncionarioDaoImpl" />
+   	
+   	<bean id="historicoChaveDao" parent="dao" class="br.ufrn.ct.cronos.dao.impl.HistoricoChaveDaoImpl" />
+   	
+   	<bean id="horarioDao" parent="dao" class="br.ufrn.ct.cronos.dao.impl.HorarioDaoImpl" />
+   	
+   	<bean id="operacaoDao" parent="dao" class="br.ufrn.ct.cronos.dao.impl.OperacaoDaoImpl" />
+   	
+   	<bean id="papelUsuarioDao" parent="dao" class="br.ufrn.ct.cronos.dao.impl.PapelUsuarioDaoImpl" />
+   	
+   	<bean id="parametrosRelatoriosDao" parent="dao" class="br.ufrn.ct.cronos.dao.impl.ParametrosRelatoriosDaoImpl" />
+   	
+   	<bean id="perfilSalaTurmaDao" parent="dao" class="br.ufrn.ct.cronos.dao.impl.PerfilSalaTurmaDaoImpl" />
+   	
+   	<bean id="periodoDao" parent="dao" class="br.ufrn.ct.cronos.dao.impl.PeriodoDaoImpl" />
+   	
+   	<bean id="predioDao" parent="dao" class="br.ufrn.ct.cronos.dao.impl.PredioDaoImpl" />
+   	
+   	<bean id="salaDao" parent="dao" class="br.ufrn.ct.cronos.dao.impl.SalaDaoImpl" />
+   	
+   	<bean id="tipoFuncionarioDao" parent="dao" class="br.ufrn.ct.cronos.dao.impl.TipoFuncionarioDaoImpl" />
+   	
+   	<bean id="turmaDao" parent="dao" class="br.ufrn.ct.cronos.dao.impl.TurmaDaoImpl" />
+   	
+   	<bean id="turmaDocenteDao" parent="dao" class="br.ufrn.ct.cronos.dao.impl.TurmaDocenteDaoImpl" />
+   	
+   	<bean id="usuarioDao" parent="dao" class="br.ufrn.ct.cronos.dao.impl.UsuarioDaoImpl" />
+   	
+   	<bean id="permissaoUsuarioDao" parent="dao" class="br.ufrn.ct.cronos.dao.impl.PermissaoUsuarioDaoImpl" />
+   	
+   
+</beans>

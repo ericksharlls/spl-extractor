@@ -1,0 +1,52 @@
+/*    */ package br.ufrn.ct.cronos.consultarsalaporpredio.vo;
+/*    */ 
+/*    */ import java.io.Serializable;
+/*    */ 
+/*    */ public class DadosConsultarSalaPorPredio
+/*    */   implements Serializable
+/*    */ {
+/*    */   private static final long serialVersionUID = 1L;
+/*    */   private Long id;
+/*    */   private String nome;
+/*    */   private int capacidade;
+/*    */ 
+/*    */   public DadosConsultarSalaPorPredio()
+/*    */   {
+/*    */   }
+/*    */ 
+/*    */   public Long getId()
+/*    */   {
+/* 18 */     return this.id;
+/*    */   }
+/*    */ 
+/*    */   public void setId(Long id) {
+/* 22 */     this.id = id;
+/*    */   }
+/*    */ 
+/*    */   public String getNome() {
+/* 26 */     return this.nome;
+/*    */   }
+/*    */ 
+/*    */   public void setNome(String nome) {
+/* 30 */     this.nome = nome;
+/*    */   }
+/*    */ 
+/*    */   public DadosConsultarSalaPorPredio(Long id, String nome)
+/*    */   {
+/* 35 */     this.id = id;
+/* 36 */     this.nome = nome;
+/*    */   }
+/*    */ 
+/*    */   public int getCapacidade() {
+/* 40 */     return this.capacidade;
+/*    */   }
+/*    */ 
+/*    */   public void setCapacidade(int capacidade) {
+/* 44 */     this.capacidade = capacidade;
+/*    */   }
+/*    */ }
+
+/* Location:           C:\Users\Erick\Documents\componentesCronosAtualizados\cronos-core-0.0.1.0-SNAPSHOT\
+ * Qualified Name:     br.ufrn.ct.cronos.consultarsalaporpredio.vo.DadosConsultarSalaPorPredio
+ * JD-Core Version:    0.6.2
+ */

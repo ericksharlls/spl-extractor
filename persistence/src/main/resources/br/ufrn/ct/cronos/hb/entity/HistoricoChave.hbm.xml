@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping default-lazy="false">
+    <class name="br.ufrn.ct.cronos.entity.HistoricoChave" table="historico_chave">
+        <id name="id" column="id_historico_chave" type="java.lang.Long">
+            <generator class="identity" />
+        </id>
+
+        <property name="horaRealizacao" column="hora_realizacao_operacao" type="java.util.Date" />
+        <property name="idOperacao" column="id_operacao" type="java.lang.Long" />
+        <property name="idChave" column="id_chave" type="java.lang.Long" />
+        <property name="idUsuario" column="id_usuario" type="java.lang.Long" />
+        <property name="idResponsavel" column="id_responsavel" type="java.lang.Long" />
+        
+    </class>
+</hibernate-mapping>
+

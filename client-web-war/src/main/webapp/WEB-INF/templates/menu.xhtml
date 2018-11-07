@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:sec="http://www.springframework.org/security/facelets/tags">
+	
+	<f:loadBundle basename="br.ufrn.ct.cronos.web.Mensagens" var="View" />
+	
+	<div class="navegacaoSecao">
+		<ul>
+			<sec:ifAnyGranted roles="ROLE_ADMINISTRADOR">
+			<li><a href="#"><h:outputText value="#{View['cronos.menu.cadastros']}" /></a>
+				<ul>
+					<li class="expandivel"><a href="#"><h:outputText value="#{View['cronos.menu.sala']}" /></a>
+						<ul>
+							<li><a href="#{facesContext.externalContext.requestContextPath}/admin/sala/novo"><h:outputText value="#{View['cronos.menu.novo']}" /></a></li>
+						</ul>
+					</li>
+					<li class="expandivel"><a href="#"><h:outputText value="#{View['cronos.menu.turma']}" /></a>
+						<ul>
+							<li><a href="#{facesContext.externalContext.requestContextPath}/admin/turma/novo"><h:outputText value="#{View['cronos.menu.novo']}" /></a></li>
+						</ul>
+					</li>
+					
+				</ul>
+			</li>
+			<li><a href="#"><h:outputText value="#{View['cronos.menu.listagens']}" /></a>
+				<ul>
+					<li class="expandivel"><a href="#"><h:outputText value="#{View['cronos.menu.sala']}" /></a>
+						<ul>
+							<li><a href="#{facesContext.externalContext.requestContextPath}/admin/sala/listar"><h:outputText value="#{View['cronos.menu.listar']}" /></a></li>
+						</ul>
+					</li>
+					<li class="expandivel"><a href="#"><h:outputText value="#{View['cronos.menu.turma']}" /></a>
+						<ul>
+							<li><a href="#{facesContext.externalContext.requestContextPath}/admin/turma/listar"><h:outputText value="#{View['cronos.menu.listar']}" /></a></li>
+						</ul>
+					</li>
+					
+				</ul>
+			</li>
+			<li><a href="#"><h:outputText value="#{View['cronos.menu.relatorios']}" /></a>
+				<ul>
+					<li class="expandivel"><a href="#"><h:outputText value="#{View['cronos.menu.sala']}" /></a>
+						<ul>
+							<li><a href="#{facesContext.externalContext.requestContextPath}/admin/relatorio/sala"><h:outputText value="#{View['cronos.menu.relatorioSalas']}" /></a></li>
+							<li><a href="#{facesContext.externalContext.requestContextPath}/admin/relatorio/salasCheias"><h:outputText value="#{View['cronos.menu.relatorioSalasCheias']}" /></a></li>
+						</ul>
+					</li>
+					<li class="expandivel"><a href="#"><h:outputText value="#{View['cronos.menu.departamento']}" /></a>
+						<ul>
+							<li><a href="#{facesContext.externalContext.requestContextPath}/admin/relatorio/departamento"><h:outputText value="#{View['cronos.menu.relatorioDepartamentos']}" /></a></li>
+						</ul>
+					</li>
+					<li class="expandivel"><a href="#"><h:outputText value="#{View['cronos.menu.turma']}" /></a>
+						<ul>
+							<li><a href="#{facesContext.externalContext.requestContextPath}/admin/relatorio/turmasNaoDistribuidas"><h:outputText value="#{View['cronos.menu.relatorioTurmasNaoDistribuidas']}" /></a></li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li><a href="#"><h:outputText value="#{View['cronos.menu.distribuicao']}" /></a>
+				<ul>
+					<li class="expandivel"><a href="#"><h:outputText value="#{View['cronos.menu.turma']}" /></a>
+						<ul>
+							<li><a href="#{facesContext.externalContext.requestContextPath}/admin/distribuicao/distribuicao"><h:outputText value="#{View['cronos.menu.distribuicaoTurmas']}" /></a></li>
+							<li><a href="#{facesContext.externalContext.requestContextPath}/admin/distribuicao/permutar"><h:outputText value="#{View['cronos.menu.permutarTurmas']}" /></a></li>
+							<li><a href="#{facesContext.externalContext.requestContextPath}/admin/distribuicao/alocar"><h:outputText value="#{View['cronos.menu.alocaoTurmas']}" /></a></li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			</sec:ifAnyGranted>
+			
+			<li><a href="#"><h:outputText value="#{View['cronos.menu.agendamentos']}" /></a>
+				<ul>
+					<sec:ifAnyGranted roles="ROLE_ADMINISTRADOR">
+					<li><a href="#{facesContext.externalContext.requestContextPath}/admin/agendamento/consultar"><h:outputText value="#{View['cronos.menu.consultar']}" /></a></li>
+					</sec:ifAnyGranted>
+					<sec:ifAnyGranted roles="ROLE_ADMINISTRADOR,ROLE_USUARIO,ROLE_SUPERVISAO">
+					<li><a href="#{facesContext.externalContext.requestContextPath}/usuario/agendamento/visualizar"><h:outputText value="#{View['cronos.menu.visualizar']}" /></a></li>
+					</sec:ifAnyGranted>
+				</ul>
+			</li>
+			<li><a href="#"><h:outputText value="#{View['cronos.menu.sistema']}" /></a>
+				<ul>
+					<li><a href="#{facesContext.externalContext.requestContextPath}/logout"><h:outputText value="#{View['cronos.menu.sair']}" /></a></li>
+				</ul>
+			</li>
+			<li></li>
+		</ul>
+	</div>
+
+</ui:composition>

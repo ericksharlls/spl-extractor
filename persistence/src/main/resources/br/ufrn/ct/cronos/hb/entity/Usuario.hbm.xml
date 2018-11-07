@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping default-lazy="false">
+	<class name="br.ufrn.ct.cronos.entity.Usuario" table="usuario">
+    	<id name="id" column="id_usuario" type="java.lang.Long">
+        	<generator class="identity" />
+      	</id>
+
+		<property name="login" column="login_usuario" type="java.lang.String" />
+      	<property name="senha" column="senha_usuario" type="java.lang.String" />
+      	<property name="ativo" column="ativo_usuario" type="java.lang.Boolean" />
+      	<property name="idFuncionario" column="id_funcionario" type="java.lang.Long" />
+      	
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping default-lazy="false">
+	<class name="br.ufrn.ct.cronos.entity.Agendamento" table="agendamento">
+    	<id name="id" column="id_agendamento" type="java.lang.Long">
+    		<generator class="identity" />
+    	</id>
+      	
+      	<property name="motivo" column="motivo" type="java.lang.String" />
+      	<property name="idFuncionario" column="id_funcionario" type="java.lang.Long" />
+      	<property name="idPeriodo" column="id_periodo" type="java.lang.Long" />
+      	<property name="idUsuarioSistema" column="id_usuario_sistema" type="java.lang.Long" />
+      	<property name="horaRealizacaoAgendamento" column="hora_realizacao_agendamento" type="java.util.Date" />
+      	
+	</class>
+</hibernate-mapping>

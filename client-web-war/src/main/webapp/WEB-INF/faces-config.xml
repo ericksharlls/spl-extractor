@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE faces-config PUBLIC "-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 1.1//EN"
+                              "http://java.sun.com/dtd/web-facesconfig_1_1.dtd">
+<faces-config>
+ <converter>
+  <converter-id>CustomTimeConverter</converter-id>
+  <converter-class>br.ufrn.ct.cronos.web.converter.CustomTimeConverter</converter-class>
+ </converter>
+ <application>
+  <action-listener>br.ufrn.ct.cronos.web.CronosActionListener</action-listener>
+  <view-handler>com.sun.facelets.FaceletViewHandler</view-handler>
+  <locale-config>
+   <default-locale>pt_BR</default-locale>
+   <supported-locale>en</supported-locale>
+   <supported-locale>fr</supported-locale>
+   <supported-locale>es</supported-locale>
+  </locale-config>
+  <variable-resolver>org.springframework.web.jsf.DelegatingVariableResolver</variable-resolver>
+ </application>
+</faces-config>

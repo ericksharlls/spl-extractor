@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:t="http://myfaces.apache.org/tomahawk">
+
+<body>
+
+<ui:composition template="/layout/estrutura/template.xhtml">
+
+	<ui:define name="corpo">
+    
+		<rich:modalPanel id="panelConfirmar" width="370" height="115">
+			<f:facet name="header">
+            	<h:outputText value="#{View['cronos.popup.mensagemConfirmacao']}" />
+        	</f:facet>
+        		<h:form id="formConfirmar">
+        			<h:panelGrid columns="2">		
+        				<h:commandButton id="distribuirSim" value="#{View['cronos.form.sim']}" styleClass="submitButton" action="#{distribuirTurmasFormBean.distribuirTurmas}" />
+        				<h:commandButton id="distribuirNao" onclick="Richfaces.hideModalPanel('panelConfirmar');" value="#{View['cronos.form.nao']}" styleClass="submitButton" />
+        			</h:panelGrid>
+        		</h:form>
+		</rich:modalPanel>
+
+		
+        <h:form id="distribuicaoTurmasForm" styleClass="formulario">					
+			<fieldset>
+				<legend><h:outputText value="#{View['cronos.form.realizarDistribuicao']}" /></legend>				
+				<ol>
+               <li>
+                <h:outputLabel for="idPeriodo" value="#{View['cronos.form.periodo']}" />
+                <h:selectOneMenu id="idPeriodo" value="#{distribuirTurmasFormBean.idPeriodo}" styleClass="estiloSelectDepartamento">
+                     <f:selectItem itemLabel="--Selecione--" itemValue="" />
+                     <f:selectItems value="#{listarPeriodoFormBean.dados}" />
+               </h:selectOneMenu>
+               </li>
+            </ol>
+            
+				<ol>
+					<li>
+						<h:outputLabel for="idPredio" value="#{View['cronos.form.predio']}" />
+						<h:selectOneMenu id="idPredio" value="#{distribuirTurmasFormBean.idPredio}" styleClass="estiloSelect">
+				 			<f:selectItem itemLabel="--Selecione--" itemValue="" />
+							<f:selectItems value="#{listarPredioFormBean.dados}" />
+						</h:selectOneMenu>
+					</li>
+				</ol>
+				
+				<br />
+				
+				<h3> <h:outputText value="#{View['cronos.form.distribuirTurmas']}" /> </h3>
+				
+				<h:commandButton id="distribuir" value="Distribuir Turmas" action="#{distribuirTurmasFormBean.distribuirTurmas}" styleClass="submitButton" type="button" />
+			
+			</fieldset>
+			
+		</h:form>
+		
+	</ui:define>
+	
+</ui:composition>
+
+</body>
+
+</html>

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:t="http://myfaces.apache.org/tomahawk">
+
+<body>
+
+<ui:composition template="/layout/estrutura/template.xhtml">
+
+	<ui:param name="button" value="salaForm:cadastrar" />
+
+	<ui:define name="corpo">
+		<h:form id="listarSalaForm" styleClass="formulario" style="width:650px;">
+			
+			<fieldset style="margin-bottom: 15px;">
+			   <legend><h:outputText value="#{View['cronos.form.salasPorPredio']}" /></legend>
+			   <ol>
+               <li>
+                <h:outputLabel for="idPredio" value="#{View['cronos.form.predio']}" />
+                <h:selectOneMenu id="idPredio" value="#{consultarSalaFormBean.idPredio}" styleClass="estiloSelectDepartamento">
+                     <f:selectItem itemLabel="--Selecione--" itemValue="" />
+                     <f:selectItems value="#{listarPredioFormBean.dados}" />
+                     <a4j:support event="onchange" reRender="salaTable" />
+               </h:selectOneMenu>
+               </li>
+            </ol>
+			</fieldset>
+			
+			<rich:spacer height="10" />
+			<rich:dataTable id="salaTable" value="#{consultarSalaFormBean.dados}" 
+				var="i" rows="#{consultarSalaFormBean.linhas}" border="0" align="center" cellspacing="0" width="100%"  
+				rowClasses="list-row-even,list-row-odd" binding="#{consultarSalaFormBean.table}">
+				<f:facet name="header">
+					<rich:columnGroup>
+						<rich:column>
+							<h:outputText value="#{View['cronos.table.nome']}" />
+						</rich:column>
+						<rich:column>
+							<h:outputText value="#{View['cronos.table.tipoQuadro']}" />
+						</rich:column>
+						<rich:column>
+							<h:outputText value="#{View['cronos.table.perfil']}" />
+						</rich:column>
+						<rich:column>
+							<h:outputText value="#{View['cronos.table.capacidade']}" />
+						</rich:column>
+						<rich:column>
+                     <h:outputText value="#{View['cronos.table.distribuicao']}" />
+                  </rich:column>
+                  <rich:column>
+                     <h:outputText value="#{View['cronos.table.agendamento']}" />
+                  </rich:column>
+						<rich:column>
+							<h:outputText value="#{View['cronos.table.predio']}" />
+						</rich:column>
+						<rich:column colspan="2">
+							<h:outputText value="#{View['cronos.espaco']}" />
+						</rich:column>
+					</rich:columnGroup>
+				</f:facet>
+				<rich:columnGroup>
+					<rich:column style="text-align:center;">
+						<h:outputText value="#{i.nome}" />
+					</rich:column>
+					<rich:column style="text-align:center;">
+						<h:outputText value="#{i.tipoQuadro}" />
+					</rich:column>
+					<rich:column style="text-align:center;">
+						<h:outputText value="#{i.perfil}" />
+					</rich:column>
+					<rich:column style="text-align:center;">
+						<h:outputText value="#{i.capacidade}" />
+					</rich:column>
+					<rich:column style="text-align:center;">
+                        <h:outputText value="#{i.utilizarNaDistribuicao==true?'Sim':'Não'}" />
+                    </rich:column>
+                    <rich:column style="text-align:center;">
+                        <h:outputText value="#{i.utilizarNoAgendamento==true?'Sim':'Não'}" />
+                    </rich:column>
+					<rich:column style="text-align:center;">
+						<h:outputText value="#{i.predio}" />
+					</rich:column>
+					<rich:column style="text-align:center;">
+						<a href="#{facesContext.externalContext.requestContextPath}/admin/sala/editar/#{i.id}" style="text-decoration: none;">
+							<img src="#{facesContext.externalContext.requestContextPath}/img/editar.gif" border="0" />
+						</a>
+					</rich:column>
+					<rich:column style="text-align:center;">
+					<h:commandLink>
+					
+					</h:commandLink>
+						<a href="#{facesContext.externalContext.requestContextPath}/admin/sala/excluir/#{i.id}" style="text-decoration: none;">
+							<img src="#{facesContext.externalContext.requestContextPath}/img/excluir.gif" border="0" />
+						</a>
+					</rich:column>
+				</rich:columnGroup>
+				<f:facet name="footer">
+					 <rich:datascroller id="salaTableScroller" align="center" for="salaTable" maxPages="20" renderIfSinglePage="false" stepControls="hide" />
+				</f:facet>
+			</rich:dataTable>
+			
+		</h:form>
+	</ui:define>
+	
+</ui:composition>
+
+</body>
+
+</html>

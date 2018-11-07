@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping default-lazy="false">
+	<class name="br.ufrn.ct.cronos.entity.PerfilSalaTurma" table="perfil_sala_turma">
+    	<id name="id" column="id_perfil_sala_turma" type="java.lang.Long">
+        	<generator class="identity" />
+      	</id>
+
+      	<property name="nome" column="nome_perfil_sala_turma" type="java.lang.String" />
+      	<property name="descricao" column="descricao_perfil_sala_turma" type="java.lang.String" />
+      	
+	</class>
+</hibernate-mapping>

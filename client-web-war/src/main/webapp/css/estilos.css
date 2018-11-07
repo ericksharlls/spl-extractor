@@ -1,0 +1,412 @@
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,dt,form,label,table,caption,tbody,tfoot,thead,tr,th,td
+	{
+	border: 0;
+	font-family: inherit;
+	font-size: 100%;
+	font-style: inherit;
+	font-weight: inherit;
+	margin: 0;
+	outline: 0;
+	padding: 0;
+	vertical-align: baseline;
+}
+
+html, body {
+	height: 100%;
+}
+
+input[type=text],input[type=password],input[type=select] {
+	font-family: Verdana, Arial, sans-serif;
+	color: #000;
+	border: 1px solid #dad4d4;
+}
+
+input[type=text]:focus,input[type=password]:focus,textarea:focus,select:focus,option:focus
+	{
+	border-color: #ffa500;
+}
+
+textarea {
+	font: 100% Monaco, "Courier New", Courier, monospace;
+	border: 1px solid #dad4d4;
+	color: #000;
+	height: 5em;
+}
+
+h1,h2,h3,h4,h5,h6 {
+	font-family: Lucida Grande, Verdana, Lucida, Helvetica, "Arial",
+		sans-serif;
+	font-weight: normal;
+	color: #000000;
+	background-color: transparent;
+}
+
+h1 {
+	font-size: 160%;
+}
+
+h2 {
+	font-size: 150%;
+}
+
+h3 {
+	font-size: 125%;
+	font-weight: bold;
+}
+
+h4 {
+	font-size: 110%;
+	font-weight: bold;
+}
+
+h5 {
+	font-size: 100%;
+	font-weight: bold;
+}
+
+h6 {
+	font-size: 85%;
+	font-weight: bold;
+}
+
+body {
+	font: 76% Verdana, Arial, sans-serif;
+	background-color: #ffffff;
+	color: #000000;
+	margin: 0;
+	padding: 0;
+}
+
+fieldset {
+	border: 1px solid #ded7d6;
+	font-weight: normal;
+	margin-top: 0em;
+	margin-right: 0px;
+	margin-bottom: 1em;
+	margin-left: 0px;
+	padding-bottom: 1em;
+	left: 0em;
+	width: 40%;
+}
+
+legend {
+	color: #000000;
+	font-size: 10pt;
+	font-weight: bold;
+	padding: 0 .5em;
+}
+
+#conteudo {
+	min-height: 100%;
+	height: 100%;
+	margin: 0;
+	width: 100% !important;
+	min-width: 0 !important;
+	position: relative;
+}
+
+html #conteudo {
+	min-height: 100%;
+}
+
+#cabecalho {
+	padding: .2em;
+	height: 80px;
+}
+
+#corpo {
+	clear: both;
+	padding: 1em;
+	line-height: 1.5em;
+	padding-bottom: 30px;
+}
+
+#logomarca {
+	float: left;
+	height: 80px;
+}
+
+#logomarca h1 {
+	/** background: transparent url(../img/ufrn-logo.gif) no-repeat **/;
+	text-indent: -20000em;
+	width: 99px;
+	height: 85px;
+	margin: 0.2em;
+}
+
+.titulo {
+	float: left;
+	color: #293094; /** mudar a cor do título ***/
+	padding-top: 2em;
+}
+
+#irparacorpo {
+	display: none
+}
+
+#divisor {
+	margin: 0;
+	padding: 0;
+	float: left;
+	width: 100%;
+	border: 1px solid #306;
+	border-width: 1px 0;
+	background-color: #412E7F;
+}
+
+#breadcrumbs {
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	margin-top: 0, 5em;
+	margin-bottom: 1em;
+	width: 100%;
+}
+
+.campoObrigatorio {
+	font-style: italic;
+	display: inline;
+}
+
+#formularios {
+	margin-left: 1em;
+	width: 97.5%;
+}
+
+.dados {
+	width: auto;
+	height: auto;
+	float: left;
+}
+
+.campos {
+	width: 100%;
+	float: left;
+	margin-top: 1em;
+}
+
+.header {
+	float: left;
+	height: auto;
+	width: 10em;
+	margin: 0px;
+}
+
+.input {
+	float: left;
+	height: auto;
+	/*width: 18em; como estava definido antes */
+	width: 18em;
+}
+
+.headerPickList {
+	float: left;
+	height: auto;
+	width: 14em;
+	margin: 0px;
+}
+
+.inputPickList {
+	float: left;
+	height: auto;
+	width: 28em;
+}
+
+.submitButton {
+	background-color: #eee;
+	border: 1px solid #ccc;
+	color: #565656;
+	font-weight: bold;
+}
+
+.estilo_campo {
+	font-family: Verdana, Arial, sans-serif;
+	color: #000;
+	border: 1px solid #dad4d4;
+	/*width: 210px; como estava definido antes */
+	width: 240px;
+}
+
+.estilo_select {
+	border: solid 1px #003366;
+	width: 155px;
+}
+
+.aviso {
+	text-align: left; 
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: normal;
+	background-color: #FFFFCC;
+	color: #000000;
+	padding: 10px;
+	border: 1px solid #999999;
+    width: 30%;
+    float: left;
+}
+
+#rodape {
+	background-color: #412E7F;
+	border-bottom: 1px solid #DAD4D4;
+	border-top: 1px solid #DAD4D4;
+	clear: both;
+	color: #fff;
+	float: none;
+	margin: 0;
+	padding: 0;
+	text-align: left;
+	/*position: absolute;*/
+	/*position: static;*/
+	bottom: 0;
+	width: 100%;
+	height: 20px;
+}
+
+.list-row-even { 
+	background-color:#EDEFF6;
+	border-color: #C9C9C9;
+	border-style: solid;
+	font-weight: bold;
+	text-align: center;
+	height: 25px;
+}
+
+.list-row-odd {
+	border-color: #C9C9C9;
+	border-style: solid;
+	font-weight: bold;
+	text-align: center;
+	height: 25px;
+}
+
+.errorMessage {
+	height: 14px;
+	background-image: url(../img/ico_error.gif);
+	background-position: left center;
+	background-repeat: no-repeat;
+	text-align: left;
+	text-indent: 30px;
+	list-style: none;
+	font-weight: bold;
+	color: #534741;
+}
+
+.warnMessage {
+	height: 14px;
+	background-image: url(../img/ico_alert.gif);
+	background-position: left center;
+	background-repeat: no-repeat;
+	text-align: left;
+	text-indent: 30px;
+	list-style: none;
+	font-weight: bold;
+	color: #535341;
+}
+
+.sucessMessage {
+	height: 14px;
+	background-image: url(../img/ico_sucess.gif);
+	background-position: left center;
+	background-repeat: no-repeat;
+	text-align: left;
+	text-indent: 30px;
+	list-style: none;
+	font-weight: bold;
+	color: #414853;
+}
+
+/** tabela de dados **/
+.rich-table {
+	border-width: 0px;
+	border-collapse: collapse;
+	font-size: 1.0em;
+	line-height: 1.0em;
+	border: none;
+}
+
+.rich-table-subheadercell,.rich-table-cell,.rich-table-headercell {
+	text-align: center;
+	border-width: 0px;
+	border-style: none;
+}
+
+.rich-table-footercell {
+	text-align: center;
+	border-width: 0px;
+	border-style: none;
+	background: #fff;
+	border: none;
+}
+
+.rich-table-subfootercell,.rich-table-subfooter {
+	text-align: center;
+	border-width: 0px;
+	border-style: none;
+	background: #fff;
+	border: none;
+}
+
+.rich-table-subheadercell,.rich-table-headercell {
+	background-color: #412E7F;
+	border-style: none;
+	font-weight: bold;
+	color: #fff;
+	border: none;
+}
+
+/** datascroller **/
+.rich-datascr {
+	margin: 0 10px 10px 30px;
+	color: #412E7F;
+}
+
+.rich-dtascroller-table {
+	border-collapse: collapse;
+	font-size: 1.0em;
+	background: #fff;
+	line-height: 0.6em;
+	color: #412E7F;
+	border-width: 1px;
+	border-style: solid;
+}
+
+.rich-datascr-button,.rich-datascr-ctrls-separator {
+	border-color: #e1e1e1;
+	border-top-width: 3px;
+	background: #fff;
+	padding: .3em 1em;
+	border-width: 1px;
+	border-style: solid;
+	width: 25px;
+	cursor: pointer;
+	text-align: center;
+}
+
+.rich-datascr-button-dsbld {
+	background: #F1F1F1;
+	cursor: default;
+}
+
+.rich-datascr-act {
+	color: #412E7F;
+	border-top-color: #1d2319;
+	background: #fff;
+	border-top-width: 2px;
+	border-top-style: solid;
+	width: 25px;
+	text-align: center;
+	cursor: default;
+}
+
+.rich-datascr-inact {
+	color: #412E7F;
+	border-top-color: #888b86;
+	background: #F1F1F1;
+	border-top-width: 2px;
+	border-top-style: solid;
+	width: 25px;
+	cursor: pointer;
+	text-align: center;
+}

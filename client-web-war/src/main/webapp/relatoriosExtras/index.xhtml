@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:t="http://myfaces.apache.org/tomahawk"
+	xmlns:sec="http://www.springframework.org/security/facelets/tags">
+
+<body>
+
+<ui:composition template="/layout/estrutura/template.xhtml">
+
+	<ui:param name="button" value="relatorioHorarioSalasForm:relatorio" />
+
+	<ui:define name="corpo">
+		<h:form id="relatorioHorarioSalasForm" styleClass="formulario">
+				
+				<sec:ifAnyGranted roles="ROLE_ADMINISTRADOR,ROLE_DIRECAO">
+					<a href="#{facesContext.externalContext.requestContextPath}/direcao/relatorio/utilizacaoHorariosSalas" style="color: white;font-size: 14px;text-decoration: none;float: left;margin-left: 90px;padding: 0px 10px 1px 10px; display: block; background:#308402;">
+						<h:outputText value="#{View['cronos.menu.utilizacaoHorariosSalas']}" />
+					</a>
+				</sec:ifAnyGranted>
+			    <sec:ifAnyGranted roles="ROLE_ADMINISTRADOR,ROLE_DIRECAO">
+					<a href="#{facesContext.externalContext.requestContextPath}/direcao/relatorio/ocupacaoTurmas" style="color: white;font-size: 14px;text-decoration: none;float: left;margin-left: 20px;padding: 0px 10px 1px 10px; display: block; background:#308402;">
+						<h:outputText value="#{View['cronos.menu.relatorioOcupacaoTurmas']}" />
+					</a>
+					
+					<br /> <br />		
+			     </sec:ifAnyGranted>
+			
+			     <sec:ifAnyGranted roles="ROLE_ADMINISTRADOR,ROLE_DIRECAO">
+			      <a href="#{facesContext.externalContext.requestContextPath}/direcao/relatorio/utilizacaoHorariosPredio" style="color: white;font-size: 14px;text-decoration: none;float: left;margin-left: 90px;padding: 0px 10px 1px 10px; display: block; background:#308402;">
+                        <h:outputText value="#{View['cronos.menu.relatorioUtilizacaoHorariosPredio']}" />
+                  </a>
+                  </sec:ifAnyGranted>
+                  
+                  <sec:ifAnyGranted roles="ROLE_ADMINISTRADOR,ROLE_DIRECAO,ROLE_SUPERVISAO">      
+                    <a href="#{facesContext.externalContext.requestContextPath}/relatoriosExtras/historicoChaves" style="color: white;font-size: 14px;text-decoration: none;float: left;margin-left: 20px;padding: 0px 10px 1px 10px; display: block; background:#308402;">
+                        <h:outputText value="#{View['cronos.menu.relatorioHistoricoChaves']}" />
+                    </a>
+                  </sec:ifAnyGranted>       
+			
+					<br />
+			
+		</h:form>
+	</ui:define>
+	
+</ui:composition>
+
+</body>
+
+</html>

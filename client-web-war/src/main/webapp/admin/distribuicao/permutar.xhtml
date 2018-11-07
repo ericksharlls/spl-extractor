@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:t="http://myfaces.apache.org/tomahawk">
+
+<body>
+
+<ui:composition template="/layout/estrutura/template.xhtml">
+
+	<ui:define name="corpo">
+
+		<h:form id="permutarTurmasForm" styleClass="formulario" style="width:740px;">
+			<fieldset><legend>Permutar Turmas</legend>
+			
+			<ol>
+             <li>
+                <h:outputLabel for="idPeriodo" value="#{View['cronos.form.periodo']}" />
+                <h:selectOneMenu id="idPeriodo" value="#{permutarTurmaFormBean.idPeriodo}" styleClass="estiloSelectDepartamento">
+                     <f:selectItem itemLabel="--Selecione--" itemValue="" />
+                     <f:selectItems value="#{listarPeriodoFormBean.dados}" />
+                     <a4j:support event="onchange" reRender="panelTurmas" action="#{permutarTurmaFormBean.limparDadosTurmas}" />
+               </h:selectOneMenu>
+               </li>
+               <li>
+                <h:outputLabel for="idPredio" value="#{View['cronos.form.predio']}" />
+                <h:selectOneMenu id="idPredio" value="#{permutarTurmaFormBean.idPredio}" styleClass="estiloSelectDepartamento">
+                     <f:selectItem itemLabel="--Selecione--" itemValue="" />
+                     <f:selectItems value="#{listarPredioFormBean.dados}" />
+                     <a4j:support event="onchange" reRender="panelTurmas" action="#{permutarTurmaFormBean.limparDadosTurmas}" />
+               </h:selectOneMenu>
+               </li>
+            </ol>
+			
+			<rich:panel style="width:740px;" headerClass="outpanelHeader" id="panelTurmas">
+       		 	<f:facet name="header">
+            		<rich:spacer height="4" />
+        		</f:facet>
+        		<h2 align="center"><h:outputText value="Permutar turmas" /></h2>
+       			<h:panelGrid columns="2" columnClasses="gridContent">
+            	<rich:panel style="width:350px;text-align:left;" bodyClass="inpanelBody" id="panelTurma1">
+              	 	 <f:facet name="header">
+                  	  	Turma 1
+                	 </f:facet>
+                     <ul>
+                     	<li style="padding: 2px;">				
+                     		<h:selectOneMenu id="turma1" value="#{permutarTurmaFormBean.idTurma1}" styleClass="estiloSelect">
+								      <f:selectItem itemLabel="--Selecione--" itemValue="" />
+								      <f:selectItems value="#{permutarTurmaFormBean.turmasPorPeriodoEPredio}" />
+                              <a4j:support event="onchange" reRender="nomeTurma1,docenteTurma1,horarioTurma1,numeroTurma1,salaTurma1,capacidadeTurma1,perfilTurma1,alunosMatriculados1" action="#{permutarTurmaFormBean.atualizarTurma1}" />
+							     </h:selectOneMenu>
+						</li>
+                     	<li style="padding: 2px;"> <h:outputText style="font-size: 12px;" value="#{View['cronos.table.disciplinaTurma']}" /> <h:outputText style="font-size: 12px;" value="#{permutarTurmaFormBean.turma1.nomeDisciplina}" id="nomeTurma1" /></li>
+                     	<li style="padding: 2px;"> <h:outputText style="font-size: 12px;" value="#{View['cronos.table.docenteTurma']}" /> <h:outputText style="font-size: 12px;" value="#{permutarTurmaFormBean.turma1.docente}" id="docenteTurma1" /> </li>
+                     	<li style="padding: 2px;"> <h:outputText style="font-size: 12px;" value="#{View['cronos.table.horarioTurma']}" /> <h:outputText style="font-size: 12px;" value="#{permutarTurmaFormBean.turma1.horario}" id="horarioTurma1" /></li>
+                     	<li style="padding: 2px;"> <h:outputText style="font-size: 12px;" value="#{View['cronos.table.numeroTurma']}" /> <h:outputText style="font-size: 12px;" value="#{permutarTurmaFormBean.turma1.numero}" id="numeroTurma1" /></li>
+                     	<li style="padding: 2px;"> <h:outputText style="font-size: 12px;" value="#{View['cronos.form.sala']}" /> <h:outputText style="font-size: 12px;" value="#{permutarTurmaFormBean.turma1.sala}" id="salaTurma1" /></li>
+                     	<li style="padding: 2px;"> <h:outputText style="font-size: 12px;" value="#{View['cronos.table.capacidadeSala']}" /> <h:outputText style="font-size: 12px;" value="#{permutarTurmaFormBean.turma1.capacidadesDasSalas}" id="capacidadeTurma1" /></li>
+                     	<li style="padding: 2px;"> <h:outputText style="font-size: 12px;" value="#{View['cronos.table.perfilTurma']}" /> <h:outputText style="font-size: 12px;" value="#{permutarTurmaFormBean.turma1.perfilTurma}" id="perfilTurma1" /></li>
+                     	<li style="padding: 2px;"> <h:outputText style="font-size: 12px;" value="#{View['cronos.table.alunosMatriculados']}" /> <h:outputText style="font-size: 12px;" value="#{permutarTurmaFormBean.turma1.alunosMatriculados}" id="alunosMatriculados1" /></li>
+                     </ul>
+            </rich:panel>
+            <rich:panel style="width:350px;text-align:left;"  bodyClass="inpanelBody" id="panelTurma2">
+                <f:facet name="header" >
+                    Turma 2
+                </f:facet>
+                    <ul>
+                    	<li style="padding: 2px;">
+                    		<h:selectOneMenu id="turma2" value="#{permutarTurmaFormBean.idTurma2}" styleClass="estiloSelect">
+								<f:selectItem itemLabel="--Selecione--" itemValue="" />
+								<f:selectItems value="#{permutarTurmaFormBean.turmasPorPeriodoEPredio}" />
+								<a4j:support event="onchange" reRender="nomeTurma2,docenteTurma2,horarioTurma2,numeroTurma2,salaTurma2,capacidadeTurma2,perfilTurma2,alunosMatriculados2" action="#{permutarTurmaFormBean.atualizarTurma2}" />
+							</h:selectOneMenu>
+						</li>
+                     	<li style="padding: 2px;"> <h:outputText style="font-size: 12px;" value="#{View['cronos.table.disciplinaTurma']}" /> <h:outputText style="font-size: 12px;" value="#{permutarTurmaFormBean.turma2.nomeDisciplina}" id="nomeTurma2" /></li>
+                     	<li style="padding: 2px;"> <h:outputText style="font-size: 12px;" value="#{View['cronos.table.docenteTurma']}" /> <h:outputText style="font-size: 12px;" value="#{permutarTurmaFormBean.turma2.docente}" id="docenteTurma2" /> </li>
+                     	<li style="padding: 2px;"> <h:outputText style="font-size: 12px;" value="#{View['cronos.table.horarioTurma']}" /> <h:outputText style="font-size: 12px;" value="#{permutarTurmaFormBean.turma2.horario}" id="horarioTurma2" /></li>
+                     	<li style="padding: 2px;"> <h:outputText style="font-size: 12px;" value="#{View['cronos.table.numeroTurma']}" /> <h:outputText style="font-size: 12px;" value="#{permutarTurmaFormBean.turma2.numero}" id="numeroTurma2" /></li>
+                     	<li style="padding: 2px;"> <h:outputText style="font-size: 12px;" value="#{View['cronos.table.sala']}" /> <h:outputText style="font-size: 12px;" value="#{permutarTurmaFormBean.turma2.sala}" id="salaTurma2" /></li>
+                     	<li style="padding: 2px;"> <h:outputText style="font-size: 12px;" value="#{View['cronos.table.capacidadeSala']}" /> <h:outputText style="font-size: 12px;" value="#{permutarTurmaFormBean.turma2.capacidadesDasSalas}" id="capacidadeTurma2" /></li>
+                     	<li style="padding: 2px;"> <h:outputText style="font-size: 12px;" value="#{View['cronos.table.perfilTurma']}" /> <h:outputText style="font-size: 12px;" value="#{permutarTurmaFormBean.turma2.perfilTurma}" id="perfilTurma2" /></li>
+                     	<li style="padding: 2px;"> <h:outputText style="font-size: 12px;" value="#{View['cronos.table.alunosMatriculados']}" /> <h:outputText style="font-size: 12px;" value="#{permutarTurmaFormBean.turma2.alunosMatriculados}" id="alunosMatriculados2" /></li>
+                    </ul>
+            </rich:panel>
+        </h:panelGrid>
+        
+    </rich:panel>
+			
+			
+			<rich:spacer height="30" />
+			
+			<h:commandButton id="permutar" action="#{permutarTurmaFormBean.permutar}" value="Permutar turmas" styleClass="submitButton" />
+			</fieldset>
+    	</h:form>
+
+	</ui:define>
+	
+</ui:composition>
+
+</body>
+
+</html>

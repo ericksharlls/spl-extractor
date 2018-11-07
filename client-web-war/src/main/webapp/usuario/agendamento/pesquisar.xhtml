@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:ui="http://java.sun.com/jsf/facelets"
+   xmlns:f="http://java.sun.com/jsf/core"
+   xmlns:h="http://java.sun.com/jsf/html"
+   xmlns:a4j="http://richfaces.org/a4j"
+   xmlns:rich="http://richfaces.org/rich"
+   xmlns:c="http://java.sun.com/jstl/core"
+   xmlns:t="http://myfaces.apache.org/tomahawk">
+
+<body>
+
+<ui:composition template="/layout/estrutura/template.xhtml">
+
+
+<ui:define name="corpo">
+   <a4j:keepAlive beanName="alterarTurmasFormBean" />
+   
+   <rich:modalPanel id="panelDetalhesAgendamento" width="560" height="440">
+      <f:facet name="header">
+         <h:outputText value="Agendamento" />
+      </f:facet>
+      <f:facet name="controls">
+            <h:panelGroup>
+                <h:graphicImage value="/img/close.png" id="hidelink" styleClass="hidelink" />
+                <rich:componentControl for="panelDetalhesAgendamento" attachTo="hidelink" operation="hide" event="onclick" />
+            </h:panelGroup>
+        </f:facet>
+      <h:form id="detalhesAgendamentoForm" style="width: 500px;" styleClass="formulario">
+         <fieldset>
+            <legend><h:outputText value="Detalhes do agendamento" /></legend>
+            <ol>
+               <li>
+                  <h:outputLabel value="Interessado" for="interessado" />
+                  <h:outputText id="interessado" value="#{consultarAgendamentoFormBean.agendamento.interessado}" style="font-size: 14px;" />
+               </li>
+               <li>
+                  <h:outputLabel value="Motivo" for="motivo" />
+                  <h:outputText id="motivo" value="#{consultarAgendamentoFormBean.agendamento.motivo}" style="font-size: 14px;" />
+               </li>
+               <li>
+                  <h:outputLabel value="Telefone" for="telefone" />
+                  <h:outputText id="telefone" value="#{consultarAgendamentoFormBean.agendamento.telefone}" style="font-size: 14px;" />
+               </li>
+               <li>
+                  <h:outputLabel value="Sala" for="sala" />
+                  <h:outputText id="sala" value="#{consultarAgendamentoFormBean.agendamento.sala}" style="font-size: 14px;" />
+               </li>
+               <li>
+                  <h:outputLabel for="exibicaoDatasAgendamento" value="#{View['cronos.form.datasAgendamento']}" />
+                  <h:selectOneListbox id="exibicaoDatasAgendamento" styleClass="manyListbox2">
+                     <f:selectItems value="#{consultarAgendamentoFormBean.datasAgendamento}" />
+                  </h:selectOneListbox>
+               </li>
+          </ol>
+          </fieldset>
+      </h:form>
+   </rich:modalPanel>
+   
+      <h:form id="pesquisarAgendamentoForm" style="width: 650px;" styleClass="formulario">
+         
+         <fieldset style="margin-bottom: 15px;">
+            <legend><h:outputFormat value="#{View['cronos.form.pesquisarAgendamentos']}"><f:param value="#{View['cronos.departamento']}"/></h:outputFormat></legend>
+            
+            <ol>
+            
+               <li>
+                  <h:outputLabel for="predio" value="#{View['cronos.form.predio']}" />
+                  <h:selectOneMenu id="predio" value="#{consultarAgendamentoFormBean.idPredio}" styleClass="estilo_select">
+                        <f:selectItem itemLabel="--Selecione--" itemValue="" />
+                        <f:selectItems value="#{listarPredioFormBean.dados}" />
+                  </h:selectOneMenu>
+               </li>
+               <li>
+                  <h:outputLabel for="periodo" value="#{View['cronos.form.periodo']}" />
+                  <h:selectOneMenu id="periodo" value="#{consultarAgendamentoFormBean.idPeriodo}" styleClass="estilo_select">
+                        <f:selectItem itemLabel="--Selecione--" itemValue="" />
+                        <f:selectItems value="#{listarPeriodoFormBean.dados}" />
+                  </h:selectOneMenu>
+               </li>
+               
+               <li> 
+                  <h:outputLabel for="motivo" value="#{View['cronos.form.motivo']}" />
+                  <h:inputText id="motivo" value="#{consultarAgendamentoFormBean.motivo}" styleClass="inputStyle" />
+               </li>
+               
+               <li> 
+                  <h:outputLabel for="interessado" value="#{View['cronos.form.interessado']}" />
+                  <h:inputText id="interessado" value="#{consultarAgendamentoFormBean.interessado}" styleClass="inputStyle" />
+               </li>
+               
+               <li>
+                  <h:outputLabel for="dataInicial" value="#{View['cronos.form.dataInicial']}" />
+                  <rich:calendar value="#{consultarAgendamentoFormBean.dataInicial}" cellWidth="24px" cellHeight="22px" 
+                  style="width:200px; line-height:1px;" locale="#{consultarAgendamentoFormBean.locale}" datePattern="dd/MM/yyyy" id="dataInicial" />    
+               </li>
+               
+               <li>
+                  <h:outputLabel for="dataFinal" value="#{View['cronos.form.dataFinal']}" />
+                  <rich:calendar value="#{consultarAgendamentoFormBean.dataFinal}" cellWidth="24px" cellHeight="22px" 
+                  style="width:200px; line-height:1px;" locale="#{consultarAgendamentoFormBean.locale}" datePattern="dd/MM/yyyy" id="dataFinal" />      
+               </li>
+               
+            </ol>
+            
+            <h:commandButton id="consultar" value="Pesquisar agendamentos" styleClass="submitButton">
+               <a4j:support event="onclick" reRender="agendamentoTablePesquisa" actionListener="#{consultarAgendamentoFormBean.zerarScroller}" />
+            </h:commandButton>
+            
+         </fieldset>
+         
+         <rich:dataTable id="agendamentoTablePesquisa" value="#{consultarAgendamentoFormBean.dados}"  
+            var="i" rows="#{consultarAgendamentoFormBean.linhas}" border="0" align="center" cellspacing="0" width="100%"  
+            rowClasses="list-row-even,list-row-odd" binding="#{consultarAgendamentoFormBean.table}">
+            <f:facet name="header">
+               <rich:columnGroup>
+                  <rich:column>
+                     <h:outputText value="#{View['cronos.table.interessado']}" />
+                  </rich:column>
+                  <rich:column>
+                     <h:outputText value="#{View['cronos.table.motivo']}" />
+                  </rich:column>
+                  <rich:column>
+                     <h:outputText value="#{View['cronos.table.data']}" />
+                  </rich:column>
+                  <rich:column>
+                     <h:outputText value="#{View['cronos.table.sala']}" />
+                  </rich:column>
+                  <rich:column>
+                     <h:outputText value=" " />
+                  </rich:column>
+               </rich:columnGroup>
+            </f:facet>
+            <rich:columnGroup>
+               <rich:column style="text-align:center;">
+                  <h:outputText value="#{i.interessado}" />
+               </rich:column>
+               <rich:column style="text-align:center;">
+                  <h:outputText value="#{i.motivo}" />
+               </rich:column>
+               <rich:column style="text-align:center;">
+                  <h:outputText value="#{i.data}" />
+               </rich:column>
+               <rich:column style="text-align:center;">
+                  <h:outputText value="#{i.sala}" />
+               </rich:column>
+               <rich:column style="text-align:center;">
+                  <a4j:commandLink id="linkAgendar" reRender="panelDetalhesAgendamento"  
+                        oncomplete="Richfaces.showModalPanel('panelDetalhesAgendamento');" style="text-decoration: none;">  
+                     <h:graphicImage value="/img/ver-detalhes.png" />
+                     <f:setPropertyActionListener target="#{consultarAgendamentoFormBean.agendamento}" value="#{i}" />
+                  </a4j:commandLink>   
+               </rich:column>
+            </rich:columnGroup>
+            <f:facet name="footer">
+                 <rich:datascroller id="agendamentoTablePesquisaScroller" align="center" for="agendamentoTablePesquisa" maxPages="55" renderIfSinglePage="false" 
+                     stepControls="hide" reRender="agendamentoTablePesquisa" page="#{consultarAgendamentoFormBean.scroller}" />
+            </f:facet>
+         </rich:dataTable>
+         
+         <rich:spacer height="10" />
+         
+         
+      </h:form>
+   </ui:define>
+   
+</ui:composition>
+
+</body>
+
+</html>

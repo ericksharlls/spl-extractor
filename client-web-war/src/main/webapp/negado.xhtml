@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:t="http://myfaces.apache.org/tomahawk">
+
+<f:loadBundle basename="br.ufrn.ct.cronos.web.Mensagens" var="View" />
+
+<body>
+<ui:composition template="/layout/estrutura/templatePaginaLogin.xhtml">
+<div id="tudo">
+
+	<ui:include src="/layout/estrutura/cabecalho.xhtml" />
+	
+	<div id="conteudos">
+		<ui:include src="/layout/estrutura/mensagens.xhtml" />
+		<ui:define name="corpo">
+		<div id="corpo">
+			
+			<br />
+			
+			<h2>Acesso negado !</h2> 
+			<a href="#{facesContext.externalContext.requestContextPath}/login.jsf">
+				<h4>Login como Administrador</h4>
+			</a>
+			
+			<br />
+		
+		</div>
+		</ui:define>
+	</div>
+	
+	<ui:include src="/layout/estrutura/rodape.xhtml" />
+		
+	</div>
+	
+</ui:composition>
+</body>
+</html>

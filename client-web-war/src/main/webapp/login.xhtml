@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:t="http://myfaces.apache.org/tomahawk">
+
+<f:loadBundle basename="br.ufrn.ct.cronos.web.Mensagens" var="View" />
+
+<body>
+<ui:composition template="/layout/estrutura/templatePaginaLogin.xhtml">
+
+<div id="tudo">
+
+	<ui:define name="header">
+<style type="text/css">
+body {
+	font-family: "Century Gothic";
+}
+.names {
+	color: #3a3a3f;
+	size: 18px;
+}
+.button_login {
+	background:url(layout/imagens/button_login.png);
+	width:109px;
+	height:28px;
+	color:#fff;
+	font-size:14px;
+	border:none;
+	cursor:pointer;
+}
+</style>
+	</ui:define>
+	
+	<ui:include src="/layout/estrutura/cabecalho.xhtml" />
+	
+	<div id="conteudos">
+		<ui:include src="/layout/estrutura/mensagens.xhtml" />
+		<ui:define name="corpo">
+		<div id="corpo">
+	
+		<form id="loginForm" action="j_spring_security_check" method="post" style="margin-right: auto; margin-left: auto;">
+			
+			<table width="400" border="0" cellspacing="0" cellpadding="0" background="layout/imagens/bg.png">
+  				<tr>
+    				<td height="80" colspan="2">&nbsp;</td>
+  				</tr>
+  				<tr>
+    				<td width="120" align="center" class="names"><label for="matricula"><h:outputText value="#{View['cronos.form.usuario']}" /></label></td>
+    				<td height="30" align="left"><input type="text" id="loginForm:usuario" name="j_username" value="${not empty login_error ? SPRING_SECURITY_LAST_USERNAME : ''}" size="30" style="border:1px solid #CCC; font-size:14px"/></td>
+  				</tr>
+  				<tr>
+    				<td align="center" class="names"><label for="senha"><h:outputText value="#{View['cronos.form.senha']}" /></label></td>
+    				<td height="30" align="left"><input type="password" id="loginForm:senha" name="j_password" size="30" style="border:1px solid #CCC; font-size:14px" /></td>
+  				</tr>
+  				<tr>
+    				<td height="60" colspan="2" align="center"><input type="submit" value="#{View['cronos.entrar']}" class="button_login" /></td>
+  				</tr>
+			</table>
+			
+		</form>
+		</div>
+		</ui:define>
+	</div>
+	
+	<ui:include src="/layout/estrutura/rodape.xhtml" />
+		
+	</div>
+	
+</ui:composition>
+</body>
+</html>

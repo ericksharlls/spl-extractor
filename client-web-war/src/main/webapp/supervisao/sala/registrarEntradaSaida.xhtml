@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:t="http://myfaces.apache.org/tomahawk">
+
+<body>
+
+<ui:composition template="/layout/estrutura/template.xhtml">
+	<ui:param name="button" value="registrarOperacaoForm:cadastrar" />
+	<ui:define name="header">
+		<script language="JavaScript" type="text/javascript">
+			function limparEntrada(){
+				document.getElementById('registrarOperacaoForm:codigoChaveEntrada').value="";
+		   	}
+			function limparSaida(){
+				document.getElementById('registrarOperacaoForm:codigoChaveSaida').value="";
+		   	}
+			function limparTodos(){
+				document.getElementById('registrarOperacaoForm:codigoChaveSaida').value="";
+				document.getElementById('registrarOperacaoForm:codigoChaveEntrada').value="";
+				document.getElementById('registrarOperacaoForm:codigoChaveSaida').focus();
+		   	}
+		</script>
+	</ui:define>
+	
+<ui:define name="corpo">
+		<h:form id="registrarOperacaoForm" style="width: 650px;" styleClass="formulario">
+
+			<h:panelGrid id="gridForm" columns="2" border="1" cellpadding="35" style="border-collapse: collapse;" 
+			         columnClasses="colunaTabelaControleChave1,colunaTabelaControleChave2">
+				<h:panelGroup id="groupSaida">
+					<h:graphicImage id="iconeSaida" url="/layout/imagens/saida.png" alt="Saída" />
+					<h1><h:outputText id="operacaoSaida" value="#{View['cronos.form.saida']}" /></h1>
+					<br />
+					<h:inputText id="codigoChaveSaida" value="#{registrarOperacaoChaveFormBean.codigoChaveSaida}" styleClass="inputTabelaControleChave" 
+							onfocus="limparEntrada();" />
+				</h:panelGroup>
+				<h:panelGroup id="groupEntrada">
+					<h:graphicImage id="iconeEntrada" url="/layout/imagens/entrada.png" alt="Entrada" />
+					<h1><h:outputText id="operacaoEntrada" value="#{View['cronos.form.entrada']}" /></h1>
+					<br />
+					<h:inputText id="codigoChaveEntrada" value="#{registrarOperacaoChaveFormBean.codigoChaveEntrada}" 
+							styleClass="inputTabelaControleChave" onfocus="limparSaida();" />
+				</h:panelGroup>
+			</h:panelGrid>
+			<br />
+			<c:if test="${registrarOperacaoChaveFormBean.temResponsavel}">
+			     <ol>
+			         <li>
+                        <h:outputLabel for="responsavel" value="#{View['cronos.form.responsavel']}" />
+                        <h:selectOneMenu id="responsavel" value="#{registrarOperacaoChaveFormBean.identificadorResponsavel}" 
+                                styleClass="estiloSelectDepartamento">
+                            <f:selectItem itemLabel="--Selecione--" itemValue="" />
+                            <f:selectItems value="#{listarFuncionarioFormBean.dados}" />
+                        </h:selectOneMenu>
+			         </li>
+			     </ol>
+			</c:if>
+			<h:commandButton id="consultar" value="Registrar" styleClass="submitButton" action="#{registrarOperacaoChaveFormBean.registrarOperacao}" />
+			
+		</h:form>
+	</ui:define>
+	
+</ui:composition>
+
+</body>
+
+</html>
+

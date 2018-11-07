@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:t="http://myfaces.apache.org/tomahawk">
+
+<body>
+
+<ui:composition template="/layout/estrutura/template.xhtml">
+
+	<ui:param name="button" value="turmaForm:cadastrar" />
+
+<ui:define name="corpo">
+	<a4j:keepAlive beanName="alterarTurmasFormBean" />
+	
+		<h:form id="turmaForm" style="width: 650px;" styleClass="formulario">
+			<t:div styleClass="aviso" rendered="#{!alterarTurmasFormBean.visible}">
+				<img alt="Aviso" src="#{facesContext.externalContext.requestContextPath}/img/warning.gif" />&#160;
+				<h:outputFormat value="#{View['cronos.aviso.semdados']}"><f:param value="#{View['cronos.turma']}"/></h:outputFormat>
+			</t:div>
+			
+			<fieldset style="margin-bottom: 15px;">
+				<legend><h:outputFormat value="#{View['cronos.form.pesquisarTurmas']}"><f:param value="#{View['cronos.departamento']}"/></h:outputFormat></legend>
+				
+				<ol>
+               <li>
+                  <h:outputLabel for="periodoTurma" value="#{View['cronos.form.periodo']}" />
+                  <h:selectOneMenu id="periodoTurma" value="#{consultarTurmaPorCodigoEDocenteFormBean.idPeriodo}" styleClass="estilo_select">
+                        <f:selectItem itemLabel="--Selecione--" itemValue="" />
+                        <f:selectItems value="#{listarPeriodoFormBean.dados}" />
+                  </h:selectOneMenu>
+               </li>
+					<li>
+						<h:outputLabel for="codigo" value="#{View['cronos.form.codigoDisciplina']}" />
+					 	<h:inputText id="codigo" value="#{consultarTurmaPorCodigoEDocenteFormBean.codigo}" styleClass="inputStyle" />
+					</li>
+					
+					<li> 
+					 	<h:outputLabel for="docente" value="#{View['cronos.form.docente']}" />
+					 	<h:inputText id="docente" value="#{consultarTurmaPorCodigoEDocenteFormBean.docente}" styleClass="inputStyle" />
+					</li>
+					
+					<li> 
+                  <h:outputLabel for="nomeDisciplina" value="#{View['cronos.form.nomeDisciplina']}" />
+                  <h:inputText id="nomeDisciplina" value="#{consultarTurmaPorCodigoEDocenteFormBean.nomeDisciplina}" styleClass="inputStyle" />
+               </li>
+					
+				</ol>
+				
+				<h:commandButton id="consultar" value="Pesquisar turmas" action="#{consultarTurmaPorCodigoEDocenteFormBean.pesquisar}" styleClass="submitButton"  />
+				
+			</fieldset>
+			
+			<rich:dataTable id="turmaTable" value="#{consultarTurmaPorCodigoEDocenteFormBean.dados}"  
+				var="i" rows="#{consultarTurmaPorCodigoEDocenteFormBean.linhas}" border="0" align="center" cellspacing="0" width="100%"  
+				rowClasses="list-row-even,list-row-odd" binding="#{consultarTurmaPorCodigoEDocenteFormBean.table}">
+				<f:facet name="header">
+					<rich:columnGroup>
+						<rich:column>
+							<h:outputText value="#{View['cronos.table.codigoDisciplina']}" />
+						</rich:column>
+						<rich:column>
+							<h:outputText value="#{View['cronos.table.disciplina']}" />
+						</rich:column>
+						<rich:column>
+							<h:outputText value="#{View['cronos.table.docente']}" />
+						</rich:column>
+						<rich:column>
+							<h:outputText value="#{View['cronos.table.horario']}" />
+						</rich:column>
+						<rich:column>
+							<h:outputText value="Sala" />
+						</rich:column>
+					</rich:columnGroup>
+				</f:facet>
+				<rich:columnGroup>
+					<rich:column style="text-align:center;">
+						<h:outputText value="#{i.codigoDisciplina}" />
+					</rich:column>
+					<rich:column style="text-align:center;">
+						<h:outputText value="#{i.nomeDisciplina}" />
+					</rich:column>
+					<rich:column style="text-align:center;">
+						<h:outputText value="#{i.docente}" />
+					</rich:column>
+					<rich:column style="text-align:center;">
+						<h:outputText value="#{i.horario}" />
+					</rich:column>
+					<rich:column style="text-align:center;">
+						<h:outputText value="#{i.sala}" />
+					</rich:column>
+				</rich:columnGroup>
+				<f:facet name="footer">
+					  <rich:datascroller id="turmaTableScroller" align="center" for="turmaTable" maxPages="55" renderIfSinglePage="false" 
+					  		stepControls="hide" reRender="turmaTable" page="#{consultarTurmaPorCodigoEDocenteFormBean.scroller}" />
+				</f:facet>
+			</rich:dataTable>
+			
+			<rich:spacer height="10" />
+			
+			
+		</h:form>
+	</ui:define>
+	
+</ui:composition>
+
+</body>
+
+</html>

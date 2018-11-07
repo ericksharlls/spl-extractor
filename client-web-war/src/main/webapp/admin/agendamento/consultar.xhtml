@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:t="http://myfaces.apache.org/tomahawk">
+
+<body>
+
+<ui:composition template="/layout/estrutura/template.xhtml">
+
+	<ui:define name="corpo">
+	
+		<rich:modalPanel id="panelAgendamento" width="500" height="330">
+			<f:facet name="header">
+            	<h:outputText value="Adicionar " />
+        	</f:facet>
+        	<h:form id="formAgendamento">
+        		<h:panelGrid columns="2">
+        			
+        			<h:outputLabel value="Interessado" for="interessado" style="font-size: 14px;" />
+                    <h:selectOneMenu id="interessado" value="#{consultarSalasParaMarcacoesFormBean.idInteressado}" styleClass="estiloSelectGrande">
+                        <f:selectItem itemLabel="--Selecione--" itemValue="" />
+                        <f:selectItems value="#{listarFuncionarioFormBean.dados}" />
+                    </h:selectOneMenu>
+        			
+	        		<h:outputLabel value="Motivo" for="motivo" style="font-size: 14px;" />
+                    <h:inputText value="#{consultarSalasParaMarcacoesFormBean.motivo}" id="motivo" size="47" maxlength="50" />
+        			
+        			<h:outputLabel for="exibicaoHorarioTurma" value="#{View['cronos.form.turnoHorario']}" style="font-size: 14px;" />
+				 	<h:outputText value="#{consultarSalasParaMarcacoesFormBean.horarioAgendamento}" id="exibicaoHorarioTurma" style="font-size: 14px;" />
+				 		
+        			<h:outputLabel for="exibicaoDatasParaAgendamento" value="#{View['cronos.form.datasAgendamento']}" style="font-size: 14px;" />
+				 	<h:selectOneListbox value="#{consultarSalasParaMarcacoesFormBean.data}" id="exibicaoDatasParaAgendamento" styleClass="manyListbox">
+				 		<f:selectItems value="#{consultarSalasParaMarcacoesFormBean.datas}" />
+				 	</h:selectOneListbox>
+				 	
+				 	<h:outputLabel for="dataAgendamentoInicio" value="#{View['cronos.form.periodo']}" style="font-size: 14px;" />
+				 	<h:column>
+                        <rich:calendar value="#{consultarSalasParaMarcacoesFormBean.dataAgendamentoInicio}" cellWidth="24px" cellHeight="22px" disabled="true"  
+                            style="width:200px; line-height:1px;" locale="#{consultarSalasParaMarcacoesFormBean.locale}" datePattern="dd/MM/yyyy" id="dataAgendamentoInicio" />
+                  
+                        <h:outputText value="  a  " style="margin-left:8px;margin-right:8px;" />
+                  
+                        <rich:calendar value="#{consultarSalasParaMarcacoesFormBean.dataAgendamentoTermino}" cellWidth="24px" cellHeight="22px" disabled="true"  
+                            style="width:200px; line-height:1px;" locale="#{consultarSalasParaMarcacoesFormBean.locale}" datePattern="dd/MM/yyyy" id="dataAgendamentoTermino" />
+				 	</h:column>
+				 	
+        			<h:commandButton value="Agendar" action="#{consultarSalasParaMarcacoesFormBean.agendar}" onclick="Richfaces.hideModalPanel('panelAgendamento');" id="btnAgendar" styleClass="submitButton" />
+        			<h:commandButton value="Cancelar" onclick="Richfaces.hideModalPanel('panelAgendamento');" id="btnCancelar" styleClass="submitButton" />	
+        		
+	        	</h:panelGrid>
+        	</h:form>
+		</rich:modalPanel>
+		
+		<rich:modalPanel id="panelAdicionarData" width="400" height="240">
+			<f:facet name="header">
+            	<h:outputText value="Adicionar data para agendamento" />
+        	</f:facet>
+        	<h:form id="formAdicionarData">
+        		<h:panelGrid columns="2">
+        			
+        			<h:outputLabel value="Data" for="data" />
+        			<rich:calendar value="#{consultarSalasParaMarcacoesFormBean.dataAgendamento}" cellWidth="24px" cellHeight="22px" 
+                  style="width:200px; line-height:1px;" locale="#{consultarSalasParaMarcacoesFormBean.locale}" datePattern="dd/MM/yyyy" id="data" />
+        			
+        			<a4j:commandButton value="Adicionar" action="#{consultarSalasParaMarcacoesFormBean.adicionarData}" id="btnAgendar" styleClass="submitButton" reRender="datasParaAgendamento,salasDisponiveis" />
+        			<a4j:commandButton value="Fechar" onclick="Richfaces.hideModalPanel('panelAdicionarData');" id="btnCancelar" styleClass="submitButton" />	
+        		</h:panelGrid>
+	        	
+        	</h:form>
+		</rich:modalPanel>
+		
+		<h:form id="marcacaoForm" styleClass="formulario">
+		
+			<fieldset><legend>Consultar sala</legend>
+			
+				<ol>
+				  <li>
+                  <h:outputLabel for="periodoTurma" value="#{View['cronos.form.periodo']}" />
+                  <h:selectOneMenu id="periodoTurma" value="#{consultarSalasParaMarcacoesFormBean.idPeriodo}" styleClass="estilo_select">
+                        <f:selectItem itemLabel="--Selecione--" itemValue="" />
+                        <f:selectItems value="#{listarPeriodoFormBean.dados}" />
+                  </h:selectOneMenu>
+               </li>
+				   <li>
+                  <h:outputLabel for="predioTurma" value="#{View['cronos.form.predio']}" />
+                  <h:selectOneMenu id="predioTurma" value="#{consultarSalasParaMarcacoesFormBean.idPredio}" styleClass="estilo_select">
+                        <f:selectItem itemLabel="--Selecione--" itemValue="" />
+                        <f:selectItems value="#{listarPredioFormBean.dados}" />
+                  </h:selectOneMenu>
+               </li>
+					<li>
+				 		<h:outputLabel for="horarioTurma" value="#{View['cronos.form.turnoHorario']}" />
+				 		<h:inputText value="#{consultarSalasParaMarcacoesFormBean.horarioTurma}" id="horarioTurma" />
+				 		<h:outputText value=" Ex.:(M123)(T456)" id="mascaraHorario" style="color: red;" />
+				 	</li>
+				 	<li>
+				 		<h:outputLabel for="horarioTurmaOpcional" value="#{View['cronos.form.turnoHorario']}" />
+				 		<h:inputText value="#{consultarSalasParaMarcacoesFormBean.horarioTurmaOpcional}" id="horarioTurmaOpcional" />
+				 		<h:outputText value=" Turno adicional" id="mascaraHorarioOpcional" style="color: red;" />
+				 	</li>
+				 	<li>
+				 		<h:outputLabel for="datasParaAgendamento" value="#{View['cronos.form.datasAgendamento']}" />
+				 		<h:selectOneListbox value="#{consultarSalasParaMarcacoesFormBean.data}" id="datasParaAgendamento" styleClass="manyListbox">
+				 			<f:selectItems value="#{consultarSalasParaMarcacoesFormBean.datas}" />
+				 		</h:selectOneListbox>
+				 		
+				 		<h:outputText value=" " />
+				 		<a4j:commandLink id="linkAdicionarData" onclick="Richfaces.showModalPanel('panelAdicionarData');" value="Adicionar" />
+				 		<h:outputText value=" | " />
+				 		<a4j:commandLink id="linkRemoverData" reRender="datasParaAgendamento,salasDisponiveis" action="#{consultarSalasParaMarcacoesFormBean.removerData}" value="Remover" />
+			 		</li>
+                    <li>
+                        <h:outputLabel for="dataAgendamentoInicio" value="#{View['cronos.form.periodo']}" />
+                        <rich:calendar value="#{consultarSalasParaMarcacoesFormBean.dataAgendamentoInicio}" cellWidth="24px" cellHeight="22px" 
+                            style="width:200px; line-height:1px;" locale="#{consultarSalasParaMarcacoesFormBean.locale}" datePattern="dd/MM/yyyy" id="dataAgendamentoInicio" />
+                  
+                        <h:outputText value="  a  " style="margin-left:8px;margin-right:8px;" />
+                  
+                        <rich:calendar value="#{consultarSalasParaMarcacoesFormBean.dataAgendamentoTermino}" cellWidth="24px" cellHeight="22px" 
+                        style="width:200px; line-height:1px;" locale="#{consultarSalasParaMarcacoesFormBean.locale}" datePattern="dd/MM/yyyy" id="dataAgendamentoTermino" />
+                 
+                        <rich:pickList value="#{consultarSalasParaMarcacoesFormBean.diasDaSemana}" showButtonsLabel="false">
+                            <f:selectItems value="#{consultarSalasParaMarcacoesFormBean.diasSemana}" />
+                        </rich:pickList>
+                  
+                    </li>
+                    
+				</ol>
+				
+				<h:commandButton id="consultar" value="#{View['cronos.consultar']}" action="#{consultarSalasParaMarcacoesFormBean.consultar}" styleClass="submitButton" />
+				
+			</fieldset>
+		
+			<rich:spacer height="20" />
+			
+			<rich:extendedDataTable value="#{consultarSalasParaMarcacoesFormBean.dadosDataModel}" var="sala" id="salasDisponiveis" 
+					 width="540px" height="300px" sortMode="single" selection="#{consultarSalasParaMarcacoesFormBean.selection}">
+				
+				<rich:column sortable="true" sortBy="#{sala.nome}" filterBy="#{sala.nome}" label="Nome" id="nomeSala" filterEvent="onkeyup" style="text-align:center;">
+                    <f:facet name="header">
+                        <h:outputText value="Nome" id="colunaNome" />
+                    </f:facet>
+                    <h:outputText value="#{sala.nome}" id="nome" />
+                </rich:column>
+                
+                <rich:column sortable="false" label="Capacidade" id="capacidadeSala" style="text-align:center;">
+                    <f:facet name="header">
+                        <h:outputText value="Capacidade" id="colunaCapacidade"/>
+                    </f:facet>
+                    <h:outputText value="#{sala.capacidade}" id="capacidade"/>
+                </rich:column>
+                
+                <rich:column sortable="true" id="perfilSala" sortBy="#{sala.perfilSala}" filterBy="#{sala.perfilSala}" filterEvent="onkeyup" label="Perfil" style="text-align:center;">
+                    <f:facet name="header">
+                        <h:outputText value="Perfil" id="colunaPerfil"/>
+                    </f:facet>
+                    <h:outputText value="#{sala.perfilSala}" id="perfil"/>
+                </rich:column>
+                
+                 <rich:column sortable="false" label="Tipo do quadro" id="tipoQuadroSala" style="text-align:center;">
+                    <f:facet name="header">
+                        <h:outputText value="Tipo do quadro" id="colunaTipoQuadro" />
+                    </f:facet>
+                    <h:outputText value="#{sala.tipoQuadro}" id="tipoQuadro" />
+                </rich:column>
+               
+                <rich:column sortable="false" label="Agendar" id="colunaAgendarSala" style="text-align:center;">
+                	<f:facet name="header">
+                        <h:outputText value="Agendar" id="colunaAgendar" />
+                    </f:facet>
+                    	<a4j:commandLink id="linkAgendar" onclick="Richfaces.showModalPanel('panelAgendamento');" style="text-decoration: none;"> 
+							  <h:outputText value="Agendar" id="agendar" />
+							  <f:setPropertyActionListener target="#{consultarSalasParaMarcacoesFormBean.idSala}" value="#{sala.id}" />
+						   </a4j:commandLink>
+				</rich:column>
+                
+			</rich:extendedDataTable>
+			
+			
+		</h:form>
+	</ui:define>
+	
+</ui:composition>
+
+</body>
+
+</html>

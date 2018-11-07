@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:ui="http://java.sun.com/jsf/facelets"
+   xmlns:f="http://java.sun.com/jsf/core"
+   xmlns:h="http://java.sun.com/jsf/html"
+   xmlns:a4j="http://richfaces.org/a4j"
+   xmlns:rich="http://richfaces.org/rich"
+   xmlns:c="http://java.sun.com/jstl/core"
+   xmlns:t="http://myfaces.apache.org/tomahawk">
+
+<body>
+
+<ui:composition template="/layout/estrutura/template.xhtml">
+
+   <ui:param name="button" value="periodoForm:remover" />
+   
+   <ui:define name="corpo">
+      <a4j:keepAlive beanName="removerPeriodoFormBean" />
+      <h:form id="periodoForm" styleClass="formulario">
+         <fieldset>
+            <legend><h:outputFormat value="#{View['cronos.exclusao.titulo']}"><f:param value="#{View['cronos.periodo']}"/></h:outputFormat></legend>
+         
+            <ol>
+               <li>
+                  <h:outputLabel for="nome" value="#{View['cronos.form.nome']}" />
+                  <h:outputText id="nome" value="#{removerPeriodoFormBean.nome}" />
+               </li>
+               <li>
+                  <h:outputLabel for="descricao" value="#{View['cronos.form.descricao']}" />
+                  <h:outputText id="descricao" value="#{removerPeriodoFormBean.descricao}" />
+               </li>
+               <li>
+                  <h:outputLabel for="isPeriodoLetivoSim" value="#{View['cronos.form.isPeriodoLetivo']}" />
+                  <h:outputText id="isPeriodoLetivoSim" value="#{View['cronos.form.sim']}" rendered="#{removerPeriodoFormBean.isPeriodoLetivo}" />
+                  <h:outputText id="isPeriodoLetivoNao" value="#{View['cronos.form.nao']}" rendered="#{!removerPeriodoFormBean.isPeriodoLetivo}" />
+               </li>
+               <li>
+                  <h:outputLabel for="dataInicio" value="#{View['cronos.form.dataInicial']}" />
+                  <h:outputText id="dataInicio" value="#{removerPeriodoFormBean.dataInicio}" />
+               </li>
+               <li>
+                  <h:outputLabel for="dataTermino" value="#{View['cronos.form.dataFinal']}" />
+                  <h:outputText id="dataTermino" value="#{removerPeriodoFormBean.dataTermino}" />
+               </li>
+            </ol>
+         </fieldset>
+         <div>
+            <br />
+            <h:commandButton id="remover" action="#{removerPeriodoFormBean.removerPeriodo}" value="#{View['cronos.remover']}" styleClass="submitButton" />
+            <h:outputText value="#{View['cronos.espaco']}" />
+            <h:commandButton id="cancelar" action="#{removerPeriodoFormBean.cancelar}" value="#{View['cronos.cancelar']}" styleClass="submitButton" />
+         </div>
+      </h:form>
+   </ui:define>
+   
+</ui:composition>
+
+</body>
+
+</html>

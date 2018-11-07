@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:t="http://myfaces.apache.org/tomahawk">
+
+<body>
+
+<ui:composition template="/WEB-INF/templates/template.xhtml">
+
+	<ui:param name="button" value="salaForm:cadastrar" />
+
+	<ui:define name="menu">
+		<ui:include src="../../WEB-INF/templates/menu.xhtml" />
+	</ui:define>
+	
+	<ui:define name="corpo">
+		<h:form id="salaForm">
+			<div class="campoObrigatorio"><img src="#{facesContext.externalContext.requestContextPath}/img/required.gif" /><h:outputText value="#{View['cronos.camposobrigatorios']}"/></div>
+			<fieldset>
+				<legend><h:outputFormat value="#{View['cronos.cadastro.titulo']}"><f:param value="#{View['cronos.sala']}"/></h:outputFormat></legend>
+				<div id="formularios">
+					<div class="dados">
+						<div class="campos">
+							<div class="header">
+								<img alt="(Obrigatorio)" src="#{facesContext.externalContext.requestContextPath}/img/required.gif" /> <label for="nome"><h:outputText value="#{View['cronos.form.nome']}" /></label>
+							</div>
+							<div class="input">
+								<h:inputText id="nome" value="#{cadastrarSalaFormBean.nome}" styleClass="estilo_campo" />
+							</div>
+						</div>
+						<div class="campos">
+							<div class="header">
+								<img alt="(Obrigatorio)" src="#{facesContext.externalContext.requestContextPath}/img/required.gif" /> <label for="descricao"><h:outputText value="#{View['cronos.form.descricao']}" /></label>
+							</div>
+							<div class="input">
+								<h:inputText id="descricao" value="#{cadastrarSalaFormBean.descricao}" styleClass="estilo_campo" />
+							</div>
+						</div>
+						<div class="campos">
+							<div class="header">
+								<img alt="(Obrigatorio)" src="#{facesContext.externalContext.requestContextPath}/img/required.gif" /> <label for="capacidade"><h:outputText value="#{View['cronos.form.capacidade']}" /></label>
+							</div>
+							<div class="input">
+								<h:inputText id="capacidade" value="#{cadastrarSalaFormBean.capacidade}" styleClass="estilo_campo">
+									<rich:jQuery selector="#capacidade" query="numeric()" timing="onload" />
+								</h:inputText>
+							</div>
+						</div>
+						<div class="campos">
+							<div class="header">
+								<img alt="(Obrigatorio)" src="#{facesContext.externalContext.requestContextPath}/img/required.gif" /> <label for="tipoQuadro"><h:outputText value="#{View['cronos.form.tipoQuadro']}" /></label>
+							</div>
+							<div class="input">
+								<h:selectOneMenu id="tipoQuadro" value="#{cadastrarSalaFormBean.tipoQuadro}" styleClass="estilo_select">
+									<f:selectItem itemLabel="--Selecione--" itemValue="" />
+									<f:selectItem itemLabel="Branco" itemValue="Branco" />
+									<f:selectItem itemLabel="Negro" itemValue="Negro" />
+									<f:selectItem itemLabel="Negro/Branco" itemValue="Negro/Branco" />
+								</h:selectOneMenu>
+							</div>
+						</div>
+						<div class="campos">
+							<div class="header">
+								<img alt="(Obrigatorio)" src="#{facesContext.externalContext.requestContextPath}/img/required.gif" /> <label for="tipoSala"><h:outputText value="#{View['cronos.form.tiposala']}" /></label>
+							</div>
+							<div class="input">
+								<h:selectOneMenu id="sala" value="#{cadastrarSalaFormBean.idTipoSala}" styleClass="estilo_select">
+									<f:selectItem itemLabel="--Selecione--" itemValue="" />
+									<f:selectItems value="#{listarTipoSalaFormBean.dados}" />
+								</h:selectOneMenu>
+							</div>
+						</div>
+						<div class="campos">
+							<div class="header">
+								<img alt="(Obrigatorio)" src="#{facesContext.externalContext.requestContextPath}/img/required.gif" /> <label for="predio"><h:outputText value="#{View['cronos.form.predio']}" /></label>
+							</div>
+							<div class="input">
+								<h:selectOneMenu id="predio" value="#{cadastrarSalaFormBean.idPredio}" styleClass="estilo_select">
+									<f:selectItem itemLabel="--Selecione--" itemValue="" />
+									<f:selectItems value="#{listarPredioFormBean.dados}" />
+								</h:selectOneMenu>
+							</div>
+						</div>
+					</div>
+				</div>
+			</fieldset>
+			<div>
+				<br />
+				<h:commandButton id="cadastrar" action="#{cadastrarSalaFormBean.cadastrarSala}" value="#{View['cronos.cadastrar']}" styleClass="submitButton" />
+				<h:outputText value="#{View['cronos.espaco']}" />
+				<h:commandButton id="cancelar" action="#{cadastrarSalaFormBean.cancelar}" value="#{View['cronos.cancelar']}" styleClass="submitButton" />
+			</div>
+		</h:form>
+	</ui:define>
+	
+</ui:composition>
+
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:t="http://myfaces.apache.org/tomahawk">
+
+<body>
+
+<ui:composition template="/WEB-INF/templates/template.xhtml">
+
+	<ui:define name="menu">
+		<ui:include src="../../WEB-INF/templates/menu.xhtml" />
+	</ui:define>
+	
+	<ui:define name="corpo">
+		<h:form id="salaForm">
+		
+			<div class="campos">
+				<div class="header">
+					<img alt="(Obrigatorio)" src="#{facesContext.externalContext.requestContextPath}/img/required.gif" /> <label for="predio"><h:outputText value="#{View['cronos.form.predio']}" /></label>
+				</div>
+				<div class="input">
+					<h:selectOneMenu id="predio" value="#{consultarSalaPorPredioFormBean.idPredio}" styleClass="estilo_select">
+						<f:selectItem itemLabel="--Selecione--" itemValue="" />
+						<f:selectItems value="#{listarPredioFormBean.dados}" />
+						<a4j:support event="onchange" reRender="salaTable" ajaxSingle="true" />
+					</h:selectOneMenu>
+				</div>
+			</div>
+		
+			
+			<t:div styleClass="aviso" rendered="#{!consultarSalaPorPredioFormBean.visible}">
+				<img alt="Aviso" src="#{facesContext.externalContext.requestContextPath}/img/warning.gif" />&#160;
+				<h:outputFormat value="#{View['cronos.aviso.semdados']}"><f:param value="#{View['cronos.sala']}"/></h:outputFormat>
+			</t:div>
+			<rich:dataTable id="salaTable" value="#{consultarSalaPorPredioFormBean.dados}" 
+				var="i" rows="#{consultarSalaPorPredioFormBean.linhas}" border="0" align="left" cellspacing="0" width="30%" columnsWidth="90%,10%" 
+				rowClasses="list-row-even,list-row-odd" binding="#{consultarSalaPorPredioFormBean.table}" rendered="#{consultarSalaPorPredioFormBean.visible}">
+				<f:facet name="header">
+					<rich:columnGroup>
+						<rich:column>
+							<h:outputText value="#{View['cronos.table.nome']}" />
+						</rich:column>
+						<rich:column>
+							<h:outputText value="#{View['cronos.table.capacidade']}" />
+						</rich:column>
+						<rich:column colspan="2">
+							<h:outputText value="#{View['cronos.espaco']}" />
+						</rich:column>
+					</rich:columnGroup>
+				</f:facet>
+				<rich:columnGroup>
+					<rich:column style="text-align:center;">
+						<h:outputText value="#{i.nome}" />
+					</rich:column>
+					<rich:column style="text-align:center;">
+						<h:outputText value="#{i.capacidade}" />
+					</rich:column>
+					<rich:column style="text-align:center;">
+						<a href="#{facesContext.externalContext.requestContextPath}/admin/sala/editar/#{i.id}" style="text-decoration: none;">
+							<img src="#{facesContext.externalContext.requestContextPath}/img/editar.gif" border="0" />
+						</a>
+					</rich:column>
+					<rich:column style="text-align:center;">
+						<a href="#{facesContext.externalContext.requestContextPath}/admin/sala/excluir/#{i.id}" style="text-decoration: none;">
+							<img src="#{facesContext.externalContext.requestContextPath}/img/excluir.gif" border="0" />
+						</a>
+					</rich:column>
+				</rich:columnGroup>
+			</rich:dataTable>
+			<rich:datascroller id="salaTableScroller" align="left" for="salaTable" maxPages="20" renderIfSinglePage="false" stepControls="hide" />
+		</h:form>
+	</ui:define>
+	
+</ui:composition>
+
+</body>
+
+</html>

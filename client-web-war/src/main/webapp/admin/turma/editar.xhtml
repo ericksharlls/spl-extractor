@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:t="http://myfaces.apache.org/tomahawk">
+
+<body>
+
+<ui:composition template="/layout/estrutura/template.xhtml">
+	
+	<ui:param name="button" value="salaForm:atualizar" />
+	
+	<ui:define name="corpo">
+	
+	       <rich:modalPanel id="panelAdicionarDocente" width="450" height="240">
+            <f:facet name="header">
+                <h:outputText value="Adicionar docente na turma" />
+            </f:facet>
+            <h:form id="formAdicionarDocente">
+                <h:panelGrid columns="2">
+                    
+                    <h:outputLabel value="Docente" for="docenteNovo" />
+                    <h:selectOneMenu id="docenteNovo" value="#{atualizarTurmaFormBean.idDocente}" styleClass="estiloSelectDepartamento">
+                                <f:selectItem itemLabel="--Selecione--" itemValue="" />
+                                <f:selectItems value="#{listarFuncionarioDocenteFormBean.dados}" />
+                        </h:selectOneMenu>
+                    
+                    <a4j:commandButton value="Adicionar" action="#{atualizarTurmaFormBean.adicionarDocente}" id="btnAdicionarDocente" styleClass="submitButton" reRender="docentesTurma" />
+                    <a4j:commandButton value="Fechar" onclick="Richfaces.hideModalPanel('panelAdicionarDocente');" id="btnCancelar" styleClass="submitButton" />    
+                </h:panelGrid>
+                
+            </h:form>
+        </rich:modalPanel>
+	
+		<a4j:keepAlive beanName="atualizarTurmaFormBean" />
+		
+		<h:form id="turmaForm" styleClass="formulario">
+			
+			<fieldset>
+				<legend><h:outputFormat value="#{View['cronos.edicao.titulo']}"><f:param value="#{View['cronos.turma']}"/></h:outputFormat></legend>
+				
+				<ol>
+					<li>
+					 	<h:outputLabel for="codigoDisciplina" value="#{View['cronos.form.codigoDisciplina']}" />	
+						<h:inputText id="codigoDisciplina" value="#{atualizarTurmaFormBean.codigoDisciplina}" />
+					</li>
+						
+					<li>	
+						<h:outputLabel for="nomeDisciplina" value="#{View['cronos.form.disciplina']}" />
+						<h:inputText id="nomeDisciplina" value="#{atualizarTurmaFormBean.nomeDisciplina}" styleClass="inputStyle" />
+					</li>
+						
+					<li>	
+				    	<h:outputLabel for="docentesTurma" value="#{View['cronos.form.docente']}" />
+						<h:selectOneListbox value="#{atualizarTurmaFormBean.idDocente}" id="docentesTurma" styleClass="manyListbox3">
+                            <f:selectItems value="#{atualizarTurmaFormBean.docentes}" />
+                        </h:selectOneListbox>
+                        
+                        <h:outputText value=" " />
+                        <a4j:commandLink id="linkAdicionarDocente" onclick="Richfaces.showModalPanel('panelAdicionarDocente');" value="+" />
+                        <h:outputText value=" | " />
+                        <a4j:commandLink id="linkRemoverDocente" reRender="docentesTurma" action="#{atualizarTurmaFormBean.removerDocente}" value="-" />
+					</li>
+					
+					<li>	
+				    	<h:outputLabel for="horario" value="#{View['cronos.form.horario']}" />
+						<h:inputText id="horario" value="#{atualizarTurmaFormBean.horario}" />
+					</li>
+					
+					<li>	
+				    	<h:outputLabel for="numero" value="#{View['cronos.form.numero']}" />
+						<h:inputText id="numero" value="#{atualizarTurmaFormBean.turma}" />
+					</li>
+					
+					<li>	
+				    	<h:outputLabel for="capacidade" value="#{View['cronos.form.capacidade']}" />
+						<h:inputText id="capacidade" value="#{atualizarTurmaFormBean.capacidade}" />
+					</li>
+					
+					<li>	
+				    	<h:outputLabel for="selectOneRadioTurma" value="#{View['cronos.form.distribuir']}" />
+						<h:selectOneRadio value="#{atualizarTurmaFormBean.distribuir}" layout="lineDirection" id="selectOneRadioTurma" styleClass="tabelaInputRadio">
+							<f:selectItem itemLabel="#{View['cronos.form.sim']}" itemValue="true" id="radioSim" />
+							<f:selectItem itemLabel="#{View['cronos.form.nao']}" itemValue="false" id="radioNao" />
+						</h:selectOneRadio>
+					</li>
+					
+					<li>
+						<h:outputLabel for="perfilTurma" value="#{View['cronos.form.perfilTurma']}" />
+						<h:selectOneMenu id="perfilTurma" value="#{atualizarTurmaFormBean.idTipoSala}" styleClass="estilo_select">
+								<f:selectItems value="#{listarTipoSalaFormBean.dados}" />
+						</h:selectOneMenu>
+					</li>
+					
+					<li>
+                  <h:outputLabel for="predioTurma" value="#{View['cronos.form.predio']}" />
+                  <h:selectOneMenu id="predioTurma" value="#{atualizarTurmaFormBean.idPredio}" styleClass="estilo_select">
+                        <f:selectItems value="#{listarPredioFormBean.dados}" />
+                  </h:selectOneMenu>
+               </li>
+							
+				</ol>
+							
+				<h:commandButton id="atualizar" action="#{atualizarTurmaFormBean.atualizarTurma}" value="#{View['cronos.atualizar']}" styleClass="submitButton" />
+				<h:outputText value="#{View['cronos.espaco']}" />
+				<h:commandButton id="cancelar" action="#{atualizarTurmaFormBean.cancelar}" value="#{View['cronos.cancelar']}" styleClass="submitButton" />
+				
+			</fieldset>
+		</h:form>
+	</ui:define>
+	
+</ui:composition>
+
+</body>
+
+</html>

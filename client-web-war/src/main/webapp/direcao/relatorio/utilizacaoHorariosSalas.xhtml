@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:t="http://myfaces.apache.org/tomahawk">
+
+<body>
+
+<ui:composition template="/layout/estrutura/template.xhtml">
+
+	<ui:param name="button" value="relatorioHorarioSalasForm:relatorio" />
+
+	<ui:define name="corpo">
+		<h:form id="relatorioHorarioSalasForm" styleClass="formulario">
+			
+			<fieldset>
+				<legend><h:outputFormat value="#{View['cronos.form.relatorioUtilizacaoSalas']}"><f:param value="#{View['cronos.departamento']}"/></h:outputFormat></legend>
+				 
+				 <ol>
+				 	<li>
+				 		<h:outputLabel for="dataInicial" value="#{View['cronos.form.dataInicial']}" />
+				 		<rich:calendar value="#{relatorioUtilizacaoHorariosSalasFormBean.dataInicial}" cellWidth="24px" cellHeight="22px" 
+        				style="width:200px; line-height:1px;" locale="#{relatorioUtilizacaoHorariosSalasFormBean.locale}" datePattern="dd/MM/yyyy" id="dataInicial" />		
+				 	</li>
+				 	
+				 	<li>
+				 		<h:outputLabel for="dataFinal" value="#{View['cronos.form.dataFinal']}" />
+				 		<rich:calendar value="#{relatorioUtilizacaoHorariosSalasFormBean.dataFinal}" cellWidth="24px" cellHeight="22px" 
+        				style="width:200px; line-height:1px;" locale="#{relatorioUtilizacaoHorariosSalasFormBean.locale}" datePattern="dd/MM/yyyy" id="dataFinal" />		
+				 	</li>
+				 	
+				 	<li>
+                  <h:outputLabel for="idPredio" value="#{View['cronos.form.predio']}" />
+                  <h:selectOneMenu id="idPredio" value="#{relatorioUtilizacaoHorariosSalasFormBean.idPredio}" styleClass="estiloSelectDepartamento">
+                     <f:selectItem itemLabel="--Selecione--" itemValue="" />
+                     <f:selectItems value="#{listarPredioFormBean.dados}" />
+                  </h:selectOneMenu>    
+               </li>
+				 	
+				 </ol>
+				 
+				<h:commandButton id="relatorioHorarioSalas" action="#{relatorioUtilizacaoHorariosSalasFormBean.gerarRelatorioHorarioSalas}" value="#{View['cronos.gerarRelatorio']}" styleClass="submitButton" />
+				
+			</fieldset>
+			
+		</h:form>
+	</ui:define>
+	
+</ui:composition>
+
+</body>
+
+</html>

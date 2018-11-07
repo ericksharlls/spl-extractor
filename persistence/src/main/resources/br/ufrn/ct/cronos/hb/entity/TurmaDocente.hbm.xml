@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping default-lazy="false">
+	<class name="br.ufrn.ct.cronos.entity.TurmaDocente" table="turma_docente">
+    	<composite-id>
+    		<key-property name="idTurma" column="id_turma" type="java.lang.Long" />
+    		<key-property name="idDocente" column="id_docente" type="java.lang.Long" />
+    	</composite-id>
+      	
+	</class>
+</hibernate-mapping>

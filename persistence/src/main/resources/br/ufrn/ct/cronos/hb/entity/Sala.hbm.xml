@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping default-lazy="false">
+	<class name="br.ufrn.ct.cronos.entity.Sala" table="sala">
+    	<id name="id" column="id_sala" type="java.lang.Long">
+        	<generator class="identity" />
+      	</id>
+      	
+      	<property name="nome" column="nome_sala" type="java.lang.String" />
+      	<property name="descricao" column="descricao_sala" type="java.lang.String" />
+      	<property name="capacidade" column="capacidade_sala" type="java.lang.Integer" />
+      	<property name="tipoQuadro" column="tipo_quadro_sala" type="java.lang.String" />
+      	<property name="utilizarNaDistribuicao" column="utilizar_distribuicao" type="java.lang.Boolean" />
+      	<property name="utilizarNoAgendamento" column="utilizar_agendamento" type="java.lang.Boolean" />
+      	<property name="idTipo" column="id_perfil" type="java.lang.Long" />
+      	<property name="idPredio" column="id_predio" type="java.lang.Long" />
+      	
+	</class>
+</hibernate-mapping>

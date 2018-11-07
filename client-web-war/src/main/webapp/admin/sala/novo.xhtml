@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:t="http://myfaces.apache.org/tomahawk">
+
+<body>
+
+<ui:composition template="/layout/estrutura/template.xhtml">
+
+	<ui:param name="button" value="salaForm:cadastrar" />
+
+	<ui:define name="corpo">
+	
+		<h:form id="salaForm" styleClass="formulario">
+			
+			<fieldset>
+				<legend><h:outputFormat value="#{View['cronos.cadastro.titulo']}"><f:param value="#{View['cronos.sala']}"/></h:outputFormat></legend>
+					
+				<ol>
+					<li>
+						<h:outputLabel for="nome" value="#{View['cronos.form.nome']}" />
+						<h:inputText id="nome" value="#{cadastrarSalaFormBean.nome}" styleClass="inputStyle" />
+					</li>
+						
+					<li>	
+						<h:outputLabel for="descricao" value="#{View['cronos.form.descricao']}" />
+						<h:inputTextarea id="descricao" value="#{cadastrarSalaFormBean.descricao}" rows="5" styleClass="inputStyle" />
+						
+					</li>
+					
+					<li>
+						<h:outputLabel for="capacidade" value="#{View['cronos.form.capacidade']}" />
+						<h:inputText id="capacidade" value="#{cadastrarSalaFormBean.capacidade}" style="width: 100px;">
+							<rich:jQuery selector="#capacidade" query="numeric()" timing="onload" />
+						</h:inputText>
+					</li>
+					
+                    <li>    
+                        <h:outputLabel for="selectOneRadioUtilizarNaDistribuicao" value="#{View['cronos.form.utilizarNaDistribuicao']}" />
+                        <h:selectOneRadio value="#{cadastrarSalaFormBean.utilizarNaDistribuicao}" layout="lineDirection" id="selectOneRadioUtilizarNaDistribuicao" styleClass="tabelaInputRadio">
+                            <f:selectItem itemLabel="#{View['cronos.form.sim']}" itemValue="true" id="radioSimDistribuicao" />
+                            <f:selectItem itemLabel="#{View['cronos.form.nao']}" itemValue="false" id="radioNaoDistribuicao" />
+                        </h:selectOneRadio>
+                    </li>
+                    
+                    <li>    
+                        <h:outputLabel for="selectOneRadioUtilizarNoAgendamento" value="#{View['cronos.form.utilizarNoAgendamento']}" />
+                        <h:selectOneRadio value="#{cadastrarSalaFormBean.utilizarNoAgendamento}" layout="lineDirection" id="selectOneRadioUtilizarNoAgendamento" styleClass="tabelaInputRadio">
+                            <f:selectItem itemLabel="#{View['cronos.form.sim']}" itemValue="true" id="radioSimAgendamento" />
+                            <f:selectItem itemLabel="#{View['cronos.form.nao']}" itemValue="false" id="radioNaoAgendamento" />
+                        </h:selectOneRadio>
+                    </li>
+					
+					   <li>		
+						  <h:outputLabel for="tipoQuadro" value="#{View['cronos.form.tipoQuadro']}" />
+						  <h:selectOneMenu id="tipoQuadro" value="#{cadastrarSalaFormBean.tipoQuadro}" styleClass="estiloSelect">
+							 <f:selectItem itemLabel="--Selecione--" itemValue="" />
+							 <f:selectItem itemLabel="Branco" itemValue="Branco" />
+							 <f:selectItem itemLabel="Negro" itemValue="Negro" />
+							 <f:selectItem itemLabel="Negro/Branco" itemValue="Negro/Branco" />
+						  </h:selectOneMenu>
+					   </li>
+					<li>	
+						<h:outputLabel for="tipoSala" value="#{View['cronos.form.tiposala']}" />	
+						<h:selectOneMenu id="tipoSala" value="#{cadastrarSalaFormBean.idTipoSala}" styleClass="estiloSelect">
+							<f:selectItem itemLabel="--Selecione--" itemValue="" />
+							<f:selectItems value="#{listarTipoSalaFormBean.dados}" />
+						</h:selectOneMenu>
+					</li>
+					
+					<li>	
+						<h:outputLabel for="predio" value="#{View['cronos.form.predio']}" />
+						<h:selectOneMenu id="predio" value="#{cadastrarSalaFormBean.idPredio}" styleClass="estiloSelect">
+							<f:selectItem itemLabel="--Selecione--" itemValue="" />
+							<f:selectItems value="#{listarPredioFormBean.dados}" />
+						</h:selectOneMenu>
+					</li>
+					
+				</ol>	
+				
+				<h:commandButton id="cadastrar" action="#{cadastrarSalaFormBean.cadastrarSala}" value="#{View['cronos.cadastrar']}" styleClass="submitButton" />
+				<h:outputText value="#{View['cronos.espaco']}" />
+				<h:commandButton id="cancelar" action="#{cadastrarSalaFormBean.cancelar}" value="#{View['cronos.cancelar']}" styleClass="submitButton" />
+				
+			</fieldset>
+			
+		</h:form>
+		
+	</ui:define>
+	
+</ui:composition>
+
+</body>
+
+</html>
